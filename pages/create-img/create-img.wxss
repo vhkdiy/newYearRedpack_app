@@ -1,1 +1,3 @@
-/* pages/create-img/create-img.wxss */
+.container{
+    height:1000px;
+}
