@@ -1,0 +1,10 @@
+<!--demo/img-pre-load/img-pre-load.wxml-->
+<view wx:if="{{!loading}}"></view>
+<view wx:else>
+  <image class='hide-img' wx:for="{{ imglist }}" wx:key="*this" src="{{ item.src }}" data-src="{{item.src}}" bindload='bindLoad' binderror='bindError' />
+</view>
+
+<!-- 使用方法 -->
+<!-- 
+<ImgPreLoad list="{{['http://storage.360buyimg.com/mtd/home/lion1483683731203.jpg','http://storage.360buyimg.com/mtd/home/lion1483624894660.jpg']}}"></ImgPreLoad> 
+-->

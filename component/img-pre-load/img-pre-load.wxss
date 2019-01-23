@@ -1,0 +1,7 @@
+/* component/img-pre-load/img-pre-load.wxss */
+
+.hide-img {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}

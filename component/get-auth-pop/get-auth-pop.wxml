@@ -1,0 +1,26 @@
+<!--component/get-step-auth/get-step-auth.wxml-->
+
+  <view class="get-auto-pop" wx:if="{{isShow}}">
+    <view class="content" wx:if="{{type === 'step'}}">
+      <view class="title">微信授权</view>
+      <view class="subtitle">步步赚需要您的授权才能获取步数哦，为了有更好的兑换体验，快点击授权吧！</view>
+      <image class="img" bindtap='close' src="https://img.xmiles.cn/get-auto-pop/close.png"></image>
+      <button class="cancel" bindtap='close'>再考虑一下</button>
+      <button bindtap="clickBtn" data-auth="scope.werun" class="confirm" open-type="openSetting" bindopensetting="openSettingCallback">打开设置</button>
+    </view>
+    <view class="content" wx:if="{{type === 'address'}}">
+      <view class="title">微信授权</view>
+      <view class="subtitle">步步赚需要您的授权才能获取地址哦，为了有更好的兑换体验，快点击授权吧！</view>
+      <image class="img" bindtap='close' src="https://img.xmiles.cn/get-auto-pop/close.png"></image>
+      <button class="cancel" bindtap='close'>再考虑一下</button>
+      <button bindtap="clickBtn" data-auth="scope.address" class="confirm" open-type="openSetting" bindopensetting="openSettingCallback">打开设置</button>
+    </view>
+    <view class="content" wx:if="{{type === 'image'}}">
+      <view class="title">微信授权</view>
+      <view class="subtitle">步步赚需要您的授权才能保存哦，为了有更好的兑换体验，快点击授权吧！</view>
+      <image class="img" bindtap='close' src="https://img.xmiles.cn/get-auto-pop/close.png"></image>
+      <button class="cancel" bindtap='close'>再考虑一下</button>
+      <button bindtap="clickBtn" data-auth="scope.writePhotosAlbum" class="confirm" open-type="openSetting" bindopensetting="openSettingCallback">打开设置</button>
+    </view>
+  </view>
+

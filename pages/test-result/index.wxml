@@ -1,0 +1,25 @@
+<AcquireFormidView>
+<view class="page-body">
+  <view class="page-body-wrapper">
+    <canvas canvas-id="canvas" style="width:100%;height:{{canvasHeight}}px"></canvas>
+  </view>
+
+    <view class="shareBtn" wx:if="{{!openId}}">
+      <button  open-type="share"  class="share" >分享给好友</button>
+      <button  class="share_friend" bindtap="shareImage">
+      <image class="share_friend_img" mode="widthFix" src="./img/friends.png"/>
+      <text class="save">保存图片</text>
+      </button>
+    </view>
+    <view class="homeBtn" wx:else bindtap='gotoHome'>
+      <view class="homeTitle">和好友比比看谁更旺</view>
+      <view class="subTitle">立即查看我的财运</view>
+    </view>
+
+  <ad-component wx:if="{{adData}}" adData="{{adData}}" properties="{{properties}}" >
+    <image class='ad_img' mode='aspectFill' src="{{adData.image || adData.applet_ad_model.banner_url}}"></image>
+  </ad-component>
+</view>
+<openSettingDialog requestAuthType="{{dialogType}}" isShow="{{isShowOpensettingDialog}}" />
+</AcquireFormidView>
+<MainTab />

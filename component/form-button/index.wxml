@@ -1,0 +1,5 @@
+<form bindsubmit="formSubmit" bindreset="formReset" report-submit="true">
+  <button formType="submit" class="button-wrap" id="{{clickId}}">
+    <slot></slot>
+  </button>
+</form>

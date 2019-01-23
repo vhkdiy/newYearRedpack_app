@@ -1,0 +1,84 @@
+/* component/get-step-auth/get-step-auth.wxss */
+.get-auto-pop{
+  width : 100%;
+  height : 100%;
+  position: fixed;
+  top : 0;
+  left : 0;
+  background-color : rgba(0,0,0,0.5);
+  z-index : 99999;
+}
+.get-auto-pop > .content{
+  position: absolute;
+  top : 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width : 648rpx;
+  height: 407rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+}
+.get-auto-pop > .content > .title{
+  margin-top : 48rpx;
+  text-align: center;
+  font-family: PingFangSC-Semibold;
+  font-size: 42rpx;
+  color: #333333;
+  letter-spacing: 0;
+}
+.get-auto-pop > .content > .subtitle{
+  margin : 36rpx 51rpx 48rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #666666;
+  letter-spacing: 0;
+}
+.get-auto-pop > .content > .img{
+  position: absolute;
+  top : 0;
+  right : 0;
+  width : 90rpx;
+  height : 90rpx;
+}
+.get-auto-pop > .content > .cancel{
+  display: inline-block;
+  overflow: inherit;
+  padding: 0;
+  background-color: transparent;
+  margin : 0 30rpx;
+
+  width : 264rpx;
+  height : 78rpx;
+  line-height: 78rpx;
+  background: #D5D5D5;
+  border-radius: 100rpx;   
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #FFFFFF;
+  text-align: center;
+
+}
+.get-auto-pop > .content > .cancel::after{
+  border : none;
+}
+.get-auto-pop > .content > .confirm{
+  display: inline-block;
+  overflow: inherit;
+  padding: 0;
+  font-size: 30rpx;
+  background-color: transparent;
+  text-align: center;
+  margin : 0 30rpx;
+
+  width : 264rpx;
+  height : 78rpx;
+  line-height: 78rpx;
+  background-image: linear-gradient(90deg, #1DD49E 2%, #26BCC5 97%);
+  box-shadow: 0 4rpx 10rpx 2rpx rgba(38,188,197,0.40);
+  border-radius: 100rpx;
+  color: #FFFFFF;
+}
+
+.get-auto-pop > .content > .confirm::after{
+  border : none;
+}

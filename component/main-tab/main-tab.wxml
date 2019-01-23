@@ -1,0 +1,18 @@
+<view class="main_tab_fade_container {{isIphoneX ? 'isIphoneX' : ''}}">
+
+  <view class="main_tab_container">
+    <view class='tab_top_line'></view>
+
+    <view class='mian_tab_item' wx:for="{{tabList}}" wx:key="{{index}}" data-data="{{item}}" bindtap='tabClick'>
+      <view class='main_tab_icon_container' >
+        <image class="main_tab_icon {{item.show_red_point ? 'main_tab_scale' : ''}}"  src="{{currentIndex == index ? item.image_selected : item.image_normal}}"></image>
+        <view wx:if="{{item.show_red_point}}" class='tab_red_point'></view>
+      </view>
+      <view class='main_tab_name'>{{item.name}}</view>
+
+      <navigator wx:if="{{item.type == 1}}" class="fade_btn" target="miniProgram" open-type="navigate" path="{{item.path}}" app-id="{{item.appid}}" envVersion="release" hover-class="none"></navigator>
+    </view>
+
+  </view>
+
+</view>

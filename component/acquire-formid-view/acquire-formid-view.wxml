@@ -1,0 +1,11 @@
+<!--pages/components/acquire-formid-view/acquire-formid-view.wxml-->
+<view wx:if="{{finishUploadToday}}">
+  <slot></slot>
+</view>
+<view wx:else>
+  <form report-submit="true" bindsubmit="formSubmit">
+    <button class="form-btn" form-type='submit' hover-class="none">
+      <slot></slot>
+    </button>
+  </form>
+</view>

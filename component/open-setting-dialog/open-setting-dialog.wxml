@@ -1,0 +1,9 @@
+<cover-view  wx:if="{{isShow}}" class="open_setting_dialog">
+  <cover-view class="open_setting_container">
+    <cover-view class="title">微信授权</cover-view>
+    <cover-view class="subtitle">{{openSettingTip}}</cover-view>
+    <cover-image class="img" bindtap='handleClick'  data-id="cancel_btn" src="https://img.xmiles.cn/get-auto-pop/close.png"></cover-image>
+    <button class="cancel" bindtap='handleClick' data-id="cancel_btn">再考虑一下</button>
+    <button bindtap="handleClick"  class="confirm"  open-type="openSetting" bindopensetting="openSettingCallback" data-id="ok_btn">打开设置</button>
+  </cover-view>
+</cover-view>

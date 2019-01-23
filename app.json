@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/webview/index",
+    "pages/test-result/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "财运指北",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 15000,
+    "downloadFile": 15000
+  },
+  "debug": true,
+  "navigateToMiniProgramAppIdList": [
+    "wxb869461219ec2d02",
+    "wxa42959523195f527",
+    "wxa344448166586158",
+    "wx1f4b57a263bbc222",
+    "wxfbdacbc6b89926f3",
+    "wxbe254e0a4b639be6",
+    "wxb99f217ef3d471a4",
+    "wx0297e5e5dfd08269",
+    "wxce8556babd23a6b3",
+    "wxb13b8f52473658ca"
+
+  ]
+}

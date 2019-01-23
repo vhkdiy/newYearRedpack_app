@@ -1,0 +1,156 @@
+
+/* .canvas {
+  width: 100%;
+  height: 240px;
+  
+} */
+page{
+  background-image : url("https://img.xmiles.cn/caiyunzhibei/bg.png");
+  width : 100%;
+  height : 100%;
+  background-size : 100% 100%;
+}
+.page-body{
+  text-align: center;
+}
+
+.shareBtn{
+  height : 102rpx;
+  width : 100%;
+  display: flex;
+}
+.homeBtn{
+  position : relative;
+  text-align: center;
+  margin : 0 auto;
+  width : 654rpx;
+  height : 102rpx;
+  background: #FFEE57;
+  border: 4rpx solid #3A3A70;
+  border-radius: 10rpx;
+  animation: btnScale 0.8s infinite alternate;
+}
+.homeBtn::before{
+  margin : 0;
+  padding : 0;
+  content : '';
+  position : absolute;
+  top : 102rpx;
+  left : 0;
+  width : 654rpx;
+  height : 14rpx;
+  background-color : #3A3A70;
+  border : none;
+  border-bottom-right-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+@keyframes btnScale{
+  from {transform: scale(0.8,0.8);opacity: 0.8}
+  to   {transform: scale(1,1);opacity: 1}
+}
+.homeTitle{
+  margin-top:4rpx;
+  height : 56rpx;
+  line-height: 56rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 40rpx;
+  color: #3A3A70;
+  letter-spacing: 0;
+  text-align: center;
+}
+.subTitle{
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #3A3A70;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+
+.share{
+  position: relative;
+  width : 316rpx;
+  height : 88rpx;
+  line-height: 88rpx;
+  overflow: inherit;
+  margin-left : 46rpx;
+  padding: 0;
+  background-color: transparent;
+  text-align: center;
+  background: #FFEE57;
+  border: 2rpx solid #3A3A70;
+  /* border-bottom: 10rpx solid #3A3A70; */
+  border-radius: 10rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 40rpx;
+  color: #3A3A70;
+  letter-spacing: 0;
+}
+.share::before{
+  margin : 0;
+  padding : 0;
+  content : '';
+  position : absolute;
+  top : 82rpx;
+  left : 0;
+  width : 309rpx;
+  height : 14rpx;
+  background-color : #3A3A70;
+  border : none;
+  border-bottom-right-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+
+.share_friend{
+  position : relative;
+  width : 316rpx;
+  height : 88rpx;
+  margin-right : 46rpx;
+  line-height: 88rpx;
+  overflow: inherit;
+  padding: 0;
+  background-color: transparent;
+  background: #FFFFFF;
+  border: 2rpx solid #3A3A70;
+  /* border-bottom: 10rpx solid #3A3A70; */
+  border-radius: 10rpx;
+  font-family: PingFangSC-Medium;
+  font-size: 40rpx;
+  color: #3A3A70;
+  letter-spacing: 0;
+  text-align: center;
+  z-index : 100;
+}
+.share_friend_img{
+  margin-top : 20rpx;
+  width : 48rpx;
+  height : 48rpx;
+  vertical-align: top;
+}
+.save{
+  margin-left: 8rpx;
+}
+.share_friend::before{
+  margin : 0;
+  padding : 0;
+  content : '';
+  position : absolute;
+  top : 82rpx;
+  left : 0;
+  width : 309rpx;
+  height : 14rpx;
+  background-color : #3A3A70;
+  border : none;
+  border-bottom-right-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+
+.ad_img {
+  display: block;
+  width: 666rpx;
+  height: 224rpx;
+  margin: 26rpx auto 10rpx;
+  border: 1px solid #fff;
+  border-radius: 20rpx;
+}
+

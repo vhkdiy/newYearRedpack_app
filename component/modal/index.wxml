@@ -1,0 +1,5 @@
+<div class='modal-container modal-container-{{position}} {{showing && "modal-container-show"}}' wx:if='{{innerShow}}' bind:tap='onTapMask' >
+  <div class='modal-content modal-content-{{position}} {{showing && "modal-content-show"}}'>
+    <slot></slot>
+  </div>
+</div>

@@ -1,0 +1,119 @@
+<view id="{{TOP_ANCHOR_POINT}}"></view>
+
+<block wx:if="{{!isStart}}">
+  <AcquireFormidView>
+    <image class='no_start_title' src="{{title_picture_url}}"></image>
+    <view wx:if="{{robots.dialogue }}" class='play_tip_container'>
+      <view class='paly_tip_ditu'></view>
+      <view class='play_tip_text'>{{robots.dialogue}}</view>
+
+      <image class='zhuanshi_left' src="./images/zhuanshi_left.png"></image>
+      <image class='zhuanshi_right' src="./images/zhuanshi_right.png"></image>
+
+      <image class='play_tip_img' mode='aspectFill' src="{{dialogue_icon}}"></image>
+    </view>
+
+    <block wx:if="{{isHomeDataSuccess}}">
+      <view class='start_btn' bindtap='handleStartBtnClick'>开始测试</view>
+    </block>
+
+    <ad-component wx:if="{{adData1}}" bind:clickpop="adClick" adData="{{adData1}}" properties="{{properties}}">
+      <image class='ad_img' mode='aspectFill' src="{{adData1.image || adData1.applet_ad_model.banner_url}}"></image>
+    </ad-component>
+  </AcquireFormidView>
+</block>
+
+
+<block wx:else>
+  <image class='start_title' src="https://img.xmiles.cn/shuanmin/start_title_2.png"></image>
+
+  <!-- 一下开始渲染答题 -->
+  <view class='answer_container' wx:for="{{question_list}}" wx:for-index="answerIndex" wx:for-item="answerData" wx:key="{{answerIndex}}" wx:if="{{maxQuestionIndex >= answerIndex}}">
+    <image class='zhuanshi_left' src="./images/zhuanshi_left.png"></image>
+    <image class='zhuanshi_right' src="./images/zhuanshi_right.png"></image>
+    <view class='page_number_container' id="{{QUESTION_INDEX_BASE_ID}}{{answerIndex}}">{{(answerIndex + 1)}}/{{question_list.length}}</view>
+
+    <view class='problem_container'>
+      <view class='problem_icon_container'>
+        <image class='problem_icon' mode='widthFix' src="{{robots.avator}}"></image>
+      </view>
+      <view class='problem_text'>{{answerData.question_desc}}</view>
+    </view>
+
+    <image wx:if="{{answerData.question_context.picture_urls[0]}}" class='problem_img' mode='aspectFill' src="{{answerData.question_context.picture_urls[0]}}"></image>
+
+    <view wx:if="{{answerData.question_type == 1 || answerData.question_type == 2}}" class='h_line'></view>
+
+    <!-- 单选择题 -->
+    <block wx:if="{{answerData.question_type == 0}}">
+      <radio-group class="group" data-question_index="{{answerIndex}}" bindchange="radioChange">
+        <view class="radio_item {{answerData.selected == selectData.option_value ? 'selected' : 'no_selected'}}" wx:for="{{answerData.question_context.options}}" wx:for-index="selectIndex" wx:for-item="selectData" wx:key="{{selectIndex}}">
+          <view class='radio_item_ditu'></view>
+          <radio hidden id="radio_id_{{answerIndex}}_{{selectData.option_value}}" value="{{selectData.option_value}}" checked="{{fasle}}"></radio>
+          <label class='radio_item_content' for="radio_id_{{answerIndex}}_{{selectData.option_value}}">{{selectData.option_desc}}</label>
+          <view class='radio_item_point'></view>
+        </view>
+
+      </radio-group>
+    </block>
+
+    <!-- 图片选项 -->
+    <block wx:if="{{answerData.question_type == 3}}">
+      <radio-group class="img_group" data-question_index="{{answerIndex}}" bindchange="radioChange">
+       
+        <view class="img_radio_item {{answerData.selected == selectData.option_value ? 'selected' : 'no_selected_img_radio_item'}}" wx:for="{{answerData.question_context.options}}" wx:for-index="selectIndex" wx:for-item="selectData" wx:key="{{selectIndex}}">
+
+          <radio hidden id="radio_id_{{answerIndex}}_{{selectData.option_value}}" value="{{selectData.option_value}}" checked="{{fasle}}"></radio>
+          <label class='radio_img_item_content' for="radio_id_{{answerIndex}}_{{selectData.option_value}}">
+            <image class='img_radio_img' mode="aspectFill" src="{{selectData.option_picture_url}}"></image>
+          
+          <view class='img_radio_name'>{{selectData.option_desc}}</view>
+
+          </label>
+        </view>
+      </radio-group>
+    </block>
+
+    <!-- 选择日期类型 -->
+    <block wx:elif="{{answerData.question_type == 1}}">
+      <picker data-question_index="{{answerIndex}}" class="date_section {{answerData.selected ? 'date_section_selected' : ''}}" mode="date" bindchange="bindDateChange" start="{{answerData.question_context.min_date}}" end="{{answerData.question_context.max_date}}"
+        value="{{answerData.selected || answerData.question_context.default_date}}">
+        <view class="picker">
+          {{answerData.selected || "请选择日期"}}
+        </view>
+      </picker>
+    </block>
+
+    <!-- 输入类型 -->
+    <block wx:elif="{{answerData.question_type == 2}}">
+      <form>
+        <input data-question_index="{{answerIndex}}" class='input_section' placeholder="{{answerData.question_context.default_value}}" bindblur="bindblur" maxlength="{{answerData.question_context.max_length}}" />
+      </form>
+    </block>
+
+    <block wx:if="{{answerIndex + 1 == question_list.length}}">
+
+      <view wx:if="{{!isAnswerAll}}" class='commin_btn_gray bottom_commit_btn'>
+        <view class='inner_btn_gray'>确定</view>
+        <view class='inner_btn_gray_bottom'></view>
+      </view>
+
+      <view wx:else class='bottom_commit_btn commit_btn_blue'>
+        <view class='inner_btn_blue'>确定</view>
+        <view class='inner_btn_blue_bottom'></view>
+        <button wx:if="{{is_authorized == 0}}" class="fade_btn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"></button>
+        <view wx:else class='fade_btn' bindtap='handleCommitBtnClick'></view>
+      </view>
+
+    </block>
+
+  </view>
+
+</block>
+
+
+<AcquireFormidView>
+
+  <MainTab currentIndex="{{0}}" />
+
+</AcquireFormidView>

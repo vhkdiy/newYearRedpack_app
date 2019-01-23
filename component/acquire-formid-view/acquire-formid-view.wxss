@@ -1,0 +1,20 @@
+/* pages/components/acquire-formid-view/acquire-formid-view.wxss */
+
+.form-btn {
+  background: inherit;
+  padding: inherit;
+  margin: inherit;
+  text-align: inherit;
+  border-radius: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  border: inherit;
+  overflow: inherit;
+  box-sizing: inherit;
+  position: inherit;
+  display: inherit;
+}
+
+.form-btn::after {
+  display: none;
+}

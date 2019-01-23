@@ -1,0 +1,38 @@
+
+<view wx:if="{{jumpType === 'contact'}}" >
+  <button id='contact_button' open-type="contact" session-from="{{essentialData.session_from}}" show-message-card="true" send-message-img="http://img.xmiles.cn/step2gift/img.png" class="reset-btn" bindtap="adComponentClick"></button>
+  <label for='contact_button'>
+      <slot></slot>
+  </label>
+</view>
+<view wx:elif="{{jumpType === 'pop'}}" bindtap='popClick'>
+  <slot></slot>
+</view>
+<view wx:else bindtap="adComponentClick">
+  <view wx:if="{{jumpType === 'image' || jumpType === 'redirect'}}">
+    <slot></slot>
+  </view>
+  <navigator wx:elif="{{jumpType === 'innerpage'}}" open-type="navigate" url="{{essentialData.jump_url}}" hover-class="none">
+    <slot></slot>
+  </navigator>
+  <navigator wx:elif="{{jumpType === 'switchtab'}}" open-type="switchTab" url="{{essentialData.jump_url}}" hover-class="none">
+    <slot></slot>
+  </navigator>
+  <navigator wx:elif="{{jumpType === 'launch'}}" target="miniProgram" open-type="navigate" extra-data="{{extraData}}" 
+  app-id="{{essentialData.appid}}" path="{{essentialData.path}}" envVersion="release" hover-class="none" bindsuccess="jumpMiniProgramSuccess">
+    <slot></slot>
+  </navigator>
+  <view wx:else>
+    <slot></slot>
+  </view>
+</view>
+<!-- pop弹窗部分 -->
+<view wx:if="{{isShowPop}}" catchtouchmove='noneMove'>
+    <button  id='contact_button_pop' open-type="contact" session-from="{{essentialData.session_from}}" show-message-card="true" send-message-img="http://img.xmiles.cn/step2gift/img.png"></button>
+    <view catchtap='close_pop' class="pop-window" style="height : {{screenHeight}}rpx">
+      <label for='contact_button_pop' catchtap="adComponentClick">
+            <image class="pop-image" mode='widthFix' src="{{essentialData.pop_image}}" />
+      </label>
+  </view>
+</view>
+
