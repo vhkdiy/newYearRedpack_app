@@ -1,13 +1,35 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/webview/index",
-    "pages/test-result/index"
+    "pages/my/my",
+    "pages/other/other"
   ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/images/gift.png",
+        "selectedIconPath": "/images/gift.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/other/other",
+        "iconPath": "/images/gift.png",
+        "selectedIconPath": "/images/gift.png",
+        "text": "更多好玩"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "/images/gift.png",
+        "selectedIconPath": "/images/gift.png",
+        "text": "我的"
+      }
+    ]
+  },
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "财运指北",
+    "navigationBarTitleText": "拜年红包",
     "navigationBarTextStyle": "black"
   },
   "networkTimeout": {
@@ -26,6 +48,5 @@
     "wx0297e5e5dfd08269",
     "wxce8556babd23a6b3",
     "wxb13b8f52473658ca"
-
   ]
 }
