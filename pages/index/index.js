@@ -2,6 +2,7 @@
 import handleShare from './modules/handle-share.js';
 import config from './../../utils/config.js';
 import loginUtils from './../../utils/login/login-utils.js';
+import updateWxUserinfo from './../../utils/user/update-wx-userinfo.js';
 
 let isRightMoney = false;
 let isRightNumber = false;
@@ -19,13 +20,15 @@ Page({
     },
 
 
-    userImg:'https://img.xmiles.cn//cheated-register/top_banner.png',
-    redPackageImg:'https://img.xmiles.cn//cheated-register/top_banner.png',
+    userImg:'//img.xmiles.cn//cheated-register/top_banner.png',        //头像
+    redPackageImg:'//img.xmiles.cn//cheated-register/top_banner.png',  //分享图
 
-    inputErrorMsg:'',
+    inputErrorMsg:'',   //错误提示
 
-    money:'',
-    number:''
+    money:'',     //金额
+    number:'',    //数量
+
+    scopeUserInfo:false   //是否授权获取用户信息
   },
 
 
@@ -41,6 +44,15 @@ Page({
 
     //等待登录
     loginUtils.waitToLogin(this.onLoginSuccess, this.onLoginFail);
+
+    //判断是否授权
+    wx.getSetting({
+      success: res => {
+        this.setData({
+          scopeUserInfo : res.authSetting['scope.userInfo'] ? true : false
+        })
+      }
+    })
   },
 
   onLoginSuccess() {
@@ -73,6 +85,14 @@ Page({
     console.log(e)
   },
 
+  
+  //点击扮演财神按钮
+  handleWealthBtn(){
+    //跳生成图片页面
+    
+  },
+
+
 
   //金额失去焦点
   handleMoneyBlur(e){
@@ -89,6 +109,10 @@ Page({
           money: value
         })
         isRightMoney = true;
+        if(this.data.money/this.data.number<1){
+          isRightNumber = false;
+          this.showErrorMsg('单个红包金额不能小于1元');
+        }
       }
     }else{
       this.showErrorMsg('红包金额不能小于1元');
@@ -114,11 +138,27 @@ Page({
   //提交表单
   handleSubmit(e){
     if(isRightMoney && isRightNumber){
-      console.log('授权，支付')
-      //1授权
-      //2支付
+      //支付 1获取支付信息，2调用支付接口
+      this.getPayInfo().then(()=>{
+        wx.requestPayment({
+
+        })
+      }).catch(()=>{
+
+      })
     }else{
-      this.showErrorMsg('请输入金额，数量');
+      this.showErrorMsg('请输入正确的金额或数量');
+    }
+  },
+
+  //获取用户信息
+  handleGetUserInfo(obj){
+    if(obj.detail.userInfo){
+      console.log('updateUserInfo')
+      updateWxUserinfo();
+      this.setData({
+        scopeUserInfo:true
+      })
     }
   },
 
