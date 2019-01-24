@@ -1,0 +1,28 @@
+<!--pages/redpack/component/dialog.wxml-->
+<view class="dialog_pop">
+  <view class="content">
+    <image class="close" src="../img/close.png" />
+    <view class="redpack_tip">恭喜你猜对啦，获得红包奖励</view>
+    <view class="redpack_monry">2.10<text class="redpack_unit">元</text></view>
+    <view class="redpack_image_bg">
+      <image class="redpack_image" src="/images/gift.png" />
+    </view>
+    <view class="redpack_name">李大P</view>
+    <view class="redpack_btn">我也发一个</view>
+  </view>
+  <!-- <view class="content1">
+    <image class="close" src="../img/close1.png" />
+    <image class="share_image"  src="../img/icon.png"/>
+    <view class="title">猜错了</view>
+    <view class="subtitle">还有一次机会</view>
+    <view class="again">再试一次</view>
+  </view> -->
+  <!-- <view class="content2">
+    <image class="close" src="../img/close1.png" />
+    <image class="share_image"  src="../img/icon.png"/>
+    <view class="title">机会用完啦</view>
+    <view class="subtitle">分享给好友可再猜一次</view>
+    <view class="share">转发到好友或群聊</view>
+    <view class="hourse">（非红包主人转发，好友将无法领取此红包）</view>
+  </view> -->
+</view>

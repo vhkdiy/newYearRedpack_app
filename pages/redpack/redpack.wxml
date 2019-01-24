@@ -16,7 +16,8 @@
         <image class="redpack3" src="./image/redpack2.png" />
         <image class="redpack4" src="./image/redpack3.png" />
       </view>
-      <view class="btn">红包已经失效了</view>
+      <!-- <view class="btn">红包已经失效了</view> -->
+      <view class="monry">共<test class="num">6.00元</test><text class="money_tip">(已领完)</text></view>
       <view class="btns">
         <view class="button">
           <image class="smallIcon" src="./image/btn1.png" />
@@ -66,10 +67,16 @@
             <view class="date">1月6日 17:11</view>
           </view>
           <view class="right_item">
-            <view class="money">50000.00元</view>
-            <image class="status" mode="WidthFix" src="./image/image.png" ></image>
+            <!-- <block>
+              <view class="money">50000.00元</view>
+              <image class="status" mode="WidthFix" src="./image/image.png" ></image>
+            </block> -->
+            <block>
+              <view class="monry_error">猜错啦</view>
+            </block>
           </view>
         </view>
     </view>
   <view class="myRecord">查看我的记录</view>
 </view>
+<!-- <Dialog /> -->
