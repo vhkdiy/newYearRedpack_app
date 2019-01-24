@@ -1,40 +1,75 @@
 import * as qiniuUploader from './../qiniu/qiniuUploader';
-export default class UploadFileManager {
-  static domain = "https://img.xmiles.cn";
+import {
+  request
+} from './../../utils/request.js';
+
+const UploadFileManager = {
+  domain: "https://img.xmiles.cn",
 
   /**
    * 上传图片到七牛
    */
-  static uploadImgToQiniu(tempFilePath) {
+  uploadImgToQiniu(tempFilePath) {
     return new Promise((resolve, reject) => {
       if (!tempFilePath) {
         reject("路径为空不合法");
         return;
       }
 
-      const stringList = tempFilePath.split('/');
-      const KEY = stringList[stringList.length - 1];
+      this.getUploadToken().then((token) => {
 
-      qiniuUploader.upload(tempFilePath, (res) => {
+        const stringList = tempFilePath.split('/');
+        const KEY = stringList[stringList.length - 1];
 
-        const imgUrl = `${UploadFileManager.domain}/${KEY}`;
+        qiniuUploader.upload(tempFilePath, (res) => {
+          if (res.error) {
+            reject(res.error);
+          } else {
+            const imgUrl = `${this.domain}/${KEY}`;
+            resolve(imgUrl);
+          }
 
-        resolve(imgUrl);
+        }, (error) => {
 
-      }, (error) => {
-        
-        console.log('error: ' + error);
+          console.log('error: ' + error);
+          reject(error);
 
-        reject(error);
+        }, {
+          region: 'ECN',
+          domain: this.domain,
+          uptoken: token,
+          key: KEY,
+        }, (res) => {
 
-      }, {
-        region: 'ECN',
-        domain: UploadFileManager.domain,
-        uptoken: 'mQZtLtjTBAgV1nXoqHDmOMck2XGC99kyMgprem9W:e7uShn8_hlJE2ezN-JGHVkP4AaQ=:eyJzY29wZSI6InN0YXJiYWJhIiwiY2FsbGJhY2tVcmwiOiJodHRwOi8vdGVzdC54bWlsZXMuY24vL3V0aWxzX3NlcnZpY2UvcWluaXVjYWxsYmFjaz9yZD0xNTQ4MjMzMjI5ODI0IiwiY2FsbGJhY2tCb2R5IjoibmFtZT0kKGZuYW1lKSZrZXk9JChrZXkpJmN1c3RvbT0iLCJkZWFkbGluZSI6MTU0ODIzNjgyOX0=', // 由其他程序生成七牛 uptoken
-        key: KEY,
-      }, (res) => {
-        
+        });
+
+      }).catch((e) => {
+        console.error(e);
+        reject(e);
+      });
+    });
+  },
+
+  getUploadToken() {
+    return new Promise((r, j) => {
+      request({
+        url: "/img/token/1",
+        method: "GET",
+        withoutLogin: true,
+
+        success: (res) => {
+          if (res.uploads && res.uploads.length > 0) {
+            r(res.uploads[0].token);
+          } else {
+            r();
+          }
+        },
+        fail: () => {
+          r();
+        }
       });
     });
   }
 }
+
+export default UploadFileManager;

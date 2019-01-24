@@ -58,9 +58,9 @@ Page({
     this.setData({
       template: new CanvasPalette({
         userName: "faknvafdn",
-        contentImg: "https://img.xmiles.cn//choose_bid_for_friends/banner.png",
-        userIcon: "https://img.xmiles.cn//choose_bid_for_friends/banner.png",
-        qrCodeImg: "https://img.xmiles.cn//choose_bid_for_friends/banner.png",
+        contentImg: "https://img.xmiles.cn//discovery_service_toutiao_videoprize.png",
+        userIcon: "https://img.xmiles.cn//discovery_service_toutiao_videoprize.png",
+        qrCodeImg: "https://img.xmiles.cn//discovery_service_toutiao_videoprize.png",
       }).palette(),
     });
   },
