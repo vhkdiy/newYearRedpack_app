@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/my/my",
     "pages/other/other",
-    "pages/myrecord/myrecord"
+    "pages/myrecord/myrecord",
+
+    "pages/create-img/create-img"
   ],
   "tabBar": {
     "list": [
@@ -29,13 +31,13 @@
   },
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarBackgroundColor": "#FA5C47",
     "navigationBarTitleText": "拜年红包",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "networkTimeout": {
     "request": 15000,
-    "downloadFile": 15000
+    "downloadFile": 30000
   },
   "debug": true,
   "navigateToMiniProgramAppIdList": [
