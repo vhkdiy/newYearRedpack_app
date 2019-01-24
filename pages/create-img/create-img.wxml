@@ -1,1 +1,9 @@
-<cax id="myCanvas"></cax>
+<view class="container {{isIphoneX ? 'iphonex_container':''}}">
+
+  <painter customStyle='display:block;width:750rpx;height:1030rpx;' palette="{{template}}" bind:imgOK="onImgOK" bind:imgErr="imgErr" />
+
+  <view class='share_tip'>*该分享图片不支持在朋友圈使用</view>
+
+  <cover-view class='save_img_btn' bindtap='saveImgBtnClick'>保存到相册</cover-view>
+
+</view>

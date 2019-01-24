@@ -1,3 +1,33 @@
-.container{
-    height:1000px;
+page {
+  min-height: 100%;
+  background: #f0f2f5;
+}
+
+.container {
+  padding-bottom: 188rpx;
+  box-sizing: border-box;
+  background: #f0f2f5;
+}
+
+.share_tip {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  color: rgba(136, 136, 136, 1);
+  text-align: center;
+  margin-top: 19rpx;
+}
+
+.save_img_btn {
+  position: fixed;
+  width: 585rpx;
+  height: 94rpx;
+  background: rgba(7, 193, 96, 1);
+  border-radius: 8px;
+  line-height: 94rpx;
+  bottom: 24rpx;
+  text-align: center;
+  font-size: 34rpx;
+  color: #fff;
+  left: 50%;
+  transform: translateX(-50%);
 }
