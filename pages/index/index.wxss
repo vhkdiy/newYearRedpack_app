@@ -1,0 +1,187 @@
+page{
+  height: 100%;
+  width: 100%;
+  background:rgba(245,245,245,1);
+}
+
+.container{
+  position: relative;
+  width:690rpx;
+  height:964rpx;
+  margin: 96rpx auto 0 auto;
+  background:rgba(255,255,254,1);
+  border-radius:6rpx;
+
+  box-sizing: border-box;
+  padding-top: 99rpx;
+}
+
+/* 用户头像 */
+.container .user-img{
+  position: absolute;
+  width:125rpx;
+  height:125rpx;
+  border-radius: 50%;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%,-53rpx);
+  -webkit-transform: translate(-50%,-53rpx);
+  background: #ccc;
+}
+
+/* 查看示例 */
+.container .look-instance{
+  position: absolute;
+  width:96rpx;
+  height:33rpx;
+  top: 22rpx;
+  right: 22rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(87,107,149,1);
+}
+
+/* 生成图片 */
+.container .composite-picture{
+  position: relative;
+  width: 440rpx;
+  height: 440rpx;
+  border-radius:6rpx;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.container .composite-picture image{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.container .composite-picture .mask{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background:rgba(0,0,0,1);
+  opacity: .6;
+}
+
+.container .composite-picture .wealth-btn{
+  position: absolute;
+  width: 330rpx;
+  height: 66rpx;
+  bottom: 50rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  border-radius:33rpx;
+  border:2rpx solid rgba(255,255,255,1);
+
+  text-align: center;
+  font-size:34rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(255,255,254,1);
+  line-height:66rpx;
+}
+
+
+/* 表单 */
+.mg40{
+  margin-top: 40rpx;
+}
+form{
+  position: relative;
+  padding-top: 68rpx;
+  display: block;
+  width: 550rpx;
+  margin: 0 auto;
+}
+
+form .inputErrorMsg{
+  position: absolute;
+  width:343rpx;
+  height:50rpx;
+  top: 6rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  background:rgba(242,242,242,1);
+  border-radius:25rpx;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form .inputErrorMsg image{
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 6rpx;
+}
+form .inputErrorMsg text{
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(235,74,56,1);
+}
+
+form .item{
+  height: 46rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+form .item text{
+  font-size:30rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(34,34,34,1);
+}
+form .item input{
+  width: 390rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  border-bottom: 2rpx solid #ddd;
+}
+form .item input::placeholder{
+  font-size:30px;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(221,221,221,1);
+}
+
+form .prompt{
+  height:33rpx;
+  margin: 38rpx 0 18rpx 0;
+  text-align: center;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(136,136,136,1);
+  line-height:33rpx;
+}
+form .btn{
+  width:586rpx;
+  height:94rpx;
+  margin-left: -16rpx;
+  background:rgba(234,95,57,1);
+  border-radius:8rpx;
+  
+  font-size:34rpx;
+  text-align: center;
+  font-family:PingFangSC-Medium;
+  font-weight:500;
+  color:rgba(255,255,254,1);
+  line-height:94rpx;
+}
+
+
+
+
+
+

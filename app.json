@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/my/my",
-    "pages/other/other"
+    "pages/other/other",
+    "pages/redPackageEnter/renPackageEnter"
   ],
   "tabBar": {
     "list": [

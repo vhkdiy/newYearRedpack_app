@@ -1,1 +1,33 @@
-<view>Home</view>
+
+<view class='container'>
+  <!-- 头像 -->
+  <image class='user-img' src='{{userImg}}'/>
+  <view class='look-instance'>查看示例</view>
+  
+  <!-- 生成图片 -->
+  <view class='composite-picture'>
+    <image src='{{redPackageImg}}'></image>
+    <view class='mask'></view>
+    <view class='wealth-btn'>点击这里扮演财神</view>
+  </view>
+
+  <!-- 表单 -->
+  <form bindsubmit="handleSubmit">  
+    <!-- 错误提示 -->
+    <view wx:if="{{inputErrorMsg!=''}}" class='inputErrorMsg'>
+      <image src='//img.xmiles.cn/newYearRedpack/indexnotice.png'></image>
+      <text>{{inputErrorMsg}}</text>
+    </view>
+    <!-- 输入框 -->
+    <view class='item'>
+      <text>赏金 (元)</text>
+      <input placeholder="填写金额" type='digit' value='{{money}}' bindblur="handleMoneyBlur"></input>
+    </view>
+    <view class='item mg40'>
+      <text>数量 (个)</text>
+      <input placeholder='红包数' type='number' value='{{number}}' bindblur='handleNumberBlur'></input>
+    </view>
+    <view class='prompt'>需支付￥0.00服务费，优先使用余额￥1.00</view>
+    <button class='btn' form-type="submit">生成拜年红包</button>
+  </form>
+</view>
