@@ -66,6 +66,7 @@
   left : 34rpx;
   width : 140rpx;
   height : 140rpx;
+  animation: scale_anim 0.7s infinite linear;
 }
 .redpack2{
   position : absolute;
@@ -73,6 +74,7 @@
   left : 108rpx;
   width : 140rpx;
   height : 140rpx;
+  animation: scale_anim 0.7s infinite linear;
 }
 .redpack3{
   position : absolute;
@@ -80,6 +82,7 @@
   right : 108rpx;
   width : 140rpx;
   height : 140rpx;
+  animation: scale_anim 0.7s infinite linear;
 }
 .redpack4{
    position : absolute;
@@ -87,6 +90,7 @@
   right : 34rpx;
   width : 140rpx;
   height : 140rpx;
+  animation: scale_anim 0.7s infinite linear;
 }
 
 .btn{
@@ -100,6 +104,46 @@
   color: rgba(255,255,254,0.7);
   letter-spacing: 0;
   text-align: center;
+}
+.monry{
+  font-family: PingFangSC-Semibold;
+  font-size: 38rpx;
+  color: #F0E4AD;
+  letter-spacing: 2rpx;
+}
+.num{
+  font-family: PingFangSC-Semibold;
+  font-size: 72rpx;
+  color: #F0E4AD;
+  letter-spacing: 2rpx;
+}
+.money_tip{
+  opacity: 0.8;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #F0E4AD;
+  padding-left : 10rpx;
+}
+.monry_error{
+  margin-top : 48rpx;
+  margin-right : 35rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #979797;
+  letter-spacing: 0;
+}
+@keyframes scale_anim{
+  0% {
+    transform: scale(0.95, 0.95);
+  }
+
+  50% {
+    transform: scale(1.05, 1.05);
+  }
+
+  100% {
+    transform: scale(0.95, 0.95);
+  }
 }
 
 .btns{
