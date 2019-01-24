@@ -1,0 +1,34 @@
+<view class="canvas_container"></view>
+
+<view class='chose_redpack_container'>
+  <view class='chose_redpack_tip'>选一款红包封面，将红包藏在其中</view>
+  <view class='redpack_items'>
+    <view class='redpack_item select_redpack_item'>
+      <image class='redpack_item_icon' src="https://img.xmiles.cn/caiziwanzhe/1.png"></image>
+    </view>
+    <view class='redpack_item'>
+      <image class='redpack_item_icon' src="https://img.xmiles.cn/caiziwanzhe/1.png"></image>
+    </view>
+    <view class='redpack_item'>
+      <image class='redpack_item_icon' src="https://img.xmiles.cn/caiziwanzhe/1.png"></image>
+    </view>
+    <view class='redpack_item'>
+      <image class='redpack_item_icon' src="https://img.xmiles.cn/caiziwanzhe/1.png"></image>
+    </view>
+  </view>
+</view>
+
+<view class='more_zhuti_tip' >更多拜年主题</view>
+
+<view class='more_zhuti_contianer' >
+
+  <view class='zhuti_item' wx:for="{{[1,3,4]}}" >
+    <image class='zhuti_item_img' src='https://img.xmiles.cn/caiziwanzhe/1.png' mode="aspectFill" ></image>
+    <view class='zhuti_name' >福寿金童</view>
+  </view>
+
+  <image class='zhuti_item chose_upload_img_btn' src = "./images/chose_img.png"></image>
+
+</view>
+
+<view class='ok_btn' >确定</view>
