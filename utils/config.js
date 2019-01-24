@@ -10,7 +10,7 @@ module.exports = {
   cversion: 1,
   cversionname: '1.0',
   channel: '1000',
-  prdid: '17301',
+  prdid: '17303',
   appName: appName,
 
   shareContent: {
