@@ -56,12 +56,17 @@
   height : 168rpx;
   background-color : #F0E4AD;
   border-radius: 84rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .redpack_image{
-  width : 168rpx;
-  height : 168rpx;
+  width : 156rpx;
+  height : 156rpx;
+  border-radius: 78rpx;
 }
 .redpack_name{
+  margin-top : 16rpx;
   opacity: 0.8;
   font-family: PingFangSC-Regular;
   font-size: 32rpx;

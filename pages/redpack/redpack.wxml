@@ -19,15 +19,15 @@
       <!-- <view class="btn">红包已经失效了</view> -->
       <view class="monry">共<test class="num">6.00元</test><text class="money_tip">(已领完)</text></view>
       <view class="btns">
-        <view class="button">
+        <view class="button" bindtap='gotoReflect'>
           <image class="smallIcon" src="./image/btn1.png" />
-          <view class="txt">去体现</view>
+          <view class="txt">去提现</view>
         </view>
-        <view class="button">
+        <view class="button" bindtap='gotoSendRedPack'>
           <image class="smallIcon" src="./image/btn1.png" />
           <view class="txt">我也发一个</view>
         </view>
-        <view class="button">
+        <view class="button" bindtap='gotoAdmire'>
           <image class="smallIcon" src="./image/btn1.png" />
           <view class="txt">赞赏</view>
         </view>
@@ -77,6 +77,6 @@
           </view>
         </view>
     </view>
-  <view class="myRecord">查看我的记录</view>
+  <view class="myRecord" bindtap='seeRecord'>查看我的记录</view>
 </view>
-<!-- <Dialog /> -->
+<Dialog />

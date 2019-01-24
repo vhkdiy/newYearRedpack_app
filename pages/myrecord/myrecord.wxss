@@ -2,40 +2,42 @@
 
 .btns{
   width : 100%;
-  height : 80rpx;
-  margin:29rpx 0 18rpx;
+  height:102rpx;
   display: flex;
   text-align: center;
+  background: #FFFFFF;
   line-height: 80rpx;
   font-size: 32rpx;
   font-weight: bold;
+  position : sticky;
+  top : 0;
+  left : 0;
+  z-index: 100;
 }
 .btn0{
    flex : 1;
    font-weight: bold;
-   line-height: 80rpx;
+   line-height:102rpx;
    background: #FFFFFF;
    font-family: PingFangSC-Regular;
    color: #979797;
 }
 .btn0_select{
   flex : 1;
-  box-shadow: inset 0 0 6px 4px #FFFFFF;
-  line-height: 80rpx;
+  line-height:102rpx;
   font-family: PingFangSC-Medium;
   color: #EA5F39;
 }
 .btn1{
    color: #979797;
    flex : 1;
-   line-height: 80rpx;
+   line-height:102rpx;
    font-family: PingFangSC-Regular;
    background: #FFFFFF;
 }
 .btn1_select{
   flex : 1;
-  box-shadow: inset 0 0 6px 4px #FFFFFF;
-  line-height: 80rpx;
+  line-height:102rpx;
   font-family: PingFangSC-Medium;
   color: #EA5F39;
 }
