@@ -47,11 +47,16 @@ const request = config => {
       mask: true
     });
   wx.showNavigationBarLoading();
+
+  let url = `${host}${config.service}${config.url}`;
+  url += `${url.includes("?") ? "&" : "?"}rd=${new Date().getTime()}`;
+
   wx.request({
     url:
       host +
       config.service +
       config.url+"?rd=" +Date.now(),
+
     data: data,
     header: {"Authorization" : JSON.stringify(phead)},
     method: config.method || 'POST',
