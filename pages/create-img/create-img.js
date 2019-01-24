@@ -91,7 +91,7 @@ Page({
     }
 
     wxSaveImageToPhotosAlbum({
-      filePath: this.imagePath,
+      filePath: imagePath,
     })
       .then(() => {
         wx.showToast({

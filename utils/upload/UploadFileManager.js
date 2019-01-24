@@ -1,4 +1,4 @@
-import * as qiniuUploader from './../qiniu/qiniuUploader';
+import qiniuUploader from './../qiniu/qiniuUploader';
 import {
   request
 } from './../../utils/request.js';
@@ -26,6 +26,8 @@ const UploadFileManager = {
             reject(res.error);
           } else {
             const imgUrl = `${this.domain}/${KEY}`;
+            console.log("图片上传成功： " + imgUrl);
+            
             resolve(imgUrl);
           }
 
@@ -39,8 +41,11 @@ const UploadFileManager = {
           domain: this.domain,
           uptoken: token,
           key: KEY,
-        }, (res) => {
 
+        }, (res) => {
+          console.log('上传进度', res.progress)
+          console.log('已经上传的数据长度', res.totalBytesSent)
+          console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
         });
 
       }).catch((e) => {
@@ -53,7 +58,7 @@ const UploadFileManager = {
   getUploadToken() {
     return new Promise((r, j) => {
       request({
-        url: "/img/token/1",
+        url: "/img/token?num=1",
         method: "GET",
         withoutLogin: true,
 
