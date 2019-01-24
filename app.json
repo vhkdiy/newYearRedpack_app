@@ -4,8 +4,8 @@
     "pages/my/my",
     "pages/other/other",
     "pages/myrecord/myrecord",
-
-    "pages/create-img/create-img"
+    "pages/create-img/create-img",
+    "pages/redpack/redpack"
   ],
   "tabBar": {
     "list": [
