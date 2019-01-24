@@ -50,7 +50,7 @@ const request = config => {
   wx.request({
     url:
       host +
-      config.service +
+      config.service + "/" +
       config.url +
       "&rd=" +
       Date.now(),
