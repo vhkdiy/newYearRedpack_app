@@ -51,9 +51,7 @@ const request = config => {
     url:
       host +
       config.service +
-      config.url +
-      "&rd=" +
-      Date.now(),
+      config.url+"?rd=" +Date.now(),
     data: data,
     header: {"Authorization" : JSON.stringify(phead)},
     method: "POST",

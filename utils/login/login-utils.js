@@ -73,7 +73,7 @@ let login = function (forceUpdate) {
         return;
       }
       request({
-        funid: 1002,
+        url: "/user",
         data: {
           code: res.code,
           share_pathway: globalData.scene,
