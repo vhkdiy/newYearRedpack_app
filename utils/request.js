@@ -40,7 +40,7 @@ const request = config => {
     handle: 0
   };
   // console.log(JSON.stringify(data.data.phead));
-  config.service = config.service ? config.service : "365sport_main_service";
+  config.service = config.service ? config.service : "newYearRedpack_service";
   config.loading &&
     wx.showLoading({
       title: "正在加载",
@@ -51,11 +51,11 @@ const request = config => {
     url:
       host +
       config.service +
-      "/common?funid=" +
-      config.funid +
+      config.url +
       "&rd=" +
       Date.now(),
     data: data,
+    header: {"Authorization" : JSON.stringify(phead)},
     method: "POST",
     responseType: IS_SHANDLE ? "arraybuffer" : "text",
     success: function(res) {
