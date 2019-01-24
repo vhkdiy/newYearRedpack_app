@@ -1,2 +1,75 @@
 <!--pages/redpack/redpack.wxml-->
-<text>pages/redpack/redpack.wxml</text>
+<view class="page">
+    <view class="layout">
+      <image class="headbg" src="./image/headbg.png" mode='widthFix' />
+      <view class="titleBar">
+        <image class="icon" src="/images/gift.png" />
+        <view class="title">习克山发出的拜年红包</view>
+      </view>
+      <view class="tip">猜猜红包藏在哪，猜对即可领红包</view>
+      <view class="imageView">
+        <view class="paddingView">
+          <image class="userImage" mode="widthFix" src="./image/bg.png" />
+        </view>
+        <image class="redpack1" src="./image/redpack0.png" />
+        <image class="redpack2" src="./image/redpack1.png" />
+        <image class="redpack3" src="./image/redpack2.png" />
+        <image class="redpack4" src="./image/redpack3.png" />
+      </view>
+      <view class="btn">红包已经失效了</view>
+      <view class="btns">
+        <view class="button">
+          <image class="smallIcon" src="./image/btn1.png" />
+          <view class="txt">去体现</view>
+        </view>
+        <view class="button">
+          <image class="smallIcon" src="./image/btn1.png" />
+          <view class="txt">我也发一个</view>
+        </view>
+        <view class="button">
+          <image class="smallIcon" src="./image/btn1.png" />
+          <view class="txt">赞赏</view>
+        </view>
+      </view>
+    </view>
+    <view class="countBar">
+      <view class="count">已领取2/5个，共2.00/5.00元</view>
+      <view class="countBtn">投诉</view>
+    </view>
+    <view>
+        <view class="item">
+          <image class="image" src="/images/gift_selected.png" />
+          <view class="left_item">
+            <view class="blessing">祝你新年行大运<image class="sex" src="/images/gift_selected.png" node="widthFix"/></view>
+            <view class="date">1月6日 17:11</view>
+          </view>
+          <view class="right_item">
+            <view class="money">50000.00元</view>
+            <image class="status" mode="WidthFix" src="./image/image.png" ></image>
+          </view>
+        </view>
+                <view class="item">
+          <image class="image" src="/images/gift_selected.png" />
+          <view class="left_item">
+            <view class="blessing">祝你新年行大运<image class="sex" src="/images/gift_selected.png" node="widthFix"/></view>
+            <view class="date">1月6日 17:11</view>
+          </view>
+          <view class="right_item">
+            <view class="money">50000.00元</view>
+            <image class="status" mode="WidthFix" src="./image/image.png" ></image>
+          </view>
+        </view>
+                <view class="item">
+          <image class="image" src="/images/gift_selected.png" />
+          <view class="left_item">
+            <view class="blessing">祝你新年行大运<image class="sex" src="/images/gift_selected.png" node="widthFix"/></view>
+            <view class="date">1月6日 17:11</view>
+          </view>
+          <view class="right_item">
+            <view class="money">50000.00元</view>
+            <image class="status" mode="WidthFix" src="./image/image.png" ></image>
+          </view>
+        </view>
+    </view>
+  <view class="myRecord">查看我的记录</view>
+</view>
