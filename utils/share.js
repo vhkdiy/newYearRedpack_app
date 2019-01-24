@@ -55,7 +55,9 @@ var getPath = function (path_url,param, type, shareId, title, button) {
 const getUserInfo = () => {
   return new Promise((resolve,reject)=>{
       request({
-        funid: 9,
+        // funid: 9,
+        url : '/user',
+        method : 'GET',
         data: {},
         success: (res) => {
           resolve(res)
@@ -69,32 +71,32 @@ const getUserInfo = () => {
 
 module.exports = {
   update: function() {
-    request({
-      funid: 1006,
-      success: (res) => {
-        console.log(res);
-        shareId = res.shareId || shareId;
+    // request({
+    //   funid: 1006,
+    //   success: (res) => {
+    //     console.log(res);
+    //     shareId = res.shareId || shareId;
         
-        utm_source = res.utm_source;
-        utm_medium = res.utm_medium;
-        utm_campaign = res.utm_campaign;
-        utm_content = res.utm_content;
-        utm_term = res.utm_term;
+    //     utm_source = res.utm_source;
+    //     utm_medium = res.utm_medium;
+    //     utm_campaign = res.utm_campaign;
+    //     utm_content = res.utm_content;
+    //     utm_term = res.utm_term;
 
-        if (res.shareVos) {
-          for(let item of res.shareVos){
-            //普通分享
-            if (item.share_type == parseInt(shareType.SHARE_TYPE_NORMAL0)){
-              title = item.tip || title;
-              imageUrl = item.image || imageUrl;
-            } 
-          }
-        }
-      },
-      fail: () => {
+    //     if (res.shareVos) {
+    //       for(let item of res.shareVos){
+    //         //普通分享
+    //         if (item.share_type == parseInt(shareType.SHARE_TYPE_NORMAL0)){
+    //           title = item.tip || title;
+    //           imageUrl = item.image || imageUrl;
+    //         } 
+    //       }
+    //     }
+    //   },
+    //   fail: () => {
 
-      }
-    })
+    //   }
+    // })
 
     getUserInfo().then((data)=>{
       if(data.authorizedUserInfo){

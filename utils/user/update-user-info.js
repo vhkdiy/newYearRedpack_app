@@ -18,7 +18,8 @@ const updateUserInfo = function (e, { success, complete, fail } = callback) {
     });
     // 请求更新用户信息的接口
     request({
-      funid: 1003,
+      url: "/user",
+      method: 'PUT',
       data: {
         rawData: e.detail.rawData,
         signature: e.detail.signature,

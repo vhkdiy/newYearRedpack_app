@@ -1,1 +1,231 @@
 /* pages/redpack/redpack.wxss */
+.page{
+  width : 100%;
+  height : 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.headbg{
+  position: absolute;
+  top : 0;
+  left : 0;
+  width : 100%;
+}
+.layout{
+  position : relative;
+  background-color : #D85940;
+  text-align: center;
+}
+.titleBar{
+  position: relative;
+  width : 100%;
+  height : 56rpx;
+  line-height: 56rpx;
+  display: flex;
+  justify-content: center;
+}
+.icon{
+  width : 56rpx;
+  height : 56rpx;
+}
+.title{
+  font-family: PingFangSC-Regular;
+  font-size: 34rpx;
+  color: #FFE1B0;
+  letter-spacing: 0;
+  margin-left : 18rpx;
+}
+.imageView{
+  margin: 0 auto;
+  width : 616rpx;
+  height : auto;
+  position: relative;
+}
+.paddingView{
+  border-radius: 8rpx;
+  background-color : white;
+
+}
+.userImage{
+
+  border-radius: 8rpx;
+  width : 592rpx;
+  margin-top : 12rpx;
+}
+.tip{
+  position: relative;
+  text-align: center;
+  font-size: 44rpx;
+  color: #FFE1B0;
+  margin : 13rpx auto 18rpx auto;
+  font-weight: bold;
+}
+.redpack1{
+  position : absolute;
+  bottom : 186rpx;
+  left : 34rpx;
+  width : 140rpx;
+  height : 140rpx;
+}
+.redpack2{
+  position : absolute;
+  bottom : 31rpx;
+  left : 108rpx;
+  width : 140rpx;
+  height : 140rpx;
+}
+.redpack3{
+  position : absolute;
+  bottom : 31rpx;
+  right : 108rpx;
+  width : 140rpx;
+  height : 140rpx;
+}
+.redpack4{
+   position : absolute;
+  bottom : 186rpx;
+  right : 34rpx;
+  width : 140rpx;
+  height : 140rpx;
+}
+
+.btn{
+  margin : 26rpx auto 0;
+  width : 585rpx;
+  height : 85rpx;
+  line-height: 85rpx;
+  background: rgba(255,255,254,0.5);
+  border-radius: 6rpx;
+  font-size: 28rpx;
+  color: rgba(255,255,254,0.7);
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.btns{
+  display : flex;
+  width : 100%;
+  height : 90rpx;
+  font-size : 30rpx;
+}
+.button{
+  flex : 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.smallIcon{
+  width : 32rpx;
+  height : 32rpx;
+}
+.txt{
+  margin-left : 10rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #FFFFFE;
+  letter-spacing: 0;
+}
+.countBar{
+  display: flex;
+  background: #F4F4F4;
+  width : 100%;
+  height : 87rpx;
+  justify-content: center;
+  align-items: center;
+  font-size : 24rpx;
+}
+.count{
+  flex : 1;
+  margin-left : 36rpx;
+  text-align: left;
+  font-size : 24rpx;
+  color: #979797;
+}
+.countBtn{
+  color: #979797;
+  width : 120rpx;
+}
+
+.item{
+  background-color : #ffffff;
+  width : 100%;
+  height : 140rpx;
+  display: flex;
+  position: relative;
+  text-align: left;
+}
+.item::after{
+  content : '';
+  position: absolute;
+  bottom : 1rpx;
+  left : 30rpx;
+  right : 0rpx;
+  height : 1rpx;
+  background:rgba(230,230,230,1);
+}
+.left_item{
+  flex : 1;
+}
+.blessing{
+  margin-left : 30rpx;
+  margin-top : 24rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:bold;
+  color:rgba(34,34,34,1);
+  height : 42rpx;
+  line-height:42rpx;
+  display:flex;
+  align-items: center;
+}
+.sex{
+  margin : 0 0 0 5rpx;
+  width : 35rpx;
+  height : 35rpx;
+}
+.date{
+  margin-left : 30rpx;
+  margin-top : 13rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(136,136,136,1);
+  height : 37rpx;
+  line-height:37rpx;
+}
+.right_item{
+  width : 200rpx;
+  text-align: right
+}
+.money{
+  margin-right : 30rpx;
+  margin-top : 24rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Semibold;
+  font-weight:600;
+  color:rgba(34,34,34,1);
+  height : 42rpx;
+  line-height:42rpx;
+}
+.status{
+  margin-right : 30rpx;
+  margin-top : 13rpx;
+  height : 35rpx;
+  width : 128rpx;
+}
+
+.image{
+  margin : 28rpx -12rpx 0 28rpx;
+  width : 84rpx;
+  height : 84rpx;
+}
+.myRecord{
+  text-align: center;
+  width : 100%;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #576B95;
+  letter-spacing: 0;
+  height : 130rpx;
+  line-height: 130rpx;
+}

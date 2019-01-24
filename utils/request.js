@@ -3,7 +3,7 @@ const crypt = require("./crypt.js");
 const { host } = require("./config.js");
 import pako from "../utils/pako.min.js";
 
-const IS_SHANDLE = true; //是否启用压缩
+const IS_SHANDLE = false; //是否启用压缩
 
 const COMMON_FAIL_DATA = {
   status: 0,
@@ -50,17 +50,14 @@ const request = config => {
   wx.request({
     url:
       host +
-      config.service + "/" +
-      config.url +
-      "&rd=" +
-      Date.now(),
+      config.service +
+      config.url+"?rd=" +Date.now(),
     data: data,
     header: {"Authorization" : JSON.stringify(phead)},
-    method: "POST",
+    method: config.method || 'POST',
     responseType: IS_SHANDLE ? "arraybuffer" : "text",
     success: function(res) {
       config.loading && wx.hideLoading();
-
       wx.hideNavigationBarLoading();
       //console.log(res.statusCode);
       if (res.statusCode >= 400) {
@@ -79,7 +76,7 @@ const request = config => {
           data = JSON.parse(dataStr);
         }
 
-        if (data && data.result && data.result.status == 1) {
+        if (res.statusCode == 200) {
           config.success && config.success(data);
         } else {
           if (config.fail) {
