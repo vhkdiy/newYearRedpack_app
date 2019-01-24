@@ -5,8 +5,6 @@ const wxSaveImageToPhotosAlbum = wxPromisify(wx.saveImageToPhotosAlbum);
 
 Page({
 
-  
-
   /**
    * 页面的初始数据
    */
@@ -87,6 +85,10 @@ Page({
 
   saveImgBtnClick() {
     const imagePath = this.imagePath;
+
+    if (!imagePath) {
+      return;
+    }
 
     wxSaveImageToPhotosAlbum({
       filePath: this.imagePath,
