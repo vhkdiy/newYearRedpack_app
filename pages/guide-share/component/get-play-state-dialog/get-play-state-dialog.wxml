@@ -4,7 +4,7 @@
     <block wx:if="{{requesting}}">
       <view class='title'>支付结果获取中...</view>
       <view class='tip'>如果结果未返回，请在倒计时结束后点击刷新</view>
-      <view class='request_btn waiting'>倒计时5s</view>
+      <view class='request_btn waiting'>倒计时{{countdownTime}}s</view>
     </block>
 
     <block wx:else>

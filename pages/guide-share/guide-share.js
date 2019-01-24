@@ -39,6 +39,11 @@ Page({
     wx.navigateTo({
       url: '/pages/create-img/create-img?',
     });
-  }
+  },
+
+  //我也领一个按钮点击了
+  onGetOneBtnClick() {
+
+  },
 
 })

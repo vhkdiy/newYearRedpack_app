@@ -5,7 +5,8 @@
     "pages/other/other",
     "pages/myrecord/myrecord",
     "pages/redpack/redpack",
-    "pages/guide-share/guide-share"
+    "pages/guide-share/guide-share",
+    "pages/create-img/create-img"
   ],
   "tabBar": {
     "list": [
