@@ -3,9 +3,11 @@
     "pages/index/index",
     "pages/my/my",
     "pages/other/other",
-    "pages/create-img/create-img",
+
     "pages/guide-share/guide-share",
+   
     "pages/myrecord/myrecord",
+    
     "pages/redpack/redpack"
   ],
   "tabBar": {
