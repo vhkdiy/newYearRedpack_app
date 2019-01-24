@@ -7,6 +7,7 @@
     "pages/redpack/redpack",
     "pages/guide-share/guide-share",
     "pages/create-img/create-img"
+    "pages/redPackageEnter/renPackageEnter"
   ],
   "tabBar": {
     "list": [
