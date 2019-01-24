@@ -107,6 +107,7 @@ module.exports = {
     });
 
   },
+
   get: function (path_url = "/pages/index/index", param, app, shareContent, innerImageUrl, goodLuck) {
     //只是执行了name的替换
     title = title.replace(/\$name/g,username);
@@ -131,6 +132,7 @@ module.exports = {
       path: getPath(path_url,param, shareType.SHARE_TYPE_NORMAL0, shareId, title, shareContent.page + '-' + shareContent.share_module)
     }
   },
+
   //分享画布
   getShare: function (path_url = "/pages/index/index", param, app, shareContent, innerImageUrl, goodLuck) {
     //只是执行了name的替换
@@ -155,5 +157,34 @@ module.exports = {
       title: replaceTitle,
       path: getPath(path_url, param, shareType.SHARE_TYPE_NORMAL0, shareId, replaceTitle, shareContent.page + '-' + shareContent.share_module)
     }
-  }
+  },
+
+  //红包
+  getRedpack: function (path_url = "/pages/index/index", param, app, shareContent, innerImageUrl) {
+    //只是执行了name的替换
+    const title = title1.replace(/\$name/g, username);
+    if (app) {
+      app.sensors.track('Share', Object.assign({
+        share_content_id: shareId,
+        share_content: "",
+        ...shareContent
+      }));
+    }
+
+    let params = { imageUrl: innerImageUrl || imageUrl1 };
+    if (!params.imageUrl || innerImageUrl == "undefined") {   //如果imageUrl是undefined 就删掉 默认采用截图
+      delete (params.imageUrl);
+    }
+
+    const page = (shareContent && shareContent.page) || "";
+    const share_module = (shareContent && shareContent.share_module) || "";
+
+
+    return {
+      ...params,
+      title: title,
+      path: getPath(path_url, param, shareType.SHARE_TYPE_NORMAL0, shareId, title, page + '-' + share_module)
+    }
+  },
+
 }

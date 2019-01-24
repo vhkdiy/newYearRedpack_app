@@ -55,8 +55,8 @@
 				},
 				{
 					"id": -1,
-					"name": "myrecord",
-					"pathName": "pages/redpack/redpack"
+					"name": "创建图片",
+					"pathName": "pages/guide-share/guide-share"
 				}
 			]
 		}

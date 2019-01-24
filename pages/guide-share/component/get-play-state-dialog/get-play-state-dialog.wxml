@@ -1,0 +1,17 @@
+<view class="dialog_bg" catchtouchmove='catchtouchmove' >
+  <view class='content' catchtouchmove='catchtouchmove'>
+    <image bindtap='onCloseDialogBtnClick' class='close_btn' src="./images/close.png"></image>
+    <block wx:if="{{requesting}}">
+      <view class='title'>支付结果获取中...</view>
+      <view class='tip'>如果结果未返回，请在倒计时结束后点击刷新</view>
+      <view class='request_btn waiting'>倒计时{{countdownTime}}s</view>
+    </block>
+
+    <block wx:else>
+      <view class='title'>支付结果获取失败</view>
+      <view class='tip'>请重新尝试发送红包，如产生扣款后仍然失败，无需担心，扣款金额将在24小时候原路退还。</view>
+      <view class='request_btn fail_btn' bindtap='onRequestPayStateBtnClick' >重新发送</view>
+    </block>
+
+  </view>
+</view>
