@@ -6,7 +6,7 @@
     "pages/myrecord/myrecord",
     "pages/redpack/redpack",
     "pages/guide-share/guide-share",
-    "pages/create-img/create-img"
+    "pages/create-img/create-img",
     "pages/redPackageEnter/renPackageEnter"
   ],
   "tabBar": {
