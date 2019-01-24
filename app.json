@@ -29,9 +29,9 @@
   },
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarBackgroundColor": "#FA5C47",
     "navigationBarTitleText": "拜年红包",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "networkTimeout": {
     "request": 15000,
