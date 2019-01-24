@@ -19,7 +19,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
@@ -55,6 +55,30 @@ Page({
    */
   onReachBottom: function () {
 
+  },
+  //去体现
+  gotoReflect : function(){
+
+  },
+  //去发红包
+  gotoSendRedPack : function(){
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
+  },
+  //去赞赏
+  gotoAdmire : function(){
+
+  },
+  //去投诉
+  gotoComplain : function(){
+
+  },
+  //查看我的记录
+  seeRecord : function(){
+    wx.navigateTo({
+      url: '/pages/myrecord/myrecord',
+    })
   },
 
   /**

@@ -1,18 +1,28 @@
 // pages/redPackageEnter/renPackageEnter.js
+import request from './../../utils/request.js';
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userImg:'',
+    contentImg:'',
+    contentText:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('index--load')
+    request.request({
+      url:'/index',
+      success:function(result){
+        console.log(result);
+      }
+    })
   },
 
   /**
@@ -62,5 +72,22 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  //登录成功
+  onLoginSuccess(){
+    request({
+      url:""
+    })
+  },
+
+
+  //底部按钮点击
+  handleClickBtn(){
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
   }
+
+
 })
