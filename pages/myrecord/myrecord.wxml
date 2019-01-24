@@ -1,0 +1,52 @@
+<!--pages/myrecord/myrecord.wxml-->
+  <view class="btns">
+    <view id="0" class="{{selectIndex == 0 ? 'btn0_select' : 'btn0'}}" bindtap='btnClick'>我发出的</view>
+    <view id="1" class="{{selectIndex == 1 ? 'btn1_select' : 'btn1'}}" bindtap='btnClick'>我收到的</view>
+  </view>
+  <view class="info">
+    <image class="img" src="/images/gift_selected.png" />
+    <view class="name">Jack 共发出</view>
+    <view class="details">
+      <view class="block">
+        <view>金额</view>
+        <view>5</view>
+      </view>
+      <view class="line"></view>
+      <view class="block">
+        <view>
+          <view>数量（个）</view>
+          <view>2</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <swiper current="{{selectIndex}}" class="swiper" style="height : {{scrollViewHeight}}rpx !important;" bindchange="swiperChange" bindanimationfinish="animationfinish">
+    <swiper-item class="list">
+      <view class="sendItem">
+        <view class="left_item">
+          <view class="blessing">祝你新年行大运</view>
+          <view class="date">1月6日 17:11</view>
+        </view>
+        <view class="right_item">
+          <view class="money">50000.00元</view>
+          <view class="count">0/2</view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item class="list">
+      <view class="sendItem">
+        <image class="icon" src="/images/gift_selected.png" />
+        <view class="left_item">
+          <view class="blessing">祝你新年行大运</view>
+          <view class="date">1月6日 17:11</view>
+        </view>
+        <view class="right_item">
+          <view class="money">50000.00元</view>
+          <view class="count">0/2</view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <view class="tip">常见问题</view>
+

@@ -1,0 +1,172 @@
+/* pages/myrecord/myrecord.wxss */
+
+.btns{
+  width : 100%;
+  height : 80rpx;
+  margin:29rpx 0 18rpx;
+  display: flex;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.btn0{
+   flex : 1;
+   font-weight: bold;
+   line-height: 80rpx;
+   background: #FFFFFF;
+   font-family: PingFangSC-Regular;
+   color: #979797;
+}
+.btn0_select{
+  flex : 1;
+  box-shadow: inset 0 0 6px 4px #FFFFFF;
+  line-height: 80rpx;
+  font-family: PingFangSC-Medium;
+  color: #EA5F39;
+}
+.btn1{
+   color: #979797;
+   flex : 1;
+   line-height: 80rpx;
+   font-family: PingFangSC-Regular;
+   background: #FFFFFF;
+}
+.btn1_select{
+  flex : 1;
+  box-shadow: inset 0 0 6px 4px #FFFFFF;
+  line-height: 80rpx;
+  font-family: PingFangSC-Medium;
+  color: #EA5F39;
+}
+
+.swiper{
+  width : 100%;
+}
+.list{
+  width : 100%;
+}
+
+.tip{
+  width : 100%;
+  height : 85rpx;
+  position: fixed;
+  bottom : 0;
+  left : 0;
+  text-align: center;
+  line-height: 85rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(87,107,149,1);
+}
+.info{
+  width : 100%;
+  height : 473rpx;
+  background:rgba(245,245,245,1);
+  text-align: center;
+}
+.img{
+  margin : 60rpx auto 0;
+  width : 125rpx;
+  height : 125rpx;
+}
+.name{
+  margin-top : 20rpx;
+  width : 100%;
+  height : 45rpx;
+  text-align: center;
+  font-size:32rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(34,34,34,1);
+  line-height:45rpx;
+}
+
+.details{
+  width : 100%;
+  height : 115rpx;
+  display: flex;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-top : 54rpx;
+}
+.line{
+  width : 1rpx;
+  background-color : #BBBABD;
+  height : 88rpx;
+  margin-top : 26rpx;
+}
+.block{
+  flex: 1;
+}
+.sendItem{
+  width : 100%;
+  height : 140rpx;
+  display: flex;
+  position: relative;
+}
+.sendItem::after{
+  content : '';
+  position: absolute;
+  bottom : 1rpx;
+  left : 30rpx;
+  right : 0rpx;
+  height : 1rpx;
+  background:rgba(230,230,230,1);
+}
+.left_item{
+  flex : 1;
+}
+.blessing{
+  margin-left : 30rpx;
+  margin-top : 24rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:bold;
+  color:rgba(34,34,34,1);
+  height : 42rpx;
+  line-height:42rpx;
+}
+.date{
+  margin-left : 30rpx;
+  margin-top : 13rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(136,136,136,1);
+  height : 37rpx;
+  line-height:37rpx;
+}
+.right_item{
+  width : 200rpx;
+  text-align: right
+}
+.money{
+  margin-right : 30rpx;
+  margin-top : 24rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Semibold;
+  font-weight:600;
+  color:rgba(34,34,34,1);
+  height : 42rpx;
+  line-height:42rpx;
+}
+.count{
+  margin-right : 30rpx;
+  margin-top : 13rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(136,136,136,1);
+  height : 37rpx;
+  line-height:37rpx;
+}
+
+.icon{
+  margin : 28rpx -12rpx 0 28rpx;
+  width : 84rpx;
+  height : 84rpx;
+}
