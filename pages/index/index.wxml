@@ -8,14 +8,14 @@
   <view class='composite-picture'>
     <image src='{{redPackageImg}}'></image>
     <view class='mask'></view>
-    <view class='wealth-btn'>点击这里扮演财神</view>
+    <view class='wealth-btn' catchtap='handleWealthBtn'>点击这里扮演财神</view>
   </view>
 
   <!-- 表单 -->
   <form bindsubmit="handleSubmit">  
     <!-- 错误提示 -->
     <view wx:if="{{inputErrorMsg!=''}}" class='inputErrorMsg'>
-      <image src='//img.xmiles.cn/newYearRedpack/indexnotice.png'></image>
+      <image src="./modules/img/notice.png"></image>
       <text>{{inputErrorMsg}}</text>
     </view>
     <!-- 输入框 -->
@@ -28,6 +28,9 @@
       <input placeholder='红包数' type='number' value='{{number}}' bindblur='handleNumberBlur'></input>
     </view>
     <view class='prompt'>需支付￥0.00服务费，优先使用余额￥1.00</view>
-    <button class='btn' form-type="submit">生成拜年红包</button>
+    <view class='btn'>
+      <button class='submit' form-type="submit">生成拜年红包</button>
+      <button wx:if="{{!scopeUserInfo}}" class='scope-userInfo' open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo"></button>
+    </view>
   </form>
 </view>
