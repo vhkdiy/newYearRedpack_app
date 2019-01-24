@@ -64,7 +64,6 @@ let login = function (forceUpdate) {
   let app = getApp();
   let globalData = app.globalData;
   let query = globalData.query;
-
   wx.login({
     success: (res) => {
       if (!res || !res.code) {
@@ -74,6 +73,7 @@ let login = function (forceUpdate) {
       }
       request({
         url: "/user",
+        method : 'POST',
         data: {
           code: res.code,
           share_pathway: globalData.scene,
@@ -85,9 +85,9 @@ let login = function (forceUpdate) {
         },
         withoutLogin: true,
         success: res => {
-          const openid = res.openid;
-          const userid = res.userid;
-          const access_token = res.access_token;
+          const openid = res.openId;
+          const userid = res.userId;
+          const access_token = res.accessToken;
           if (userid) {
             app.globalData.userid = userid;
 

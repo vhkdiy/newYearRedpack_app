@@ -1200,10 +1200,11 @@ sa.send = function (t) {
   logger.info(t);
 
   if (t.type == 'track' && !(t.event.slice(0, 1) === '$') || t.type == 'profile_set') {
-    request({
-      funid: 21,
-      data: t
-    })
+    //屏蔽神策
+    // request({
+    //   funid: 21,
+    //   data: t
+    // })
   } else {
     t = JSON.stringify(t);
 

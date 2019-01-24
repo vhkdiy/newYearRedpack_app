@@ -11,7 +11,8 @@ let update_wx_userinfo = function() {
         wx.getUserInfo({
           success: res => {
             request({
-              funid: 1003,
+              url: "/user",
+              method : 'PUT',
               loading: false,
               data: {
                 rawData: res.rawData,
