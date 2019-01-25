@@ -65,7 +65,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function(res) {
-    return share.getRedpack(`/pages/redpack/redpack?orderId=${Conts.orderId}`);
+    return share.getRedpack(`/pages/index/index?orderId=${Conts.orderId}`);
   },
 
   createImgClick() {
