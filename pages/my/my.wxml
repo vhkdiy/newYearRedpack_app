@@ -7,20 +7,22 @@
 
 <!-- 列表项 -->
 <view class='items'>
-  <view class='item'>
-    <view class='left'><image src='//img.ibestfanli.com/newYearRedPack/my/wallet.png'></image><text>钱包-提现</text></view>
-    <image class='arrow' src='//img.ibestfanli.com/newYearRedPack/my/arrow.png'></image>
+  <view class='item' data-value='wallet' bindtap='handleClick'>
+    <view class='left'><image src='//img.xmiles.cn/newYearRedpack/my/wallet.png'></image><text>钱包-提现</text></view>
+    <image class='arrow' src='//img.xmiles.cn/newYearRedpack/my/arrow.png'></image>
   </view>
-  <view class='item'>
-    <view class='left'><image src='//img.ibestfanli.com/newYearRedPack/my/record.png'></image><text>我的记录</text></view>
-    <image class='arrow' src='//img.ibestfanli.com/newYearRedPack/my/arrow.png'></image>
+  <view class='item' data-value='record'  bindtap='handleClick'>
+    <view class='left'><image src='//img.xmiles.cn/newYearRedpack/my/record.png'></image><text>我的记录</text></view>
+    <image class='arrow' src='//img.xmiles.cn/newYearRedpack/my/arrow.png'></image>
   </view>
-  <view class='item'>
-    <view class='left'><image src='//img.ibestfanli.com/newYearRedPack/my/question.png'></image><text>常见问题</text></view>
-    <image class='arrow' src='//img.ibestfanli.com/newYearRedPack/my/arrow.png'></image>
+  <view class='item' data-value='question'  bindtap='handleClick'>
+    <view class='left'><image src='//img.xmiles.cn/newYearRedpack/my/question.png'></image><text>常见问题</text></view>
+    <image class='arrow' src='//img.xmiles.cn/newYearRedpack/my/arrow.png'></image>
   </view>
-  <view class='item mg0 bd-top'>
-    <view class='left'><image src='//img.ibestfanli.com/newYearRedPack/my/contact.png'></image><text>联系我们</text></view>
-    <image class='arrow' src='//img.ibestfanli.com/newYearRedPack/my/arrow.png'></image>
-  </view>
+  <button open-type="contact" bindcontact="handleContact">
+    <view class='item mg0 bd-top' data-value='contact'>
+      <view class='left'><image src='//img.xmiles.cn/newYearRedpack/my/contact.png'></image><text>联系我们</text></view>
+      <image class='arrow' src='//img.xmiles.cn/newYearRedpack/my/arrow.png'></image>
+    </view>
+  </button>
 </view>

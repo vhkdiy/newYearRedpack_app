@@ -8,29 +8,29 @@
     "pages/guide-share/guide-share",
     "pages/create-img/create-img",
     "pages/redPackageEnter/renPackageEnter",
-    "pages/make-img/make-img"
+    "pages/reflect/reflect"
   ],
   "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "iconPath": "/images/indexPage.png",
-        "selectedIconPath": "/images/indexPageDown.png",
-        "text": "首页"
-      },
-      {
-        "pagePath": "pages/other/other",
-        "iconPath": "/images/find.png",
-        "selectedIconPath": "/images/findDown.png",
-        "text": "更多好玩"
-      },
-      {
-        "pagePath": "pages/my/my",
-        "iconPath": "/images/myPage.png",
-        "selectedIconPath": "/images/myPageDown.png",
-        "text": "我的"
-      }
-    ]
+  "list": [
+    {
+      "pagePath": "pages/index/index",
+      "iconPath": "/images/indexPage.png",
+      "selectedIconPath": "/images/indexPageDown.png",
+      "text": "首页"
+    },
+    {
+      "pagePath": "pages/other/other",
+      "iconPath": "/images/find.png",
+      "selectedIconPath": "/images/findDown.png",
+      "text": "更多好玩"
+    },
+    {
+      "pagePath": "pages/my/my",
+      "iconPath": "/images/myPage.png",
+      "selectedIconPath": "/images/myPageDown.png",
+      "text": "我的"
+    }
+  ]
   },
   "window": {
     "backgroundTextStyle": "dark",

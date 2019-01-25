@@ -1,23 +1,26 @@
 <!--pages/redpack/redpack.wxml-->
+<acquire-formid-view>
 <view class="page">
     <view class="layout">
       <image class="headbg" src="./image/headbg.png" mode='widthFix' />
       <view class="titleBar">
-        <image class="icon" src="/images/gift.png" />
-        <view class="title">习克山发出的拜年红包</view>
+        <image class="icon" src="{{avatarUrl}}" />
+        <view class="title">{{subTitle}}</view>
       </view>
-      <view class="tip">猜猜红包藏在哪，猜对即可领红包</view>
+      <view class="tip">{{title}}</view>
       <view class="imageView">
         <view class="paddingView">
-          <image class="userImage" mode="widthFix" src="./image/bg.png" />
+          <image class="userImage" mode="widthFix" src="{{imgUrl}}"/>
         </view>
-        <image class="redpack1" src="./image/redpack0.png" />
-        <image class="redpack2" src="./image/redpack1.png" />
-        <image class="redpack3" src="./image/redpack2.png" />
-        <image class="redpack4" src="./image/redpack3.png" />
+        <block wx:if="{{status == 5 || status == 6}}">
+          <image id="0" class="redpack1" src="./image/redpack0.png" bindtap="clickRedPack" />
+          <image id="1" class="redpack2" src="./image/redpack1.png" bindtap="clickRedPack" />
+          <image id="2" class="redpack3" src="./image/redpack2.png" bindtap="clickRedPack" />
+          <image id="3" class="redpack4" src="./image/redpack3.png" bindtap="clickRedPack" />
+        </block>
       </view>
-      <!-- <view class="btn">红包已经失效了</view> -->
-      <view class="monry">共<test class="num">6.00元</test><text class="money_tip">(已领完)</text></view>
+      <view class="btn" wx:if="{{status ==  1}}">红包已经失效了</view>
+      <view class="monry" wx:if="{{status ==  1}}">共<test class="num">{{redPackMoney}}元</test><text class="money_tip">(已领完)</text></view>
       <view class="btns">
         <view class="button" bindtap='gotoReflect'>
           <image class="smallIcon" src="./image/btn1.png" />
@@ -34,10 +37,21 @@
       </view>
     </view>
     <view class="countBar">
-      <view class="count">已领取2/5个，共2.00/5.00元</view>
+      <view class="count">已领取{{receiveCount}}/{{redPackCount}}个，共{{receiveMoney}}/{{redPackMoney}}元</view>
       <view class="countBtn">投诉</view>
     </view>
     <view>
+        <!-- <view class="item">
+          <image class="image" src="/images/gift_selected.png" />
+          <view class="left_item">
+            <view class="blessing">祝你新年行大运<image class="sex" src="/images/gift_selected.png" node="widthFix"/></view>
+            <view class="date">1月6日 17:11</view>
+          </view>
+          <view class="right_item">
+            <view class="money">50000.00元</view>
+            <image class="status" mode="WidthFix" src="./image/image.png" ></image>
+          </view>
+        </view>
         <view class="item">
           <image class="image" src="/images/gift_selected.png" />
           <view class="left_item">
@@ -48,30 +62,21 @@
             <view class="money">50000.00元</view>
             <image class="status" mode="WidthFix" src="./image/image.png" ></image>
           </view>
-        </view>
-                <view class="item">
-          <image class="image" src="/images/gift_selected.png" />
+        </view> -->
+        <view class="item" wx:for="{{vieRecords}}" wx:key="record{{index}}">
+          <image class="image" src="{{item.user.avatarUrl}}" />
           <view class="left_item">
-            <view class="blessing">祝你新年行大运<image class="sex" src="/images/gift_selected.png" node="widthFix"/></view>
-            <view class="date">1月6日 17:11</view>
+            <view class="blessing">{{item.user.nickName}}
+              <image wx:if="{{item.user.gender}}" class="sex" src="https://img.ibestfanli.com/sex/sex{{item.user.gender}}.png" mode="widthFix"/>
+            </view>
+            <view class="date">{{item.dateString}}</view>
           </view>
           <view class="right_item">
-            <view class="money">50000.00元</view>
-            <image class="status" mode="WidthFix" src="./image/image.png" ></image>
-          </view>
-        </view>
-                <view class="item">
-          <image class="image" src="/images/gift_selected.png" />
-          <view class="left_item">
-            <view class="blessing">祝你新年行大运<image class="sex" src="/images/gift_selected.png" node="widthFix"/></view>
-            <view class="date">1月6日 17:11</view>
-          </view>
-          <view class="right_item">
-            <!-- <block>
-              <view class="money">50000.00元</view>
-              <image class="status" mode="WidthFix" src="./image/image.png" ></image>
-            </block> -->
-            <block>
+            <block wx:if="{{item.icon}}">
+              <view class="money">{{item.redPackMoney}}元</view>
+              <image class="status" mode="WidthFix" src="{{item.icon}}" ></image>
+            </block>
+            <block wx:else>
               <view class="monry_error">猜错啦</view>
             </block>
           </view>
@@ -79,4 +84,6 @@
     </view>
   <view class="myRecord" bindtap='seeRecord'>查看我的记录</view>
 </view>
-<Dialog />
+</acquire-formid-view>
+<Dialog isShowType="{{isShowType}}" isShowData="{{isShowData}}" bind:shareclick="shareclick"/>
+<!-- <Bottom_dialog /> -->

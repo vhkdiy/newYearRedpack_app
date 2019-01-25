@@ -1,29 +1,29 @@
 <!--pages/redpack/component/dialog.wxml-->
 <view class="dialog_pop" wx:if="{{isShowType != 0}}">
-  <view class="content" wx:if="{{isShowType == 1}}">
-    <image class="close" src="../img/close.png" />
+  <view class="content" wx:if="{{isShowType == 4}}">
+    <image class="close" src="../img/close.png" bindtap='closePOP' />
     <view class="redpack_tip">恭喜你猜对啦，获得红包奖励</view>
-    <view class="redpack_monry">2.10<text class="redpack_unit">元</text></view>
+    <view class="redpack_monry">{{isShowData.redPackMoney }}<text class="redpack_unit">元</text></view>
     <view class="redpack_image_bg">
-      <image class="redpack_image" src="../img/redpack.png" />
+      <image class="redpack_image" src="{{isShowData.user.avatarUrl }}" />
     </view>
-    <view class="redpack_name">李大P</view>
-    <view class="redpack_btn">我也发一个</view>
+    <view class="redpack_name">{{isShowData.user.nickName}}</view>
+    <view class="redpack_btn" bindtap="sendRedPack">我也发一个</view>
   </view>
-  <view class="content1" wx:if="{{isShowType == 2}}">
-    <image class="close" src="../img/close1.png" />
+  <view class="content1" wx:if="{{isShowType == 1}}">
+    <image class="close" src="../img/close1.png" bindtap='closePOP'/>
     <image class="share_image"  src="../img/icon.png"/>
     <view class="title">猜错了</view>
     <view class="subtitle">还有一次机会</view>
     <view class="again">再试一次</view>
   </view>
-  <view class="content2" wx:if="{{isShowType == 3 || isShowType == 4}}">
-    <image class="close" src="../img/close1.png" />
+  <view class="content2" wx:if="{{isShowType == 3 || isShowType == 2}}">
+    <image class="close" src="../img/close1.png"  bindtap='closePOP'/>
     <image class="share_image"  src="../img/icon.png"/>
     <view class="title">机会用完啦</view>
-    <view wx:if="{{isShowType == 3}}" class="subtitle">分享给好友可再猜一次</view>
+    <view wx:if="{{isShowType == 2}}" class="subtitle">分享给好友可再猜一次</view>
     <view else class="subtitle">推荐给其他好友玩一玩吧</view>
-    <view class="share">转发到好友或群聊</view>
+    <button class="share" open-type='share' bindtap='shareclick'>转发到好友或群聊</button>
     <view class="hourse">（非红包主人转发，好友将无法领取此红包）</view>
   </view>
 </view>

@@ -1,4 +1,4 @@
-// pages/my/my.js
+// pages/reflect/reflect.js
 Page({
 
   /**
@@ -62,27 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-
-  //点击事件
-  handleClick(e){
-    let value = e.currentTarget.dataset.value;
-    if(value == "wallet"){
-      wx.navigateTo({
-        url: '/pages/reflect/reflect',
-      })
-    }
-    if (value == "record") {
-      wx.navigateTo({
-        url: '/pages/myrecord/myrecord',
-      })
-    }
-    if (value == "question") {
-      wx.navigateTo({
-        url: '/pages/question/question',
-      })
-    }
   }
-
 })

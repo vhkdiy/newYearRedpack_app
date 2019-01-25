@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "Dialog":"./component/dialog/dialog"
+    "Dialog":"./component/dialog/dialog",
+    "Bottom_dialog" : "./component/bottom_dialog/bottom_dialog",
+    "acquire-formid-view" : "/component/acquire-formid-view/acquire-formid-view"
   }
 }

@@ -1,0 +1,16 @@
+<view>
+  <view class="reflectPage">
+    <view class="bar">
+      <view class="count">账号余额</view>
+      <view class="countValue">123<test class="unit">元</test></view>
+    </view>
+    <view class="content">
+      <view class="tip">提现金额</view>
+      <view class="input_money"><view class="tag">￥</view><input class="input" value="234" /></view>
+      <view class="line"></view>
+      <view class="txt">提现到微信钱包，<text class="tx">全部提现</text></view>
+      <view class="btn">提现</view>
+      <view class="date">1-5个工作日到账</view>
+    </view>
+  </view>
+</view>

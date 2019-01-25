@@ -27,6 +27,7 @@
 .icon{
   width : 56rpx;
   height : 56rpx;
+  border-radius: 56rpx;
 }
 .title{
   font-family: PingFangSC-Regular;
