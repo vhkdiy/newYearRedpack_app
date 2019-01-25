@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/redPackageEnter/renPackageEnter",
     "pages/my/my",
     "pages/other/other",
     "pages/myrecord/myrecord",
