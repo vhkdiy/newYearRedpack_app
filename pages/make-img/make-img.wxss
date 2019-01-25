@@ -10,6 +10,9 @@ page {
   height: 494rpx;
   width: 494rpx;
   margin: 0 auto;
+  box-sizing: border-box;
+  background: #f5f3f6;
+  border-radius: 12rpx;
 }
 
 .chose_redpack_container {
@@ -17,7 +20,7 @@ page {
   height: 303rpx;
   background: #fff;
   border-radius: 12rpx;
-  margin: 12rpx auto 0;
+  margin: 24rpx auto 0;
   overflow: hidden;
 }
 
@@ -46,6 +49,10 @@ page {
 
 .select_redpack_item {
   border: 3rpx solid #108ee8;
+}
+
+.unSelect_redpack_item {
+  opacity: 0.2;
 }
 
 .redpack_item_icon {
