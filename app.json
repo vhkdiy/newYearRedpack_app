@@ -9,7 +9,7 @@
     "pages/guide-share/guide-share",
     "pages/create-img/create-img",
     "pages/make-img/make-img",
-    "pages/create-img/create-img"
+    "pages/question/question"
   ],
   "tabBar": {
     "list": [

@@ -81,6 +81,14 @@ page{
   right: 0;
 }
 
+button{
+  border: none;
+  padding: 0;
+}
+button::after{
+  display: none;
+}
+
 
 
 
