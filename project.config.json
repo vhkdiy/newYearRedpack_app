@@ -31,7 +31,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
@@ -56,7 +56,20 @@
 				{
 					"id": -1,
 					"name": "创建图片",
-					"pathName": "pages/guide-share/guide-share"
+					"pathName": "pages/guide-share/guide-share",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "redpack",
+					"pathName": "pages/redpack/redpack",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "reflect",
+					"pathName": "pages/reflect/reflect",
+					"query": ""
 				}
 			]
 		}
