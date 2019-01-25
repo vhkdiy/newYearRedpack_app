@@ -37,8 +37,8 @@ const UploadImg = {
             redPackIndex: "",
             type: 2,
           },
-          success: () => {
-            r();
+          success: (data) => {
+            r(data);
           },
           fail: (e) => {
             j();

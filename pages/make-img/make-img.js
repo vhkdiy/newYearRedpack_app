@@ -111,8 +111,9 @@ Page({
     });
     const createImg = e.detail.url;
     UploadImg.uploadComplete(createImg, "", this.data.choseRedpackIndex).then((data) => {
-
+      data.order.imgUrl = createImg;
       messageCenter.sendMessage("compositePictureInfo", data.order);
+
       wx.navigateBack({
         
       });
