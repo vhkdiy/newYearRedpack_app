@@ -1,15 +1,26 @@
 // pages/redpack/redpack.js
+import share from './../../utils/share.js';
 import { requestData } from './js/requestData.js';
 import { requestRedPack } from './js/requestRedPack.js';
 
 import { phead } from './../../utils/phead.js'
 import loginUtils  from './../../utils/login/login-utils.js'
+
+import  UpdateUserInfo  from './../../utils/user/update-user-info.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+
+    //请求必须参数
+    orderId : "",
+    userId : "",
+    openId : "",
+
+    authorized : false,
     avatarUrl : "",
     title : "",
     subTitle : "",
@@ -23,7 +34,9 @@ Page({
 
 
     isShowType : 0,       //显示弹窗状态
-    isShowData : null    //红包数据
+    isShowData : null,    //红包数据
+
+    isShowBottomDialogType : 0
 
 
   },
@@ -32,6 +45,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      orderId : options.orderId || 1,
+      userId: options.userId || wx.getStorageSync(loginUtils.getUserIdKey()),
+      openId: options.openId || phead.phoneid
+
+    })
     this.requestData();
   },
   shareclick: function () {
@@ -39,8 +58,7 @@ Page({
   },
   requestData : function(){
     setTimeout(() => {
-      let orderId = 1;
-      let url = `/redPack/${orderId}?openId=${phead.phoneid}&userId=${wx.getStorageSync(loginUtils.getUserIdKey())}`;
+      let url = `/redPack/${this.data.orderId}?openId=${this.data.openId}&userId=${this.data.userId}`;
       console.error(url);
       requestData(this, url).then((data) => {
         console.log(data);
@@ -54,57 +72,65 @@ Page({
           receiveMoney: data.receiveMoney,
           redPackMoney: data.redPackMoney,
           vieRecords: data.vieRecords,
-          imgUrl: data.order.imgUrl
+          imgUrl: data.order.imgUrl,
+          authorized: data.user.authorized 
         })
       }).catch(e => {
         console.error("catch");
       });
-    }, 2000);
+    }, 300);
   },
+  onGotUserInfo : function(e){
+    UpdateUserInfo(e,()=>{
+      this.requestData();
+    });
 
+  },
   //点击红包
   clickRedPack : function(e){
-    console.log(e.currentTarget.id);
-    let orderId = 1;
-    let that = this;
-    if (this.data.status == 6){
-      requestRedPack(that, "/redPack", { "orderId": orderId, "redPackIndex": e.currentTarget.id}).then(data=>{
-        if (data.status == 1){
-          wx.showToast({
-            title: '没猜中，请继续',
-            icon : 'none'
-          })
-        }else if (data.status == 2){
-          //没猜中还可以分享，调起微信分享
-          this.setData({
-            isShowType: 2
-          })
-        }else if (data.status == 3){
-          //没猜中不可分享
-          this.setData({
-            isShowType: 3
-          })
-        } else if (data.status == 4){
-          //猜中了
-          this.setData({
-            isShowType: 4,
-            isShowData: data.record 
-          })
-        }else{
-          wx.showToast({
-            title: '领取失败',
-            icon: 'none'
-          })
-        }
-        this.requestData();
-        
-      }).catch(e=>{
+    if (this.data.authorized){
+      console.log(e.currentTarget.id);
+      let that = this;
+      if (this.data.status == 6) {
+        requestRedPack(that, "/redPack", { "orderId": this.data.rderId, "redPackIndex": e.currentTarget.id }).then(data => {
+          if (data.status == 1) {
+            wx.showToast({
+              title: '没猜中，请继续',
+              icon: 'none'
+            })
+          } else if (data.status == 2) {
+            //没猜中还可以分享，调起微信分享
+            this.setData({
+              isShowType: 2
+            })
+          } else if (data.status == 3) {
+            //没猜中不可分享
+            this.setData({
+              isShowType: 3
+            })
+          } else if (data.status == 4) {
+            //猜中了
+            this.setData({
+              isShowType: 4,
+              isShowData: data.record
+            })
+          } else {
+            wx.showToast({
+              title: '领取失败',
+              icon: 'none'
+            })
+          }
+          this.requestData();
 
-      })
-    } else if (this.data.status == 5){
-      this.setData({
-        isShowType: 2
-      })
+        }).catch(e => {
+        })
+      } else if (this.data.status == 5) {
+        this.setData({
+          isShowType: 2
+        })
+      }
+    }else{
+
     }
   },
   /**
@@ -143,7 +169,9 @@ Page({
   },
   //去体现
   gotoReflect : function(){
-
+    wx.switchTab({
+      url: '/pages/reflect/reflect',
+    })
   },
   //去发红包
   gotoSendRedPack : function(){
@@ -153,7 +181,9 @@ Page({
   },
   //去赞赏
   gotoAdmire : function(){
-
+    this.setData({
+      isShowBottomDialogType : 1
+    })
   },
   //去投诉
   gotoComplain : function(){
@@ -169,7 +199,8 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
+    return share.getRedpack(`/pages/redpack/redpack?orderId=${this.data.orderId}`);
+  },
 
-  }
 })
