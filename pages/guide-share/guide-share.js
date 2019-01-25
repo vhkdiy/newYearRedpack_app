@@ -2,7 +2,9 @@ import share from './../../utils/share.js';
 import GuideShareSignal from './modules/guide-share-signal.js';
 import Conts from './modules/conts.js';
 import requestData from './modules/request-data.js';
-import {phead} from './../../utils/phead.js';
+import {
+  phead
+} from './../../utils/phead.js';
 
 Page({
 
@@ -62,7 +64,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function(res) {
-    return share.getRedpack();
+    return share.getRedpack(`/pages/redpack/redpack?orderId=${Conts.orderId}`);
   },
 
   createImgClick() {
@@ -93,9 +95,11 @@ Page({
     }
 
     const path = `/pages/redpack/redpack?orderId=${Conts.orderId}&userId=${userId}&openid=&openId=${phead.phoneid}`;
+
     wx.redirectTo({
       url: path,
     });
+    
   },
 
 })

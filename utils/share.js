@@ -160,9 +160,10 @@ module.exports = {
   },
 
   //红包
-  getRedpack: function (path_url = "/pages/index/index", param, app, shareContent, innerImageUrl) {
+  getRedpack: function (path_url = "/pages/index/index", param, shareContent) {
     //只是执行了name的替换
     const title = title1.replace(/\$name/g, username);
+    const app = getApp();
     if (app) {
       app.sensors.track('Share', Object.assign({
         share_content_id: shareId,
@@ -171,8 +172,8 @@ module.exports = {
       }));
     }
 
-    let params = { imageUrl: innerImageUrl || imageUrl1 };
-    if (!params.imageUrl || innerImageUrl == "undefined") {   //如果imageUrl是undefined 就删掉 默认采用截图
+    let params = { imageUrl: imageUrl1 };
+    if (!params.imageUrl) {   //如果imageUrl是undefined 就删掉 默认采用截图
       delete (params.imageUrl);
     }
 
