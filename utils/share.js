@@ -184,7 +184,7 @@ module.exports = {
     return {
       ...params,
       title: title,
-      path: getPath(path_url, param, shareType.SHARE_TYPE_NORMAL0, shareId, title, page + '-' + share_module)
+      path: getPath(path_url, param, shareType.RED_PACK, shareId, title, page + '-' + share_module)
     }
   },
 

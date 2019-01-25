@@ -4,11 +4,11 @@ import wxPromisify from './../../utils/wx-promisify/wx-promisify.js';
 const wxSaveImageToPhotosAlbum = wxPromisify(wx.saveImageToPhotosAlbum);
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    extraData: {},
     imagePath: null,
     template: {},
   },
@@ -17,6 +17,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.setData({
+      extraData : JSON.parse(decodeURIComponent(options.data)),
+    });
+
     this.careteImg();
   },
 
@@ -55,11 +59,13 @@ Page({
 
     // });
 
+    const extraData = this.data.extraData;
+
     this.setData({
       template: new CanvasPalette({
-        userName: "faknvafdn",
-        contentImg: "https://img.xmiles.cn//discovery_service_toutiao_videoprize.png",
-        userIcon: "https://img.xmiles.cn//discovery_service_toutiao_videoprize.png",
+        userName: extraData.nickName,
+        userIcon: extraData.avatarUrl,
+        contentImg: extraData.imgUrl,
         qrCodeImg: "https://img.xmiles.cn//discovery_service_toutiao_videoprize.png",
       }).palette(),
     });

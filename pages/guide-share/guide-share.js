@@ -15,7 +15,6 @@ Page({
     isShowGetPayStateDialog: false,
     isPaySuccess: false,
     order: {},
-
   },
 
   onLoad: function(options) {
@@ -30,6 +29,8 @@ Page({
 
     requestData(Conts.orderId).then((data) => {
       const isPaySuccess = data.order.status > 0;
+      
+      data.order.notice = data.notice;
 
       this.setData({
         order: data.order,
@@ -73,8 +74,10 @@ Page({
       return;
     }
 
+    const order = this.data.order;
+
     wx.navigateTo({
-      url: '/pages/create-img/create-img?',
+      url: `/pages/create-img/create-img?data=${encodeURIComponent(JSON.stringify(order))}`,
     });
   },
 
