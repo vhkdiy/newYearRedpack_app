@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/redPackageEnter/renPackageEnter",
     "pages/index/index",
     "pages/my/my",
     "pages/other/other",
     "pages/myrecord/myrecord",
     "pages/redpack/redpack",
     "pages/guide-share/guide-share",
-    "pages/create-img/create-img",
-    "pages/redPackageEnter/renPackageEnter"
+    "pages/create-img/create-img"
   ],
   "tabBar": {
     "list": [
