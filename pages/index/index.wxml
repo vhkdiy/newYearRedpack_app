@@ -2,7 +2,7 @@
 <view class='container'>
   <!-- 头像 -->
   <image class='user-img' src='{{userImg}}'/>
-  <view class='look-instance'>查看示例</view>
+  <view class='look-instance' bindtap='handleInstance'>查看示例</view>
   
   <!-- 生成图片 -->
   <view class='composite-picture'>
@@ -15,7 +15,7 @@
   <form bindsubmit="handleSubmit">  
     <!-- 错误提示 -->
     <view wx:if="{{inputErrorMsg!=''}}" class='inputErrorMsg'>
-      <image src="//img.xmiles.cn/newYearRedpack/index/notice.png"></image>
+      <image src="https://img.xmiles.cn/newYearRedpack/index/notice.png"></image>
       <text>{{inputErrorMsg}}</text>
     </view>
     <!-- 输入框 -->
@@ -27,7 +27,7 @@
       <text>数量 (个)</text>
       <input placeholder='红包数' type='number' value='{{number}}' bindblur='handleNumberBlur'></input>
     </view>
-    <view class='prompt'>需支付￥0.00服务费，优先使用余额￥1.00</view>
+    <view class='prompt'>{{serviceRate == 0?"限时免收服务费":"需支付￥"+serviceMoney+"服务费"}}</view>
     <view class='btn'>
       <button class='submit' form-type="submit">生成拜年红包</button>
       <button wx:if="{{!scopeUserInfo}}" class='scope-userInfo' open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo"></button>
