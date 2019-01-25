@@ -61,9 +61,10 @@ page{
   line-height:90rpx;
 }
 .input{
+  font-size:120rpx;
   display: block;
-  height : 90rpx;
-  line-height:90rpx;
+  height : 120rpx;
+  line-height:120rpx;
 }
 .line{
   height : 2rpx;

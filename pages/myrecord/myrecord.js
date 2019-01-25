@@ -1,4 +1,6 @@
 // pages/myrecord/myrecord.js
+import { requestGainData } from './js/requestGainData.js';
+import { requestSendData } from './js/requestSendData.js';
 Page({
 
   /**
@@ -7,6 +9,10 @@ Page({
   data: {
     scrollViewHeight: 0,  //scroll列表高度
     selectIndex: 0,       //按钮选中的
+
+    gainData : null,
+    sendData : null,
+    currentShowList : []
   },
 
   /**
@@ -15,7 +21,29 @@ Page({
   onLoad: function (options) {
     this.setData({
       scrollViewHeight: 100 * 270
-    })
+    });
+
+    requestGainData().then((data) => {
+      this.setData({
+        gainData : data
+      })
+      console.log(data);
+      console.log("requestGainData");
+    }).catch(e => {
+      console.error("catch");
+    });
+    
+    requestSendData().then((data) => {
+      this.setData({
+        sendData: data
+      })
+      console.log(data);
+      console.log("requestSendData");
+    }).catch(e => {
+      console.error("catch");
+    });
+
+
   },
 
   /**

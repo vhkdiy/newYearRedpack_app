@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    currentMoney : "",      //表示当前有多少余额
+    inputValue : "",        //输入金额
   },
 
   /**
@@ -62,5 +63,21 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  //输入金额
+  bindInput : function(e){
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
+  //全部体现
+  allMoneyInput : function(){
+    this.setData({
+      inputValue : this.data.currentMoney
+    })
+  },
+  //体现
+  submitData : function(){
+    console.log(this.data.inputValue);
   }
 })

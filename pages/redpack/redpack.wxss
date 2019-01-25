@@ -274,3 +274,17 @@
   height : 130rpx;
   line-height: 130rpx;
 }
+
+
+.getUserInfoBtn {
+  overflow: inherit;
+  padding: 0;
+  font-size: inherit;
+  line-height: inherit;
+  border-radius: 0;
+  background-color: transparent;
+  text-align: inherit;
+}
+.getUserInfoBtn::after {
+  display: none;
+}

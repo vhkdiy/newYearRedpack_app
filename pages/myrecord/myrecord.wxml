@@ -4,8 +4,8 @@
     <view id="1" class="{{selectIndex == 1 ? 'btn1_select' : 'btn1'}}" bindtap='btnClick'>我收到的</view>
   </view>
   <view class="info">
-    <image class="img" src="/images/gift_selected.png" />
-    <view class="name">Jack 共发出</view>
+    <image class="img" src="{{this.gain.avatarUrl}}" />
+    <view class="name">{{this.gain.nickName}}共发出</view>
     <view class="details">
       <view class="block">
         <view>金额</view>
