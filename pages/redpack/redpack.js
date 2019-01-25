@@ -1,4 +1,5 @@
 // pages/redpack/redpack.js
+import share from './../../utils/share.js';
 import { requestData } from './js/requestData.js';
 import { requestRedPack } from './js/requestRedPack.js';
 
@@ -50,8 +51,6 @@ Page({
       openId: options.openId || phead.phoneid
 
     })
-    
-    
     this.requestData();
   },
   shareclick: function () {
@@ -91,10 +90,9 @@ Page({
   clickRedPack : function(e){
     if (this.data.authorized){
       console.log(e.currentTarget.id);
-      let orderId = 1;
       let that = this;
       if (this.data.status == 6) {
-        requestRedPack(that, "/redPack", { "orderId": orderId, "redPackIndex": e.currentTarget.id }).then(data => {
+        requestRedPack(that, "/redPack", { "orderId": this.data.rderId, "redPackIndex": e.currentTarget.id }).then(data => {
           if (data.status == 1) {
             wx.showToast({
               title: '没猜中，请继续',
@@ -201,7 +199,8 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
+    return share.getRedpack(`/pages/redpack/redpack?orderId=${this.data.orderId}`);
+  },
 
-  }
 })
