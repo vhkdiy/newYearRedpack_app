@@ -248,7 +248,7 @@ Component({
       }
 
       this.setData({
-        isTouching: true,
+        isTouching: this.data.originImg && true,
       });
 
     },
