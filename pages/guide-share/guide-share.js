@@ -1,6 +1,8 @@
 import share from './../../utils/share.js';
 import GuideShareSignal from './modules/guide-share-signal.js';
 import Conts from './modules/conts.js';
+import requestData from './modules/request-data.js';
+import {phead} from './../../utils/phead.js';
 
 Page({
 
@@ -10,6 +12,8 @@ Page({
   data: {
     isShowGetPayStateDialog: false,
     isPaySuccess: false,
+    order: {},
+
   },
 
   onLoad: function(options) {
@@ -21,11 +25,18 @@ Page({
 
     //屏蔽右上角分享按钮
     wx.hideShareMenu();
-    console.log(" Conts.orderId : " + Conts.orderId);
 
-    this.setData({
-      isShowGetPayStateDialog: true,
+    requestData(Conts.orderId).then((data) => {
+      const isPaySuccess = data.order.status > 0;
+
+      this.setData({
+        order: data.order,
+        isShowGetPayStateDialog: isPaySuccess
+      });
+    }).catch(() => {
+
     });
+
   },
 
   updateGetPayStateConfig(isShow) {
@@ -42,7 +53,7 @@ Page({
     });
   },
 
-  onShareBtnClick(){
+  onShareBtnClick() {
     this.checkPaySuccess();
 
   },
@@ -59,14 +70,13 @@ Page({
     if (!this.checkPaySuccess()) {
       return;
     }
-   
 
     wx.navigateTo({
       url: '/pages/create-img/create-img?',
     });
   },
 
-  checkPaySuccess(){
+  checkPaySuccess() {
     if (this.data.isPaySuccess) {
       return true;
     }
@@ -77,8 +87,14 @@ Page({
 
   //我也领一个按钮点击了
   onGetOneBtnClick() {
+    const userId = this.data.order.userId;
+    if (!userId) {
+      return;
+    }
+
+    const path = `/pages/redpack/redpack?orderId=${Conts.orderId}&userId=${userId}&openid=&openId=${phead.phoneid}`;
     wx.redirectTo({
-      url: '',
+      url: path,
     });
   },
 

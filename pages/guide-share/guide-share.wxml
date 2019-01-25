@@ -1,5 +1,5 @@
 <view class="container">
-  <image class='share_tip_img' mode="aspectFill" src='https://img.xmiles.cn//cash_tutorial/wx_banner.png'></image>
+  <image class='share_tip_img' mode="aspectFill" src="{{order.imgUrl}}"></image>
 
 
   <view class='share_btn'>转发到好友或群聊
