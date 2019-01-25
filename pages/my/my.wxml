@@ -1,2 +1,26 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<!-- 头部 -->
+<view class='header'>
+  <image src=''></image>
+  <view>用户名</view>
+</view>
+
+<!-- 列表项 -->
+<view class='items'>
+  <view class='item'>
+    <view class='left'><image src='//img.ibestfanli.com/newYearRedPack/my/wallet.png'></image><text>钱包-提现</text></view>
+    <image class='arrow' src='//img.ibestfanli.com/newYearRedPack/my/arrow.png'></image>
+  </view>
+  <view class='item'>
+    <view class='left'><image src='//img.ibestfanli.com/newYearRedPack/my/record.png'></image><text>我的记录</text></view>
+    <image class='arrow' src='//img.ibestfanli.com/newYearRedPack/my/arrow.png'></image>
+  </view>
+  <view class='item'>
+    <view class='left'><image src='//img.ibestfanli.com/newYearRedPack/my/question.png'></image><text>常见问题</text></view>
+    <image class='arrow' src='//img.ibestfanli.com/newYearRedPack/my/arrow.png'></image>
+  </view>
+  <view class='item mg0 bd-top'>
+    <view class='left'><image src='//img.ibestfanli.com/newYearRedPack/my/contact.png'></image><text>联系我们</text></view>
+    <image class='arrow' src='//img.ibestfanli.com/newYearRedPack/my/arrow.png'></image>
+  </view>
+</view>

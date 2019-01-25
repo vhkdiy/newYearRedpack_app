@@ -15,7 +15,7 @@
   <form bindsubmit="handleSubmit">  
     <!-- 错误提示 -->
     <view wx:if="{{inputErrorMsg!=''}}" class='inputErrorMsg'>
-      <image src="./modules/img/notice.png"></image>
+      <image src="//img.ibestfanli.com/newYearRedPack/index/notice.png"></image>
       <text>{{inputErrorMsg}}</text>
     </view>
     <!-- 输入框 -->
