@@ -3,7 +3,14 @@ import CanvasPalette from './modules/canvas-palette.js';
 import wxPromisify from './../../utils/wx-promisify/wx-promisify.js';
 const wxSaveImageToPhotosAlbum = wxPromisify(wx.saveImageToPhotosAlbum);
 
+import shareType from './../../utils/share-type.js';
+import sceneUtil from './../../utils/share/scene-util.js';
+import requestQrcode from './../../utils/share/request-qrcode.js';
+
+const SharePath = "pages/redpack/redpack";
+
 Page({
+  shareSceneStr: '',
   /**
    * 页面的初始数据
    */
@@ -17,9 +24,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    const extraData = JSON.parse(decodeURIComponent(options.data));
     this.setData({
       extraData : JSON.parse(decodeURIComponent(options.data)),
     });
+
+    this.shareSceneStr = sceneUtil.creatQrShareScene({
+      "o": extraData.id,
+      "t": shareType.RED_PACK,
+    });
+
+    console.log("this.shareSceneStr: " + this.shareSceneStr);
 
     this.careteImg();
   },
@@ -41,25 +56,27 @@ Page({
       mask: true,
     });
 
-    // Promise.all([
-    //   requestQrcode(this.sence, this.gzhSceneStr)
-    // ]).then((datas) => {
-    //   this.setData({
-    //     template: new CanvasPalette({
+    Promise.all([
+      requestQrcode(SharePath, this.shareSceneStr)
+    ]).then((datas) => {
 
-    //       userIcon: "",
-    //       qrCodeImg: datas[0],
+      this.setData({
+        template: new CanvasPalette({
+          userName: extraData.nickName,
+          userIcon: extraData.avatarUrl,
+          contentImg: extraData.imgUrl,
+          qrCodeImg: datas[0],
+        }).palette(),
+      });
 
-    //     }).palette(),
-    //   });
-    // }).catch((errMsg) => {
-
-    //   console.error("获取菊花二维码失败了：" + JSON.stringify(errMsg));
-    //   this.handleError();
-
-    // });
+    }).catch((errMsg) => {
+      console.error("获取菊花二维码失败了：" + JSON.stringify(errMsg));
+      this.handleError();
+    });
 
     const extraData = this.data.extraData;
+
+
 
     this.setData({
       template: new CanvasPalette({

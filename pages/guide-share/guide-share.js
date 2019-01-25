@@ -29,7 +29,7 @@ Page({
 
     requestData(Conts.orderId).then((data) => {
       const isPaySuccess = data.order.status > 0;
-      
+
       data.order.notice = data.notice;
 
       this.setData({
