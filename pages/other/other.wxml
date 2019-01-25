@@ -1,2 +1,45 @@
 <!--pages/other/other.wxml-->
-<text>pages/other/other.wxml</text>
+
+<!-- 列表 -->
+<view class='items'>
+  <view class='item'>
+      <image src='//img.ibestfanli.com/newYearRedPack/my/wallet.png'></image>
+      <view class='middle'>
+        <text class='title'>击碎色块</text>
+        <text class='desc'>东东手指网游戏拿红包</text>
+      </view>
+      <view class='play'>玩一玩</view>
+  </view>
+  <view class='item'>
+      <image src='//img.ibestfanli.com/newYearRedPack/my/wallet.png'></image>
+      <view class='middle'>
+        <text class='title'>击碎色块</text>
+        <text class='desc'>东东手指网游戏拿红包</text>
+      </view>
+      <view class='play'>玩一玩</view>
+  </view>
+  <view class='item'>
+      <image src='//img.ibestfanli.com/newYearRedPack/my/wallet.png'></image>
+      <view class='middle'>
+        <text class='title'>击碎色块</text>
+        <text class='desc'>东东手指网游戏拿红包</text>
+      </view>
+      <view class='play'>玩一玩</view>
+  </view>
+  <view class='item'>
+      <image src='//img.ibestfanli.com/newYearRedPack/my/wallet.png'></image>
+      <view class='middle'>
+        <text class='title'>击碎色块</text>
+        <text class='desc'>东东手指网游戏拿红包</text>
+      </view>
+      <view class='play'>玩一玩</view>
+  </view>
+  <view class='item'>
+      <image src='//img.ibestfanli.com/newYearRedPack/my/wallet.png'></image>
+      <view class='middle'>
+        <text class='title'>击碎色块</text>
+        <text class='desc'>东东手指网游戏拿红包</text>
+      </view>
+      <view class='play'>玩一玩</view>
+  </view>
+</view>
