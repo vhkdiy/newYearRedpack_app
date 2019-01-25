@@ -1,36 +1,41 @@
 <view class="canvas_container">
-  <cropper id="cropper" bind:getCropperImg="getCropperImg" topImg="{{topImg}}" url="{{ originUrl }}" ratio="{{ ratio }}"></cropper>
+  <cropper id="cropper" bind:getCropperImg="getCropperImg" topImg="{{topImg}}" url="{{ originUrl }}" ratio="{{ ratio }}" avatarUrl="{{avatarUrl}}"></cropper>
 </view>
 
 <view class='chose_redpack_container'>
   <view class='chose_redpack_tip'>选一款红包封面，将红包藏在其中</view>
   <view class='redpack_items'>
-    <view class='redpack_item select_redpack_item'>
-      <image class='redpack_item_icon' src="https://img.xmiles.cn/caiziwanzhe/1.png"></image>
-    </view>
-    <view class='redpack_item'>
-      <image class='redpack_item_icon' src="https://img.xmiles.cn/caiziwanzhe/1.png"></image>
-    </view>
-    <view class='redpack_item'>
-      <image class='redpack_item_icon' src="https://img.xmiles.cn/caiziwanzhe/1.png"></image>
-    </view>
-    <view class='redpack_item'>
-      <image class='redpack_item_icon' src="https://img.xmiles.cn/caiziwanzhe/1.png"></image>
-    </view>
+
+    <block wx:if="{{choseRedpackData}}" wx:for="{{choseRedpackData}}" wx:key="{{index}}">
+
+      <view class="redpack_item {{choseRedpackIndex > -1 ? (choseRedpackIndex == index ? 'select_redpack_item' : 'unSelect_redpack_item') : (marqueeIndex == index ? 'select_redpack_item' : '')}}" data-index="{{index}}" bindtap='choseRedpack'>
+        <image class='redpack_item_icon' src="{{item.imgUrl}}"></image>
+      </view>
+
+    </block>
   </view>
+
+  <image wx:if="{{choseRedpackIndex < 0}}" class='chose_redpack_tip_img' src='./images/chose_redpack_tip.png'></image>
+
 </view>
 
 <view class='more_zhuti_tip'>更多拜年主题</view>
 
 <view class='more_zhuti_contianer'>
 
-  <view class='zhuti_item' wx:for="{{[1,3,4]}}">
-    <image class='zhuti_item_img' src='https://img.xmiles.cn/caiziwanzhe/1.png' mode="aspectFill"></image>
-    <view class='zhuti_name'>福寿金童</view>
-  </view>
+  <block wx:if="{{templates}}" wx:for="{{templates}}" wx:key="{{index}}">
+
+    <view class='zhuti_item' data-index="{{index}}" bindtap='zhutiItemClick'>
+      <image class='zhuti_item_img' src="{{item.imgUrl}}" mode="aspectFill"></image>
+      <view wx:if="{{item.name}}" class='zhuti_name'>{{item.name}}</view>
+    </view>
+
+  </block>
+
 
   <image bindtap='choseLocalImg' class='zhuti_item chose_upload_img_btn' src="./images/chose_img.png"></image>
 
 </view>
 
+<view class='fade_bottom'></view>
 <view class='ok_btn' bindtap='createNewImg'>确定</view>

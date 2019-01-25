@@ -1,4 +1,6 @@
 import GuideShareSignal from './../../modules/guide-share-signal.js';
+import requestPayState from './../../modules/request-pay-state.js';
+import Conts from './../../modules/conts.js';
 
 const max_countdown_time = 5;
 
@@ -19,9 +21,12 @@ Component({
     catchtouchmove() {
 
     },
+    close() {
+      GuideShareSignal.getPayStateDialog.dispatch(false);
+    },
 
     onCloseDialogBtnClick() {
-      GuideShareSignal.getPayStateDialog.dispatch(false);
+      this.close();
     },
 
     onRequestPayStateBtnClick() {
@@ -65,6 +70,15 @@ Component({
     this.startCountdown();
     this.setData({
       requesting: true,
+    });
+
+    requestPayState(Conts.orderId).then(() => {
+      setTimeout(() => {
+        this.close();
+      }, 2000 - this.data.countdownTime);
+
+    }).catch(() => {
+
     });
   },
   detached() {
