@@ -1,4 +1,6 @@
 // component/cropper/cropper.js
+import updateChoseImgWayStatus from './modules/update-chose-img-way-status.js';
+
 const device = wx.getSystemInfoSync();
 const K = (device.windowWidth / 750) || 0.5;
 
@@ -7,9 +9,10 @@ var twoPoint = {
   y1: 0,
   x2: 0,
   y2: 0
-}
+};
 
 Component({
+  startTouchTime: 0,
   /**
    * 组件的属性列表
    */
@@ -36,6 +39,14 @@ Component({
           topImg: newVal
         });
       }
+    },
+    avatarUrl: {
+      type: String,
+      observer(newVal, oldVal) {
+        this.setData({
+          avatarUrl: newVal
+        });
+      }
     }
   },
 
@@ -50,6 +61,7 @@ Component({
     height: 473 * K, //剪裁框的长度
     originImg: null, //存放原图信息
     topImg: null,
+    avatarUrl: null,
     stv: {
       offsetX: 0, //剪裁图片左上角坐标x
       offsetY: 0, //剪裁图片左上角坐标y
@@ -72,14 +84,14 @@ Component({
     },
 
     onImgOK(e) {
+      wx.hideLoading();
+
       //生成图片成功的回调
       const imagePath = e.detail.path;
 
       this.triggerEvent("getCropperImg", {
         url: imagePath
       });
-
-      wx.hideLoading();
     },
 
     imgErr() {
@@ -106,14 +118,28 @@ Component({
       let cropData = _this.data.stv;
 
       const SCALE = this.data.canvasScale;
+      let x = 0;
+      let y = 0;
+      let movex = 0;
+      let movey = 0;
 
-      // 缩放偏移值
-      let x = (_this.data.originImg.width - _this.data.originImg.width * cropData.scale) / 2;
-      let y = (_this.data.originImg.height - _this.data.originImg.height * cropData.scale) / 2;
+      const originImg = _this.data.originImg;
+      let originImgWidth = 0;
+      let originImgHeight = 0;
 
-      //画布中点坐标转移到图片中心
-      let movex = (cropData.offsetX + x) * SCALE + _this.data.originImg.width * cropData.scale;
-      let movey = (cropData.offsetY + y) * SCALE + _this.data.originImg.height * cropData.scale;
+      if (originImg) {
+        originImgWidth = originImg.width;
+        originImgHeight = originImg.height;
+
+        // 缩放偏移值
+        x = (originImgWidth - originImgWidth * cropData.scale) / 2;
+        y = (originImgHeight - originImgHeight * cropData.scale) / 2;
+
+        //画布中点坐标转移到图片中心
+        movex = (cropData.offsetX + x) * SCALE + originImgWidth * cropData.scale;
+        movey = (cropData.offsetY + y) * SCALE + originImgHeight * cropData.scale;
+
+      }
 
       this.setData({
         template: {
@@ -122,12 +148,12 @@ Component({
           views: [{
               //镂空出来的那个图片  
               type: 'image',
-              url: _this.data.originImg.url,
+              url: (originImg && originImg.url) || "",
               css: {
                 left: `${(cropData.offsetX + x) * SCALE}px`,
                 top: `${(cropData.offsetY + y) * SCALE}px`,
-                width: `${_this.data.originImg.width * SCALE * cropData.scale}px`,
-                height: `${_this.data.originImg.height * SCALE * cropData.scale}px`,
+                width: `${originImgWidth * SCALE * cropData.scale}px`,
+                height: `${originImgHeight * SCALE * cropData.scale}px`,
                 mode: "aspectFill",
                 rotate: `${cropData.rotate}`,
               },
@@ -197,6 +223,8 @@ Component({
     },
     //事件处理函数
     touchstartCallback: function(e) {
+      this.startTouchTime = Date.now();
+
       if (e.touches.length === 1) {
         let {
           clientX,
@@ -237,12 +265,52 @@ Component({
         })
       }
 
+      if (e.changedTouches.length === 1 && (Date.now() - this.startTouchTime < 200)) {
+        const { clientX, clientY} = e.changedTouches[0];
+        const d = Math.sqrt(Math.pow(clientX - this.startX, 2) + Math.pow(clientY - this.startY, 2));
+        if (d < 10) {
+          this.choseImg();
+        }
+      }
+
+
       this.setData({
         isTouching: false,
       });
-    }
+    },
+
+    choseImg() {
+      // if (this.data.originImg) {
+      //   return;
+      // }
+      updateChoseImgWayStatus.show(this);
+      
+    },
+
+    hideChoseImgWayPop() {
+      updateChoseImgWayStatus.hide(this);
+    },
+
+    choseImgFromAlbum() {
+      wx.chooseImage({
+        count: 1, //只能选择一张
+        success: (res) => {
+          const filePath = res.tempFilePaths[0];
+          this.setData({
+            url: filePath,
+          });
+        },
+      });
+    },
+
+    onUseUserIconBtnClick() {
+      this.setData({
+        url: this.data.avatarUrl,
+      });
+    },
+
   }
-})
+});
 
 /**
  * fn:延时调用函数

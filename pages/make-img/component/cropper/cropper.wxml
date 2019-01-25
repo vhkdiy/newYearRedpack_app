@@ -3,7 +3,7 @@
 
   <!--  剪裁框与初始图片，剪裁框监听用户手势，获取移动缩放旋转值，images通过css样式显示变化  -->
 
-  <view class="img" style="width:{{ width }}px; height:{{height}}px" catchtouchstart="touchstartCallback" catchtouchmove="touchmoveCallback" catchtouchend="touchendCallback">
+  <view class="img" style="width:{{ width }}px; height:{{height}}px" catchtouchstart="touchstartCallback" catchtouchmove="touchmoveCallback" catchtouchend="touchendCallback" >
 
     <image style="transform: translate({{stv.offsetX}}px, {{stv.offsetY}}px) scale({{stv.scale}}) rotate({{ stv.rotate }}deg);width:{{originImg.width}}px; height: {{originImg.height}}px" src="{{ originImg.url }}"></image>
 
@@ -16,3 +16,12 @@
   <painter class="painter" customStyle="display:block; width:{{ width * canvasScale}}px;height:{{ height * canvasScale}}px;" palette="{{template}}" bind:imgOK="onImgOK" bind:imgErr="imgErr" />
 
 </view>
+
+<view animation="{{animationPop}}" class="accelerate_pop" bindtap="hideChoseImgWayPop" wx:if="{{isShowAcceleratePop}}" catchtouchmove="handlePopMove">
+  <view animation="{{animationData}}" class="accelerate_pop_container" wx:if="{{isShowAcceleratePop}}">
+    <view class='accelerate_pop_item' bindtap='choseImgFromAlbum'>从手机相册选择</view>
+    <view class='accelerate_pop_item' bindtap='onUseUserIconBtnClick'>使用默认头像</view>
+    <view class='accelerate_pop_item'>取消</view>
+  </view>
+</view>
+

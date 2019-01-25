@@ -1,6 +1,6 @@
 page {
   min-height: 100%;
-  background: #f35443;
+  background: hsl(6, 88%, 61%);
   padding-bottom: 158rpx;
   box-sizing: border-box;
 }
@@ -21,16 +21,25 @@ page {
   background: #fff;
   border-radius: 12rpx;
   margin: 24rpx auto 0;
-  overflow: hidden;
+  padding-top: 24rpx;
+  position: relative;
 }
 
 .chose_redpack_tip {
-  margin-top: 24rpx;
   padding-left: 24rpx;
   font-family: PingFangSC-Regular;
   font-size: 32rpx;
   color: #333;
   text-align: left;
+}
+
+.chose_redpack_tip_img{
+  position: absolute;
+  top: -60rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 92rpx;
+  width: 487rpx;
 }
 
 .redpack_items {
@@ -70,7 +79,7 @@ page {
 }
 
 .more_zhuti_contianer {
-  margin-top: 22rpx;
+  margin-top: 12rpx;
   padding-left: 12rpx;
 }
 
@@ -81,7 +90,7 @@ page {
   overflow: hidden;
   box-sizing: border-box;
   border-radius: 12rpx;
-  margin: 0 12rpx;
+  margin: 9rpx 12rpx;
   display: inline-block;
 }
 
@@ -109,6 +118,17 @@ page {
 
 .chose_upload_img_btn {
   border-radius: 0;
+}
+
+.fade_bottom{
+  width: 100%;
+  text-align: center;
+  height: 152rpx;
+  background: hsl(6, 88%, 61%);
+  bottom: 0rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
 }
 
 .ok_btn {

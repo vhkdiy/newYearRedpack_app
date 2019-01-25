@@ -40,7 +40,8 @@
   },
   "networkTimeout": {
     "request": 15000,
-    "downloadFile": 30000
+    "downloadFile": 30000,
+    "uploadFile": 30000
   },
   "debug": true,
   "navigateToMiniProgramAppIdList": [
