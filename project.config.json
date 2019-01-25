@@ -31,7 +31,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -70,6 +70,11 @@
 					"name": "reflect",
 					"pathName": "pages/reflect/reflect",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "redpack",
+					"pathName": "pages/redpack/redpack"
 				}
 			]
 		}
