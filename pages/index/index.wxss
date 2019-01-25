@@ -104,8 +104,9 @@ form{
 
 form .inputErrorMsg{
   position: absolute;
-  width:343rpx;
-  height:50rpx;
+  padding: 0 33rpx;
+  height:48rpx;
+  line-height: 48rpx;
   top: 6rpx;
   left: 50%;
   transform: translateX(-50%);
@@ -122,11 +123,12 @@ form .inputErrorMsg image{
   height: 26rpx;
   margin-right: 6rpx;
 }
-form .inputErrorMsg text{
+form .inputErrorMsg text{ 
   font-size:26rpx;
   font-family:PingFangSC-Regular;
   font-weight:400;
   color:rgba(235,74,56,1);
+  white-space:nowrap;
 }
 
 form .item{
@@ -166,9 +168,17 @@ form .prompt{
   line-height:33rpx;
 }
 form .btn{
+  position: relative;
   width:586rpx;
   height:94rpx;
   margin-left: -16rpx;
+}
+form .btn .submit{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
   background:rgba(234,95,57,1);
   border-radius:8rpx;
   
@@ -178,6 +188,16 @@ form .btn{
   font-weight:500;
   color:rgba(255,255,254,1);
   line-height:94rpx;
+}
+
+
+form .btn .scope-userInfo{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
 
 

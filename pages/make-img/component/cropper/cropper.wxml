@@ -1,0 +1,18 @@
+<view class="container">
+  <image wx:if="{{!originImg.url}}" class='chose_img_bg' src="./images/canvas_bg.png"></image>
+
+  <!--  剪裁框与初始图片，剪裁框监听用户手势，获取移动缩放旋转值，images通过css样式显示变化  -->
+
+  <view class="img" style="width:{{ width }}px; height:{{height}}px" catchtouchstart="touchstartCallback" catchtouchmove="touchmoveCallback" catchtouchend="touchendCallback">
+
+    <image style="transform: translate({{stv.offsetX}}px, {{stv.offsetY}}px) scale({{stv.scale}}) rotate({{ stv.rotate }}deg);width:{{originImg.width}}px; height: {{originImg.height}}px" src="{{ originImg.url }}"></image>
+
+    <image style="width:{{ width }}px; height:{{height}}px" class="top_img {{isTouching ? 'touchingTopImg' : ''}} " src='{{topImg}}' mode='aspectFill'></image>
+
+  </view>
+  <!--  canvas长宽设为初始图片设置的长款的两倍，使剪裁得到的图片更清晰，也不至于过大  -->
+  <canvas class='imgcrop' style="width:{{ width * 2}}px;height:{{ height * 2}}px;" canvas-id='imgcrop'></canvas>
+
+  <painter class="painter" customStyle="display:block; width:{{ width * canvasScale}}px;height:{{ height * canvasScale}}px;" palette="{{template}}" bind:imgOK="onImgOK" bind:imgErr="imgErr" />
+
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationBarBackgroundColor": "#F35443",
+  "usingComponents": {
+        "cropper": "./component/cropper/cropper"
+  }
+}

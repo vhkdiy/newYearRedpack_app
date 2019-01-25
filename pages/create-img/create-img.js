@@ -35,7 +35,7 @@ Page({
     wx.showLoading({
       title: '图片生成中',
       mask: true,
-    })
+    });
 
     // Promise.all([
     //   requestQrcode(this.sence, this.gzhSceneStr)
