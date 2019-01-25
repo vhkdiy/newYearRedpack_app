@@ -2,9 +2,9 @@
 <!-- 入口页 -->
 <view class='enter'>
   <view class='content'>
-    <image class='user-img' src=''/>
-    <view class='red-package'><image class='content-img' src=''/></view> 
-    <view class='text'>新年红包新玩法，扮演财神拜个年</view>
+    <image class='user-img' src='{{userImg}}'/>
+    <view class='red-package'><image class='content-img' src='{{contentImg}}'/></view> 
+    <view class='text'>{{contentText}}</view>
   </view>
   <view class='btn' catchtap='handleClickBtn'>立即尝试</view>
 </view>

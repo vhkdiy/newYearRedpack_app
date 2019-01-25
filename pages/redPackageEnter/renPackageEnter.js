@@ -19,8 +19,13 @@ Page({
     console.log('index--load')
     request.request({
       url:'/index',
-      success:function(result){
-        console.log(result);
+      success:(result)=>{
+        // console.log(result);
+        this.setData({
+          userImg : result.user,
+          contentImg: result.templateImgUrl,
+          contentText: result.templateText
+        })
       }
     })
   },

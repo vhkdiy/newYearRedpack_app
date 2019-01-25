@@ -1,1 +1,97 @@
 /* pages/my/my.wxss */
+
+page{
+  background: #F4F4F4;
+}
+
+
+/* 头部 */
+.header{
+  height: 252rpx;
+  padding-top: 31rpx;
+  box-sizing: border-box;
+  background: #FA5C47;
+  text-align: center;
+}
+.header image{
+  box-sizing: border-box;
+  height: 136rpx;
+  width: 136rpx;
+  border: 2rpx solid #EBCD9A;
+  border-radius: 50%;
+}
+.header view{
+  margin-top: 6rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #FFE2B1;
+  letter-spacing: 0;
+}
+
+
+/* 列表项 */
+.items{
+
+}
+.items .item{
+  height: 110rpx;
+  box-sizing: border-box;
+  padding: 0 32rpx;
+  margin-top: 18rpx;
+  background: rgba(255, 255, 255, .73);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.items .item .left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.items .item .left image{
+  height: 48rpx;
+  width: 48rpx;
+  margin-right: 32rpx;
+}
+.items .item .left text{
+  font-family: PingFangSC-Regular;
+  font-size: 34rpx;
+  color: #141414;
+}
+.items .item .arrow{
+  height: 23rpx;
+  width: 14rpx;
+}
+
+.mg0{
+  margin-top: 0 !important;
+}
+.bd-top{
+  position: relative;
+}
+.bd-top::after{
+  content: '';
+  display: block;
+  position: absolute;
+  height: 1rpx;
+  width: 638rpx;
+  background: #dfdfdf;
+  top: 0;
+  right: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

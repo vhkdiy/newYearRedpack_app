@@ -1,1 +1,60 @@
 /* pages/other/other.wxss */
+
+page{
+  background: #F4F4F4;
+}
+
+
+/* 列表项 */
+.items .item{
+  height: 180rpx;
+  width: 710rpx;
+  margin: 20rpx auto 0 auto;
+  background: #fff;
+  border-radius: 8rpx;
+
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 32rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+.items .item image{
+  height: 112rpx;
+  width: 112rpx;
+  border-radius: 50%;
+  background: #ccc;
+}
+.items .item .middle{
+  flex:1;
+  box-sizing: border-box;
+  padding-left: 24rpx;
+  display: flex;
+  flex-direction: column;
+}
+.items .item .middle .title{
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #333333;
+}
+.items .item .middle .desc{
+  margin-top: 8rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #888888;
+}
+
+.items .item .play{
+  height: 60rpx;
+  width: 136rpx;
+  background: #07C160;
+  border-radius: 30rpx; 
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #FFFFFF;
+}
