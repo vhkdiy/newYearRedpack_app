@@ -2,6 +2,7 @@
 import share from './../../utils/share.js';
 import { requestData } from './js/requestData.js';
 import { requestRedPack } from './js/requestRedPack.js';
+import { requestAppreciate } from './js/requestAppreciate.js';
 
 import { phead } from './../../utils/phead.js'
 import loginUtils  from './../../utils/login/login-utils.js'
@@ -36,9 +37,8 @@ Page({
     isShowType : 0,       //显示弹窗状态
     isShowData : null,    //红包数据
 
-    isShowBottomDialogType : 0
-
-
+    isShowBottomDialogType : 0,
+    isShowBottomData : null //弹窗数据
   },
 
   /**
@@ -52,6 +52,19 @@ Page({
 
     })
     this.requestData();
+    this.getAppreciate();
+  },
+  //请求获取赞赏数据
+  getAppreciate : function(){
+    let url = `/like/${this.data.orderId}`;
+    console.error(url);
+    requestAppreciate(this, url).then((data) => {
+      this.setData({
+        isShowBottomData: data
+      })
+    }).catch(e => {
+      console.error("catch");
+    });
   },
   shareclick: function () {
     this.requestData();
@@ -140,38 +153,11 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-  //去体现
+  //去提现
   gotoReflect : function(){
-    wx.switchTab({
+    wx.navigateTo({
       url: '/pages/reflect/reflect',
-    })
+    });
   },
   //去发红包
   gotoSendRedPack : function(){
@@ -200,7 +186,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    return share.getRedpack(`/pages/redpack/redpack?orderId=${this.data.orderId}`);
+    return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId}`);
   },
 
 })

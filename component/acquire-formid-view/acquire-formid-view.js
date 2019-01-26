@@ -28,6 +28,7 @@ Component({
         //
         return
       }
+      console.error(formId);
       wx.getStorage({
         key: UPLOAD_FORMID_KEY,
         success: (res) => {
