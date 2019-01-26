@@ -1,6 +1,5 @@
 // pages/myrecord/myrecord.js
-import { requestGainData } from './js/requestGainData.js';
-import { requestSendData } from './js/requestSendData.js';
+import { requestData } from './js/requestData.js';
 Page({
 
   /**
@@ -10,8 +9,14 @@ Page({
     scrollViewHeight: 0,  //scroll列表高度
     selectIndex: 0,       //按钮选中的
 
-    gainData : null,
-    sendData : null,
+    avatarUrl  : '',
+    nickName  : '',
+    statusString: '共发出',
+
+    monry : '',
+    count : '',
+
+    requestData : null,
     currentShowList : []
   },
 
@@ -19,29 +24,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //let count = this.data.requestData.sendRedPackList.length > this.data.requestData.redPackVieRecordList.length ? this.data.requestData.sendRedPackList.length : this.data.requestData.redPackVieRecordList.length;
     this.setData({
-      scrollViewHeight: 100 * 270
+      scrollViewHeight: 3 * 140
     });
 
-    requestGainData().then((data) => {
+    requestData().then((data) => {
       this.setData({
-        gainData : data
+        requestData : data,
+        avatarUrl: data.avatarUrl,
+        nickName: data.nickName,
+        monry: data.sendTotalMoney,
+        count: data.sendTotalNum
       })
-      console.log(data);
-      console.log("requestGainData");
+      console.error(data);
     }).catch(e => {
       console.error("catch");
     });
     
-    requestSendData().then((data) => {
-      this.setData({
-        sendData: data
-      })
-      console.log(data);
-      console.log("requestSendData");
-    }).catch(e => {
-      console.error("catch");
-    });
+
 
 
   },
@@ -96,8 +97,12 @@ Page({
   },
 
   swiperChange: function (e) {
+    console.log(e.detail.current);
     this.setData({
       selectIndex: e.detail.current,
+      monry: e.detail.current ? this.data.requestData.gainTotalMoney : this.data.requestData.sendTotalMoney,
+      count: e.detail.current ? this.data.requestData.gainTotalNum : this.data.requestData.sendTotalNum,
+      statusString : e.detail.current ? "共收到" : "共发出"
     })
   },
   btnClick: function (e) {

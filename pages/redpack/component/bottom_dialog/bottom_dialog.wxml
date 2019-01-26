@@ -7,7 +7,7 @@
       <view class="inputBar">
         <view class="inputView">
           <view class="inputTip">金额 (元)</view>
-          <input class="input" value="{{inputValue}}" bindinput="changeInput" placeholder='可填入1-200' />
+          <input class="input" type="number" value="{{inputValue}}" bindinput="changeInput" placeholder='可填入1-200' />
         </view>
         <view class="btn" bindtap='sendAction'>回赠</view>
       </view>
@@ -15,45 +15,18 @@
     </block>
     <block wx:else>
       <view class="buttons">
-        <view class="item" id="0.1" bindtap='selectAction'>
+        <view class="item" wx:for="{{isShowData.prices}}" id="{{item}}" wx:key="{{item}}" bindtap='selectAction'>
           <view class="txt">
             <view class="tag">￥</view>
-            <view class="number">0.1</view></view>
-        </view>
-        <view class="item" id="0.6" bindtap='selectAction'>
-          <view class="txt">
-            <view class="tag">￥</view>
-            <view class="number">0.6</view></view>
-        </view>
-        <view class="item" id="1" bindtap='selectAction'>
-          <view class="txt">
-            <view class="tag">￥</view>
-            <view class="number">1</view></view>
-        </view>
-        <view class="item" id="06" bindtap='selectAction'>
-          <view class="txt">
-            <view class="tag">￥</view>
-            <view class="number">6</view></view>
-        </view>
-        <view class="item" id="10" bindtap='selectAction'>
-          <view class="txt">
-            <view class="tag">￥</view>
-            <view class="number">10</view></view>
-        </view>
-        <view class="item" id="88" bindtap='selectAction'>
-          <view class="txt">
-            <view class="tag">￥</view>
-            <view class="number">88</view></view>
+            <view class="number">{{item}}</view></view>
         </view>
       </view>
       <view class="enterBtn" bindtap='setEnterMonry'>土豪随意金额</view>
     </block>
     
-    <view class="joinNum">18个人已回赠祝福</view>
-    <view class="images">
-      <image class="joinImage" src="/images/gift.png"/>
-      <image class="joinImage" src="/images/gift.png"/>
-      <image class="joinImage" src="/images/gift.png"/>
+    <view class="joinNum">{{isShowData.records.length > 18 ? '18' : isShowData.records.length}}个人已回赠祝福</view>
+    <view class="images" wx:for="isShowData.records" wx:key="images{{index}}">
+      <image wx:if="{{index <= 18}}" class="joinImage" src="{{item.user.avatarUrl}}"/>
     </view>
   </view>
 </view>

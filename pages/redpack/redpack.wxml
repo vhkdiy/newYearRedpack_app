@@ -71,5 +71,5 @@
   <view class="myRecord" bindtap='seeRecord'>查看我的记录</view>
 </view>
 </acquire-formid-view>
-<Dialog isShowType="{{isShowType}}" isShowData="{{isShowData}}" bind:shareclick="shareclick"/>
-<Bottom_dialog isShowType="{{isShowBottomDialogType}}"/>
+<Dialog isShowType="{{isShowType}}" isShowData="{{isShowData}}" bind:shareclick="shareclick" />
+<Bottom_dialog isShowType="{{isShowBottomDialogType}}" isShowData="{{isShowBottomData}}" orderId="{{orderId}}"/>
