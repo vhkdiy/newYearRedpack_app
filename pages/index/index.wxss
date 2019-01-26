@@ -8,7 +8,7 @@ page{
   position: relative;
   width:690rpx;
   height:964rpx;
-  margin: 96rpx auto 0 auto;
+  margin: 101rpx auto 0 auto;
   background:rgba(255,255,254,1);
   border-radius:6rpx;
 
@@ -27,6 +27,7 @@ page{
   transform: translate(-50%,-53rpx);
   -webkit-transform: translate(-50%,-53rpx);
   background: #ccc;
+  border: 8rpx solid #fff;
 }
 
 /* 查看示例 */
@@ -73,7 +74,7 @@ page{
 .container .composite-picture .wealth-btn{
   position: absolute;
   width: 330rpx;
-  height: 66rpx;
+  height: 62rpx;
   bottom: 50rpx;
   left: 50%;
   transform: translateX(-50%);
@@ -86,7 +87,7 @@ page{
   font-family:PingFangSC-Regular;
   font-weight:400;
   color:rgba(255,255,254,1);
-  line-height:66rpx;
+  line-height:62rpx;
 }
 
 
@@ -148,10 +149,10 @@ form .item input{
   font-size:30rpx;
   font-family:PingFangSC-Regular;
   font-weight:400;
-  border-bottom: 2rpx solid #ddd;
+  border-bottom: 1rpx solid #ddd;
 }
-form .item input::placeholder{
-  font-size:30px;
+.placeholder{
+  font-size:30rpx;
   font-family:PingFangSC-Regular;
   font-weight:400;
   color:rgba(221,221,221,1);
@@ -198,6 +199,10 @@ form .btn .scope-userInfo{
   left: 0;
   top: 0;
   opacity: 0;
+}
+
+button::after{
+  display: none;
 }
 
 

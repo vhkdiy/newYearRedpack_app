@@ -22,11 +22,11 @@
     <!-- 输入框 -->
     <view class='item'>
       <text>赏金 (元)</text>
-      <input placeholder="填写金额" type='digit' value='{{money}}' bindblur="handleMoneyBlur"></input>
+      <input placeholder="填写金额" placeholder-class='placeholder' type='digit' value='{{money}}' bindblur="handleMoneyBlur"></input>
     </view>
     <view class='item mg40'>
       <text>数量 (个)</text>
-      <input placeholder='红包数' type='number' value='{{number}}' bindblur='handleNumberBlur'></input>
+      <input placeholder='红包数' placeholder-class='placeholder' type='number' value='{{number}}' bindblur='handleNumberBlur'></input>
     </view>
     <view class='prompt'>{{serviceRate == 0?"限时免收服务费":"需支付￥"+serviceMoney+"服务费"}}</view>
     <view class='btn'>
