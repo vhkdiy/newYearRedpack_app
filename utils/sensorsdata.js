@@ -1203,7 +1203,13 @@ sa.send = function (t) {
     //屏蔽神策
     request({
       url:"/upload_sensors_data",
-      data: t
+      data: t,
+      success: () => {
+
+      },
+      fail: () =>{
+        
+      }
     })
   } else {
     t = JSON.stringify(t);

@@ -132,7 +132,14 @@ Page({
       mask: true,
     });
     const createImg = e.detail.url;
-    UploadImg.uploadComplete(createImg, "", this.data.choseRedpackIndex).then((data) => {
+
+    let inputString = "";
+    const cropper = this.selectComponent("#cropper");
+    if (cropper) {
+      inputString = cropper.getInputString();
+    }
+
+    UploadImg.uploadComplete(createImg, inputString, this.data.choseRedpackIndex).then((data) => {
       data.order.imgUrl = createImg;
       messageCenter.sendMessage("compositePictureInfo", data.order);
 

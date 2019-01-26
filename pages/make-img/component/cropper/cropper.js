@@ -107,6 +107,10 @@ Component({
       this.handleError();
     },
 
+    getInputString(){
+      return this.data.inputValue;
+    },
+
     handleError() {
       wx.hideLoading();
       wx.showToast({

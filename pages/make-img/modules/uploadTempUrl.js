@@ -33,8 +33,8 @@ const UploadImg = {
           loading: true,
           data: {
             imgUrl: imgUrl,
-            greeting: "",
-            redPackIndex: "",
+            greeting: greeting,
+            redPackIndex: redPackIndex,
             type: 2,
           },
           success: (data) => {
