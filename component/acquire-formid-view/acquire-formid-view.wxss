@@ -18,3 +18,11 @@
 .form-btn::after {
   display: none;
 }
+
+
+.acquire_formid_view{
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}

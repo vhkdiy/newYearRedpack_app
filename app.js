@@ -61,7 +61,6 @@ App({
     shareTicket: '',
     query: [],
     userid: null,
-    bbz_userid: null,
     isFinishBindInviteRelations:false,
     sceneObj: {
       userid: null,//邀请者的userid
@@ -179,15 +178,8 @@ App({
           //菊花二维码进来的邀请类型在sceneObj中获取 的分享类型
           globeQuery.type = sceneObj.type;
         }
-        if (!globeQuery.productId && sceneObj.productId) {
-          globeQuery.productId = sceneObj.productId;
-        }
-        if (!globeQuery.oem_type && sceneObj.oem_type) {
-          globeQuery.oem_type = sceneObj.oem_type;
-        }
-        if (!globeQuery.oem_id && sceneObj.oem_id) {
-          globeQuery.oem_id = sceneObj.oem_id;
-        }
+
+        
       }
     }
   },

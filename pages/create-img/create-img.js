@@ -7,7 +7,6 @@ import shareType from './../../utils/share-type.js';
 import sceneUtil from './../../utils/share/scene-util.js';
 import requestQrcode from './../../utils/share/request-qrcode.js';
 
-const SharePath = "pages/redpack/redpack";
 
 Page({
   shareSceneStr: '',
@@ -57,7 +56,7 @@ Page({
     });
 
     Promise.all([
-      requestQrcode(SharePath, this.shareSceneStr)
+      requestQrcode('', this.shareSceneStr)
     ]).then((datas) => {
 
       this.setData({

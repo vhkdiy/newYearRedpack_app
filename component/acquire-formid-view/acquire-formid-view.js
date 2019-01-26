@@ -20,7 +20,9 @@ Component({
       if (this.data.finishUploadToday) {
         return
       }
+
       let formId = e.detail.formId;
+
       // 不存在 或者 为测试机子
       if (!formId || formId === 'the formId is a mock one') {
         //
@@ -71,16 +73,20 @@ Component({
      * 请求更新formid
      */
     requestUploadFormId(formId) {
+      console.log("formId: " + formId);
+
+      console.log("请求更新formid: " + formId);
       request({
-        funid: 1004,
+        url:"/wx/formId/save",
         data: {
-          formid: [formId]
+          formId: formId
         },
         success: res => {
+          console.log("请求更新formid success: ");
 
         },
         fail: (e) => {
-
+          console.log("请求更新formid fail: ");
         }
       })
     }

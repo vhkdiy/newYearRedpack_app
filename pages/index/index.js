@@ -7,8 +7,7 @@ import { request } from './../../utils/request.js';
 import { requestPayment} from './modules/pay.js';
 import messageCenter from './../../utils/messagecenter/message_center.js';
 
-let isRightMoney = false;
-let isRightNumber = false;
+
 let timeOut = null;
 
 Page({
@@ -25,7 +24,7 @@ Page({
 
 
     userImg:'//img.xmiles.cn//cheated-register/top_banner.png',        //头像
-    redPackageImg:'//img.xmiles.cn//cheated-register/top_banner.png',  //分享图
+    compositePicture:'//img.xmiles.cn//cheated-register/top_banner.png',  //分享图
 
     orderId:'', 
 
@@ -44,40 +43,71 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    //注册消息用于获取orderId
-    messageCenter.registerCallback('compositePictureInfo',this.getOrderId)
-
+  onLoad: function (options) {
     if (config.testServer) {
       wx.setNavigationBarTitle({
         title: `${config.appName}（测试版）`,
       })
     }
 
-    //请求获取服务费率
-    request({
-      url:'/pay/serviceCharge',
-      method:'get',
-      success:(result)=>{
-        console.log('------result',result)
-        this.setData({
-          serviceRate:  .02 //result.serviceCharge
-        })
-      },
-      fali:(e)=>{
-
-      }
-    })
-
     //判断是否授权
     wx.getSetting({
       success: res => {
         this.setData({
-          scopeUserInfo : res.authSetting['scope.userInfo'] ? true : false
+          scopeUserInfo: res.authSetting['scope.userInfo'] ? true : false
+        })
+      }
+    })
+
+    //注册消息
+    messageCenter.registerCallback('compositePictureInfo', this.getCompositePictureInfo);
+    loginUtils.waitToLogin(this.onLoginSuccess, this.onLoginFail);
+  }, 
+  
+  requestPageData(orderId){
+    console.log('assssssssssssssssssssssssss')
+    request({
+      url:'/share/index', 
+      method:'get',
+      success:(data)=>{
+        console.log('pagedata----',data);
+        this.setData({
+          userImg: data.user.avatarUrl,
+          compositePicture: data.templateImgUrl,
+          serviceRate: data.serviceCharge
         })
       }
     })
   },
+
+  
+  onLoginSuccess(){
+    let options = getApp().globalData.options;
+    if (options.orderId) {
+      if (options.openId && options.type == 2){
+        //开红包页
+        wx.navigateTo({
+          url: `/pages/redpack/redpack?orderId=${options.orderId}&openid=${options.openId}&userId=${options.userId}`,
+        })
+        wx.setStorageSync("newUserGuidPage", true)
+      }else{
+        //数据回显
+        this.requestPageData(options.orderId)
+      }
+    }else{
+      //判断是否是新用户
+      if(!wx.getStorageSync("newUserGuidPage")){
+        console.log('guid---------------')
+        wx.navigateTo({
+          url: '/pages/redPackageEnter/renPackageEnter',
+        })
+        wx.setStorageSync("newUserGuidPage",true)
+      }
+      this.requestPageData();
+    }
+  },
+
+
 
   onReady: function() {
     
@@ -90,7 +120,9 @@ Page({
 
   onUnload(){
     //返注册
-    messageCenter.unRegisterCallback('compositePictureInfo', this.getOrderId)
+    messageCenter.unRegisterCallback('compositePictureInfo', this.getCompositePictureInfo);
+    loginUtils.unWaitToLogin(this.onLoginSuccess, this.onLoginFail);
+    
   },
 
   onShareAppMessage: function() {
@@ -98,18 +130,21 @@ Page({
   },
 
   //获取orderId
-  getOrderId(compositePictureInfo){
-    // this.setData({
-    //   orderId
-    // })
+  getCompositePictureInfo(data){
+    this.setData({
+      orderId : data.id,
+      compositePicture : data.imgUrl
+    })
     console.log('compositePictureInfo',compositePictureInfo)
   },
 
 
   //查看案例
   handleInstance(){
+    //开红包页
+
     wx.navigateTo({
-      url: '/pages/redPackageEnter/renPackageEnter',
+      url: `/pages/redpack/redpack?orderId=1&openid=${options.openId}&userId=${options.userId}`,
     })
   },
 
@@ -126,64 +161,48 @@ Page({
 
   //金额失去焦点
   handleMoneyBlur(e){
-    isRightMoney = false;
-    console.log(e)
-    let value = e.detail.value;
-    value = parseFloat(value);
-    if(value >= 1){
-      value = parseFloat(value.toFixed(2));
-      if (value > 50000) {
-        this.showErrorMsg('打赏金额不能超过50000');
-        this.setData({ serviceMoney: '0.00' })
-      }else{
+    this.setData({
+      money: e.detail.value
+    },()=>{
+      if(this.formCheckMoney()){
+        let money = parseFloat(this.data.money).toFixed(2)*100/100;
         this.setData({
-          money: value,
-          serviceMoney:  Math.ceil((value*parseFloat(this.data.serviceRate))*100)/100
+          money,
+          serviceMoney:  Math.ceil((money*parseFloat(this.data.serviceRate))*100)/100
         })
-        isRightMoney = true;
-        if(this.data.money/this.data.number<1){
-          isRightNumber = false;
-          this.showErrorMsg('单个红包金额不能小于1元');
-          this.setData({serviceMoney: '0.00'})
-        }
+      }else{
+        this.setData({serviceMoney: '0.00'})
       }
-    }else{
-      this.showErrorMsg('红包金额不能小于1元');
-      this.setData({ serviceMoney: '0.00' })
-    }
+    })
   },
 
   //数量失去焦点
   handleNumberBlur(e) {
-    console.log(e)
-    isRightNumber = false;
-    let value = e.detail.value;
-    if(this.data.money/value >= 1){
-      this.setData({
-        number: value
-      })
-      isRightNumber = true;
-    } else {
-      this.showErrorMsg('单个红包金额不能小于1元');
-    }
+    this.setData({
+      number: e.detail.value
+    }, () => {
+      this.formCheckNumber()
+    })
   },
 
   //提交表单
   handleSubmit(e){
-    if(isRightMoney && isRightNumber){
+    if(this.formCheckMoney() && this.formCheckNumber() && this.formCheckOrderId()){ 
       //支付 1获取支付信息，2调用支付接口
-      this.pay();
-    }else{
-      !isRightMoney && this.showErrorMsg('红包金额不能小于1元');
-      !isRightNumber && this.showErrorMsg('单个红包金额不能小于1元');
+      requestPayment({
+        orderId:this.data.orderId,
+        money:this.data.money,
+        number:this.data.number,
+        success:(e)=>{
+          console.log('success---',e)
+        },  
+        fail:()=>{
+          console.log('fail---',e)
+        }
+      });
     }
   },
 
-
-  //支付生成红包
-  pay(){
-    console.log('aa', requestPayment)
-  },
 
 
   //获取用户信息
@@ -210,6 +229,55 @@ Page({
         })
       },2000)
     })
+  },
+
+  formCheckMoney(){
+    let flag = false;
+    //赏金判断
+    let money = this.data.money;
+    if(!money){
+      this.showErrorMsg('请输入赏金');
+      return flag;
+    }
+    if(money>=1){
+      if(money<=50000){
+        flag = true;
+      }else{
+        this.showErrorMsg('打赏金额不能超过50000');
+      }
+    } else {
+      this.showErrorMsg('红包金额不能小于1元');
+    }
+    return flag;
+  },
+  formCheckNumber(){
+    let flag = false;
+    //数量
+    let money = this.data.money;
+    let number = this.data.number;
+
+    if (!number) {
+      this.showErrorMsg('请输入数量');
+      return flag;
+    }
+    if (money / number >= 1) {
+      flag = true
+    } else {
+      this.showErrorMsg('单个红包金额不能小于1元');
+    }
+    return flag;
+  },
+  formCheckOrderId(){
+    let flag = false;
+    //判断orderid
+    let orderId = this.data.orderId;
+    if (orderId) {
+      flag = true;
+    } else {
+      this.showErrorMsg('点击扮演财神选择红包');
+    }
+    return flag
   }
 
+  
 })
