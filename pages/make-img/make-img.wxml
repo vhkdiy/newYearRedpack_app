@@ -3,19 +3,19 @@
 </view>
 
 <view class='chose_redpack_container'>
-  <view class='chose_redpack_tip'>选一款红包封面，将红包藏在其中</view>
+  <view  class='chose_redpack_tip'>选一款红包封面，将红包藏在其中</view>
   <view class='redpack_items'>
 
     <block wx:if="{{choseRedpackData}}" wx:for="{{choseRedpackData}}" wx:key="{{index}}">
 
-      <view class="redpack_item {{choseRedpackIndex > -1 ? (choseRedpackIndex == index ? 'select_redpack_item' : 'unSelect_redpack_item') : (marqueeIndex == index ? 'select_redpack_item' : '')}}" data-index="{{index}}" bindtap='choseRedpack'>
+      <view class="redpack_item {{choseRedpackIndex > -1 ? (choseRedpackIndex == index ? 'select_redpack_item' : 'unSelect_redpack_item') : ((marqueeIndex == index && !isShowNewUserGuide) ? 'select_redpack_item' : '')}}" data-index="{{index}}" bindtap='choseRedpack'>
         <image class='redpack_item_icon' src="{{item.imgUrl}}"></image>
       </view>
 
     </block>
   </view>
 
-  <image wx:if="{{choseRedpackIndex < 0}}" class='chose_redpack_tip_img' src='./images/chose_redpack_tip.png'></image>
+  <image wx:if="{{choseRedpackIndex < 0 && !isShowNewUserGuide}}" class='chose_redpack_tip_img' src='./images/chose_redpack_tip.png'></image>
 
 </view>
 
@@ -39,3 +39,5 @@
 
 <view class='fade_bottom'></view>
 <view class='ok_btn' bindtap='createNewImg'>确定</view>
+
+<GuideNewUser wx:if="{{isShowNewUserGuide}}" />

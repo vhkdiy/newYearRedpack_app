@@ -3,8 +3,12 @@ import ChoseRedpackData from './modules/ChoseRedpackData.js';
 import requestData from './modules/requestData.js';
 //消息中心
 import messageCenter from './../../utils/messagecenter/message_center.js';
+import storageUtils from './../../utils/storage/storage-utils.js';
+import PageSignal from './modules/page-signal.js';
 
 let marqueeInterval = null;
+
+const Key_IsFirstIn = "make_img_page_Key_IsFirstIn";
 
 Page({
 
@@ -20,12 +24,14 @@ Page({
     marqueeIndex: -1,
     templates: [],
     avatarUrl: "",
+    isShowNewUserGuide: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    PageSignal.guideSignal.add(this.updateNewUserGuideDialog);
     this.refreshPageData();
 
     this.startChoseMarquee();
@@ -42,9 +48,25 @@ Page({
           avatarUrl: avatarUrl
         });
 
+        this.checkShowNewUserGuide();
+
       }
 
     }).catch((e) => {});
+  },
+
+  updateNewUserGuideDialog(isShow) {
+    this.setData({
+      isShowNewUserGuide: isShow,
+    });
+  },
+
+  checkShowNewUserGuide() {
+    const value = storageUtils.getStorageSync(Key_IsFirstIn);
+    if (value != 1) {
+      this.updateNewUserGuideDialog(true);
+      storageUtils.setStorageSync(Key_IsFirstIn, 1);
+    }
   },
 
   //没有选择红包前，先开启跑马灯动画

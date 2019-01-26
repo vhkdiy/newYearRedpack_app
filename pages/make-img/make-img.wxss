@@ -17,7 +17,7 @@ page {
 
 .chose_redpack_container {
   width: 702rpx;
-  height: 303rpx;
+  height: 280rpx;
   background: #fff;
   border-radius: 12rpx;
   margin: 24rpx auto 0;
