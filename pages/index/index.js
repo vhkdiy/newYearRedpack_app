@@ -1,4 +1,5 @@
 // pages/index/index.js
+const {phead} = require('./../../utils/phead.js');
 import handleShare from './modules/handle-share.js';
 import config from './../../utils/config.js';
 import loginUtils from './../../utils/login/login-utils.js';
@@ -121,8 +122,8 @@ Page({
   onUnload(){
     //返注册
     messageCenter.unRegisterCallback('compositePictureInfo', this.getCompositePictureInfo);
-    loginUtils.unWaitToLogin(this.onLoginSuccess, this.onLoginFail);
-    
+    loginUtils.unWaitToLogin(this.onLoginSuccess);
+    loginUtils.unWaitToLogin(this.goInstacne);
   },
 
   onShareAppMessage: function() {
@@ -141,10 +142,14 @@ Page({
 
   //查看案例
   handleInstance(){
+    loginUtils.waitToLogin(this.goInstacne);
+  },
+  goInstacne(){
     //开红包页
-
+    let userId = getApp().globalData.userid;
+    let openId = phead.phoneid;
     wx.navigateTo({
-      url: `/pages/redpack/redpack?orderId=1&openid=${options.openId}&userId=${options.userId}`,
+      url: `/pages/redpack/redpack?orderId=1&openid=${openId}&userId=${userId}`,
     })
   },
 
