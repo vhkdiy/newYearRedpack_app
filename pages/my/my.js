@@ -1,18 +1,24 @@
 // pages/my/my.js
+import getUserInfo from './../../utils/user/get-user-info.js';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    getUserInfo().then((data)=>{
+      this.setData({
+        userImg:data.avatarUrl,
+        userName: data.nickName
+      })
+    })
   },
 
   /**

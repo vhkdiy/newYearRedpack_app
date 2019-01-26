@@ -247,7 +247,13 @@ Page({
   handleGetUserInfo(obj){
     if(obj.detail.userInfo){
       console.log('updateUserInfo')
-      updateWxUserinfo();
+      updateWxUserinfo({
+        success:(userData)=>{
+          this.setData({
+            userImg:JSON.parse(userData).avatarUrl
+          })
+        }
+      });
       this.setData({
         scopeUserInfo:true
       })

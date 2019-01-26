@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "AcquireFormidView": "/component/acquire-formid-view/acquire-formid-view",
+    "ad-component": "./../../component/ad-component/ad-component"
+  }
 }
