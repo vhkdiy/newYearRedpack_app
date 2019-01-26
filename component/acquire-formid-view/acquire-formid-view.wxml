@@ -3,7 +3,7 @@
   <slot></slot>
 </view>
 <view wx:else>
-  <form report-submit="true" bindsubmit="formSubmit">
+  <form class='acquire_formid_view' report-submit="true" bindsubmit="formSubmit">
     <button class="form-btn" form-type='submit' hover-class="none">
       <slot></slot>
     </button>
