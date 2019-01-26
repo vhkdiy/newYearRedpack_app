@@ -65,17 +65,31 @@ Page({
   }, 
   
   requestPageData(orderId){
-    console.log('assssssssssssssssssssssssss')
     request({
-      url:'/share/index', 
+      url:`/share/index${orderId?"?orderId="+orderId:""}`, 
       method:'get',
       success:(data)=>{
-        console.log('pagedata----',data);
-        this.setData({
-          userImg: data.user.avatarUrl,
-          compositePicture: data.templateImgUrl,
-          serviceRate: data.serviceCharge
-        })
+        console.log('pageIndexdata----',data);
+        if(data.order){
+          let money = data.order.redPackMoney;
+          let serviceRate = data.order.serviceRate;
+          this.setData({
+            userImg: data.user.avatarUrl,
+            compositePicture: data.order.imgUrl,
+            orderId: data.order.id,
+            money: data.order.redPackMoney,
+            number: data.order.redPackCount,
+            serviceRate: data.serviceCharge,
+            serviceMoney: Math.ceil((money * parseFloat(serviceRate)) * 100) / 100
+          })
+        }else{
+          this.setData({
+            userImg: data.user.avatarUrl,
+            compositePicture: data.templateImgUrl,
+            serviceRate: data.serviceCharge
+          })
+        }
+
       }
     })
   },
@@ -199,10 +213,11 @@ Page({
       //支付 1获取支付信息，2调用支付接口
       requestPayment({
         orderId:this.data.orderId,
-        money:this.data.money,
+        money:(parseFloat(this.data.money)+parseFloat(this.data.serviceMoney)),
         number:this.data.number,
         success:(e)=>{
-          console.log('success---',e)
+          console.log('success---',e);
+          this.paySuccess()
         },  
         fail:()=>{
           console.log('fail---',e)
@@ -211,7 +226,19 @@ Page({
     }
   },
 
-
+  //支付成功回调
+  paySuccess(){
+    request({
+      url: '/pay/paySuccess',
+      data: {
+        orderId: this.data.orderId
+      }
+    })
+    //跳分享页
+    wx.navigateTo({
+      url: `/pages/guide-share/guide-share?orderId=${this.data.orderId}`,
+    })
+  },
 
   //获取用户信息
   handleGetUserInfo(obj){

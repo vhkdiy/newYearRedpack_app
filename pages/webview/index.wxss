@@ -1,0 +1,111 @@
+.car-container {
+  height: 160rpx;
+  background: white;
+  position: relative;
+  padding-left: 200rpx;
+  padding-top: 24rpx;
+  box-sizing: border-box;
+}
+.car-image {
+  width: 160rpx;
+  height: 160rpx;
+  position: absolute;
+  left: 20rpx;
+  top: 0;
+}
+.car-number {
+  display: block;
+  font-size: 36rpx;
+  color: #313131;
+}
+.car-city {
+  display: block;
+  font-size: 26rpx;
+  color: #707070;
+  margin-top: 8rpx;
+}
+
+.count-container {
+  background: #eff6ff;
+  padding: 16rpx;
+  display: flex;
+}
+.count-item {
+  flex: 1;
+  text-align: center;
+  font-size: 30rpx;
+  color: #2f8de1;
+  position: relative;
+}
+.count-item::after {
+  content: '';
+  display: block;
+  width: 1rpx;
+  height: 100%;
+  background: #c1dcff;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.count-item:last-child::after {
+  content: '';
+  display: none;
+}
+
+.weizhang-container {
+  background: white;
+  padding-left: 30rpx;
+  padding-bottom: 12rpx;
+  margin-top: 12rpx;
+}
+.weizhang-date {
+  display: block;
+  font-size: 30rpx;
+  line-height: 70rpx;
+  color: #707070;
+}
+.weizhang-date::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1rpx;
+  background: #dcdcdc;
+}
+.weizhang-area {
+  display: block;
+  font-size: 32rpx;
+  color: #434343;
+  margin-top: 16rpx;
+  margin-left: 8rpx;
+}
+.weizhang-action {
+  display: block;
+  font-size: 26rpx;
+  color: #707070;
+  margin-top: 8rpx;
+  margin-left: 8rpx;
+  margin-bottom: 16rpx;
+}
+.weizhang-fen {
+  font-size: 32rpx;
+  color: #434343;
+  margin-left: 8rpx;
+}
+.weizhang-money {
+  font-size: 32rpx;
+  color: #434343;
+  margin-left: 60rpx;
+}
+
+.refresh-container {
+  text-align: center;
+  margin-top: 20rpx;
+}
+.refresh-icon {
+  padding: 20rpx;
+}
+.refresh-text {
+  display: inline-block;
+  color: #2f8de1;
+  font-size: 30rpx;
+}

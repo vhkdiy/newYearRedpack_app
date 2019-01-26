@@ -7,6 +7,7 @@ Page({
    */
   data: {
     scrollViewHeight: 0,  //scroll列表高度
+    animationCss: 'scrollBlock',
     selectIndex: 0,       //按钮选中的
 
     avatarUrl  : '',
@@ -24,10 +25,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //let count = this.data.requestData.sendRedPackList.length > this.data.requestData.redPackVieRecordList.length ? this.data.requestData.sendRedPackList.length : this.data.requestData.redPackVieRecordList.length;
-    this.setData({
-      scrollViewHeight: 3 * 140
-    });
+
 
     requestData().then((data) => {
       this.setData({
@@ -37,14 +35,19 @@ Page({
         monry: data.sendTotalMoney,
         count: data.sendTotalNum
       })
+      this.setListHeight();
       console.error(data);
     }).catch(e => {
       console.error("catch");
     });
-    
 
-
-
+  },
+  //设置列表的高度
+  setListHeight : function(){
+    let count = this.data.requestData.sendRedPackList.length > this.data.requestData.redPackVieRecordList.length ? this.data.requestData.sendRedPackList.length : this.data.requestData.redPackVieRecordList.length;
+    this.setData({
+      scrollViewHeight: count * 140 + 85
+    });
   },
 
   /**
@@ -100,6 +103,7 @@ Page({
     console.log(e.detail.current);
     this.setData({
       selectIndex: e.detail.current,
+      animationCss: `scrollBlock${e.detail.current}`,
       monry: e.detail.current ? this.data.requestData.gainTotalMoney : this.data.requestData.sendTotalMoney,
       count: e.detail.current ? this.data.requestData.gainTotalNum : this.data.requestData.sendTotalNum,
       statusString : e.detail.current ? "共收到" : "共发出"
