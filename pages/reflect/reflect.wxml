@@ -2,12 +2,16 @@
   <view class="reflectPage">
     <view class="bar">
       <view class="count">账号余额</view>
-      <view class="countValue">{{currentMoney}}<test class="unit">元</test></view>
+      <view class="countValue">
+        <test class="money">{{currentMoney}}</test>
+        <test class="unit">元</test>
+      </view>
     </view>
     <view class="content">
       <view class="tip">提现金额</view>
       <view class="input_money">
-        <view class="tag">￥</view>
+        <!-- <view class="tag">￥</view> -->
+        <image class='input_tag' src="./img/tag.png" mode='widthFix' />
         <input class="input" value="{{inputValue}}"  bindinput="bindInput"/>
       </view>
       <view class="line"></view>

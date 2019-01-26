@@ -7,74 +7,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentMoney : "",      //表示当前有多少余额
+    currentMoney : "37.21",      //表示当前有多少余额
     inputValue : "",        //输入金额
     hasSlientOauth : false, //是否授权
-    slientOauthUrl : ""     //授权链接
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.error(options);
+    // if (options.accessToken && options.response_type && options.scope && options.state){
+    //     //上传授权参数
+    //   }else{
+    //     // webview("授权", "https://xmiles.cn/frontend_step_service/common?funid=2005&appid=2&service=static_pages&accessToken=123&response_type=456&scope=789&state=123#wechat_redirect");
+    //   }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    requestHasSlientOauth(this, "/user/hasSlientOauth").then((data) => {
-      console.log(data);
-      if(data.hasSlientOauth == 0){
-        webview("授权", data.slientOauthUrl);
-      }
-    }).catch(e => {
-      console.error("catch");
-    });
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
 
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   //输入金额
   bindInput : function(e){
     this.setData({
@@ -89,6 +47,15 @@ Page({
   },
   //体现
   submitData : function(){
-    console.log(this.data.inputValue);
+    requestHasSlientOauth(this, "/user/hasSlientOauth").then((data) => {
+      console.error(data);
+      if (data.hasSlientOauth == 0) {
+        webview("授权", data.slientOauthUrl);
+      }else{
+        //提交金额
+      }
+    }).catch(e => {
+      console.error("catch");
+    });
   }
 })

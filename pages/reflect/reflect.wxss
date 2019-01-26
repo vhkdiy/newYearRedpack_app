@@ -1,4 +1,5 @@
-/* pages/reflect/reflect.wxss */
+
+@import "/fonts/DINPro.wxss";
 page{
   background:rgba(237,237,237,1);
 }
@@ -7,27 +8,40 @@ page{
   height : 624rpx;
   text-align: center;
   margin : 30rpx auto 0;
+  border-radius:6px;
 }
 .bar{
   width : 100%;
   height : 117rpx;
   background:rgba(251,251,251,1);
   display: flex;
-  align-items: center;
   /* justify-content: center; */
   text-align: center;
+  border-top-left-radius: 6rpx;
+  border-top-right-radius: 6rpx;
 }
 .count{
   font-size : 28rpx;
   width : 112rpx;
-  margin : 0 73rpx 0 50rpx
+  margin :  44rpx 73rpx 0 50rpx
 }
 .countValue{
+  margin-top : 32rpx;
   text-align: left;
   flex : 1;
   font-weight: bold;
+  height : 56rpx;
+  line-height: 56rpx;
+}
+.money{
+  margin-top : -12rpx;
+  font-size:48rpx;
+  font-weight:bold;
+  color:rgba(34,34,34,1);
+  font-family: DINPro;
 }
 .unit{
+  margin-top : -12rpx;
   font-size:28rpx;
   font-family:PingFangSC-Regular;
   font-weight:400;
@@ -36,6 +50,7 @@ page{
 }
 .content{
   background:rgba(255,255,254,1);
+  border-radius: 6rpx;
 }
 .tip{
   text-align: left;
@@ -46,12 +61,17 @@ page{
   font-weight:400;
   color:rgba(34,34,34,1);
   line-height:40rpx;
-  padding : 37rpx 0 0 51rpx;
+  padding : 39rpx 0 0 51rpx;
   align-items: center;
+}
+.input_tag{
+  margin : 32rpx 12rpx 0 0;
+  width : 80rpx;
+  height : 100rpx;
 }
 .input_money{
   display: flex;
-  margin-left : 40rpx;
+  margin-left : 53rpx;
   text-align: left;
   height : 90rpx;
   font-size:70rpx;
@@ -65,6 +85,7 @@ page{
   display: block;
   height : 120rpx;
   line-height:120rpx;
+  margin-top:16rpx;
 }
 .line{
   height : 2rpx;
@@ -72,7 +93,7 @@ page{
   margin : 49rpx 52rpx 27rpx;
 }
 .txt{
-  margin-left : 51rpx;
+  margin : 4rpx 0 0 51rpx;
   width:312rpx;
   height:37rpx;
   font-size:26rpx;
@@ -82,7 +103,7 @@ page{
   line-height:37rpx;
 }
 .tx{
-  color : blue;
+  color : #576895;
 }
 .btn{
   margin : 38rpx auto 21rpx;
