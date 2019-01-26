@@ -79,22 +79,24 @@ Component({
     },
     //请求赞赏
     requestData: function (money){
-      let url = `/like/payParam/${this.data.orderId}?money=${money}`;
+      let actualMoney = parseFloat(money) +  Math.ceil((parseFloat(money) * parseFloat(this.data.isShowData.serviceCharge)) * 100) / 100;
+      let url = `/like/payParam/${this.data.orderId}?money=${actualMoney}`;
       console.error(url);
       appreciate(this, url).then((data) => {
         if (data.status == 1) {
           let payParam = data.payParam;
           wx.requestPayment({
-            timeStamp: payParam.timestamp,
+            timeStamp: JSON.stringify(payParam.timestamp),
             nonceStr: payParam.nonceStr,
             package: payParam.prepayId,
             signType: payParam.signType,
             paySign: payParam.paySign,
             success(res) {
+              this.closePop();
               wx.showToast({
                 title: '赞赏成功',
                 icon: 'none'
-              })
+              });
             },
             fail(res) {
               console.error(res);
@@ -111,6 +113,7 @@ Component({
           })
         }
       }).catch(e => {
+        console.log(e);
         console.error("catch");
       });
     },
