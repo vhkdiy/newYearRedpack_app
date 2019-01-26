@@ -19,7 +19,7 @@ Component({
   properties: {
     ratio: {
       type: Number,
-      observer: function (newVal, oldVal) {
+      observer: function(newVal, oldVal) {
         this.setData({
           width: 473 * K,
           height: 473 * K,
@@ -54,6 +54,9 @@ Component({
    * 组件的初始数据
    */
   data: {
+    inputValue: '',
+    keyboardHeight: 0,
+    isShowInput: false,
     canvasScale: 2, //canvas缩放的比
     template: null,
     isTouching: false,
@@ -145,8 +148,7 @@ Component({
         template: {
           width: `${this.data.width}px`,
           height: `${this.data.height}px`,
-          views: [
-            {
+          views: [{
               //镂空出来的那个图片  
               type: 'rect',
               css: {
@@ -234,7 +236,7 @@ Component({
       })
     },
     //事件处理函数
-    touchstartCallback: function (e) {
+    touchstartCallback: function(e) {
       this.startTouchTime = Date.now();
 
       if (e.touches.length === 1) {
@@ -265,11 +267,11 @@ Component({
 
     },
     //图片手势动态缩放
-    touchmoveCallback: function (e) {
+    touchmoveCallback: function(e) {
       let _this = this
       fn(_this, e)
     },
-    touchendCallback: function (e) {
+    touchendCallback: function(e) {
       //触摸结束
       if (e.touches.length === 0) {
         this.setData({
@@ -278,7 +280,10 @@ Component({
       }
 
       if (e.changedTouches.length === 1 && (Date.now() - this.startTouchTime < 200)) {
-        const { clientX, clientY } = e.changedTouches[0];
+        const {
+          clientX,
+          clientY
+        } = e.changedTouches[0];
         const d = Math.sqrt(Math.pow(clientX - this.startX, 2) + Math.pow(clientY - this.startY, 2));
         if (d < 10) {
           this.choseImg();
@@ -330,8 +335,40 @@ Component({
           scale: 1, //缩放倍数
           rotate: 0
         }
-        });
+      });
     },
+
+    handleShowInput() {
+      this.setData({
+        isShowInput: true,
+      });
+    },
+
+    bindfocus(event) {
+      const keyboardHeight = event.detail.height;
+      this.setData({
+        keyboardHeight: keyboardHeight,
+      });
+
+      wx.pageScrollTo({
+        scrollTop: 0,
+      });
+    },
+
+    //失去焦点
+    bindblur() {
+      this.setData({
+        isShowInput: false,
+      });
+    },
+
+    bindinput(event) {
+      const inputValue = event.detail.value;
+      this.setData({
+        inputValue: inputValue,
+      });
+
+    }
 
   }
 });
@@ -341,11 +378,11 @@ Component({
  * delay:延迟多长时间
  * mustRun:至少多长时间触发一次
  */
-var throttle = function (fn, delay, mustRun) {
+var throttle = function(fn, delay, mustRun) {
   var timer = null,
     previous = null;
 
-  return function () {
+  return function() {
     var now = +new Date(),
       context = this,
       args = arguments;
@@ -356,7 +393,7 @@ var throttle = function (fn, delay, mustRun) {
       previous = now;
     } else {
       clearTimeout(timer);
-      timer = setTimeout(function () {
+      timer = setTimeout(function() {
         fn.apply(context, args);
       }, delay);
 
@@ -364,7 +401,7 @@ var throttle = function (fn, delay, mustRun) {
   }
 }
 
-var touchMove = function (_this, e) {
+var touchMove = function(_this, e) {
   //触摸移动中
   if (e.touches.length === 1) {
     //单指移动

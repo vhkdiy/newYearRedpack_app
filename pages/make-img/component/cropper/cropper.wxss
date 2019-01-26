@@ -6,19 +6,19 @@
   box-sizing: border-box;
 }
 
-.chose_img_bg{
+.chose_img_bg {
   width: 100%;
   height: 100%;
 }
 
-.top_img{
+.top_img {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
 
-.touchingTopImg{
+.touchingTopImg {
   opacity: 0.4;
 }
 
@@ -40,15 +40,45 @@
   top: -500000rpx;
 }
 
-.painter{
+.painter {
   position: absolute;
   left: -1000rpx;
   top: -5000rpx;
   z-index: 1000;
 }
 
+.guide_input_text {
+  width: 320rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  font-size: 26rpx;
+  font-family: PingFangSC-Semibold;
+  color: rgba(255, 255, 255, 1);
+  background: rgba(0, 0, 0, 0.5);
+  border: 3rpx solid rgba(2, 187, 0, 1);
+  position: absolute;
+  bottom: 48rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.input_text {
+  font-size: 126rpx;
+  font-family: SourceHanSansCN-Heavy;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 1);
+  /* line-height: 189rpx; */
+  -webkit-text-stroke: 8rpx #D62A29;
+  position: absolute;
+  bottom: 19rpx;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
 
 /* 选择图片 */
+
 .accelerate_pop {
   width: 100%;
   height: 100%;
@@ -64,6 +94,7 @@
 }
 
 /*对话框的主体内容 */
+
 .accelerate_pop_container {
   width: 100%;
   overflow: hidden;
@@ -97,3 +128,76 @@
   background: #dcdcdc;
 }
 
+/* 文字输入的弹窗 */
+
+.input_text_dialog {
+  display: block;
+  height: 176rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 470rpx;
+  left: 0;
+  z-index: 1000;
+  background: linear-gradient(180deg, rgba(153, 57, 49, 1) 0%, rgba(153, 57, 49, 0.76) 100%);
+}
+
+.input_container {
+  width: 526rpx;
+  height: 85rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 12rpx;
+}
+
+.input {
+  height: 176rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #666;
+  line-height: 176px;
+  padding-left: 58rpx;
+  width: 400rpx;
+}
+
+.input::-webkit-input-placeholder {
+  color: rgba(153, 153, 153, 1);
+}
+
+.fade_input_container {
+  width: 526rpx;
+  height: 85rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 12rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 38rpx;
+}
+
+.input_num_tip {
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20rpx;
+}
+
+.input_ok_btn {
+  width: 128rpx;
+  height: 85rpx;
+  text-align: center;
+  line-height: 85rpx;
+  background: rgba(255, 226, 177, 1);
+  border-radius: 12rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(225, 75, 56, 1);
+}

@@ -9,7 +9,8 @@
     "pages/guide-share/guide-share",
     "pages/create-img/create-img",
     "pages/reflect/reflect",
-    "pages/webview/index"
+    "pages/webview/index",
+    "pages/make-img/make-img"
   ],
   "tabBar": {
     "selectedColor": "#F35443",
