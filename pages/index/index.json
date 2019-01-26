@@ -2,7 +2,7 @@
   "enablePullDownRefresh": false,
   "backgroundTextStyle": "dark",
   "onReachBottomDistance": 50,
-  "backgroundColor": "#fbcc0e",
+  "backgroundColor":"#f5f5f5",
   "usingComponents": {
     "AcquireFormidView": "/component/acquire-formid-view/acquire-formid-view",
     "ad-component": "./../../component/ad-component/ad-component"
