@@ -209,7 +209,7 @@ Page({
 
   //提交表单
   handleSubmit(e){
-    if(this.formCheckMoney() && this.formCheckNumber() && this.formCheckOrderId()){ 
+    // if(this.formCheckMoney() && this.formCheckNumber() && this.formCheckOrderId()){ 
       //支付 1获取支付信息，2调用支付接口
       requestPayment({
         orderId:this.data.orderId,
@@ -223,7 +223,7 @@ Page({
           console.log('fail---',e)
         }
       });
-    }
+    // }
   },
 
   //支付成功回调
