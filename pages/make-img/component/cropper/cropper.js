@@ -145,7 +145,19 @@ Component({
         template: {
           width: `${this.data.width}px`,
           height: `${this.data.height}px`,
-          views: [{
+          views: [
+            {
+              //镂空出来的那个图片  
+              type: 'rect',
+              css: {
+                width: `${this.data.width * SCALE}px`,
+                height: `${this.data.height * SCALE}px`,
+                left: `0px`,
+                top: `0px`,
+                color: "#F9F7FA",
+              },
+            },
+            {
               //镂空出来的那个图片  
               type: 'image',
               url: (originImg && originImg.url) || "",

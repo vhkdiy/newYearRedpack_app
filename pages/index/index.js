@@ -121,8 +121,8 @@ Page({
   onUnload(){
     //返注册
     messageCenter.unRegisterCallback('compositePictureInfo', this.getCompositePictureInfo);
-    loginUtils.unWaitToLogin(this.onLoginSuccess, this.onLoginFail);
-    
+    loginUtils.unWaitToLogin(this.onLoginSuccess);
+    loginUtils.unWaitToLogin(this.goInstacne);
   },
 
   onShareAppMessage: function() {
@@ -141,10 +141,14 @@ Page({
 
   //查看案例
   handleInstance(){
+    loginUtils.waitToLogin(this.goInstacne);
+  },
+  goInstacne(){
     //开红包页
-
+    let openId = wx.getStorageSync(loginUtils.getOpenIdKey());
+    let userId = wx.getStorageSync(loginUtils.getUserIdKey());
     wx.navigateTo({
-      url: `/pages/redpack/redpack?orderId=1&openid=${options.openId}&userId=${options.userId}`,
+      url: `/pages/redpack/redpack?orderId=1&openid=${openId}&userId=${userId}`,
     })
   },
 

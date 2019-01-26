@@ -6,6 +6,7 @@ const wxSaveImageToPhotosAlbum = wxPromisify(wx.saveImageToPhotosAlbum);
 import shareType from './../../utils/share-type.js';
 import sceneUtil from './../../utils/share/scene-util.js';
 import requestQrcode from './../../utils/share/request-qrcode.js';
+import getUserInfo from './../../utils/user/get-user-info.js';
 
 
 Page({
@@ -56,13 +57,14 @@ Page({
     });
 
     Promise.all([
-      requestQrcode('', this.shareSceneStr)
+      requestQrcode('', this.shareSceneStr),
+      getUserInfo(),
     ]).then((datas) => {
 
       this.setData({
         template: new CanvasPalette({
-          userName: extraData.nickName,
-          userIcon: extraData.avatarUrl,
+          userName: datas[1].nickName,
+          userIcon: datas[1].avatarUrl,
           contentImg: extraData.imgUrl,
           qrCodeImg: datas[0],
         }).palette(),

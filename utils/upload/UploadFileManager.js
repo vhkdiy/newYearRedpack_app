@@ -22,10 +22,16 @@ const UploadFileManager = {
 
       this.getUploadToken().then((token) => {
 
+        let delayNotifySuccussFunc = null;
+        let isUploadToQiniuSuccess = false;
+
         qiniuUploader.upload(tempFilePath, (res) => {
-          
-          console.log("图片上传成功： " + imgUrl);
-          // resolve(imgUrl);
+          if (!isUploadToQiniuSuccess) {
+            console.log("图片上传成功： " + imgUrl);
+            isUploadToQiniuSuccess = true;
+            delayNotifySuccussFunc && clearTimeout(delayNotifySuccussFunc);
+            resolve(imgUrl);
+          }
 
         }, (error) => {
 
@@ -42,9 +48,16 @@ const UploadFileManager = {
           console.log('上传进度', res.progress)
           console.log('已经上传的数据长度', res.totalBytesSent)
           console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
+          console.log("图片上传进度100%： " + imgUrl);
+
           if (res.progress >= 100) {
-            console.log("图片上传成功： " + imgUrl);
-            resolve(imgUrl);
+            delayNotifySuccussFunc && clearTimeout(delayNotifySuccussFunc);
+
+            !isUploadToQiniuSuccess && (delayNotifySuccussFunc = setTimeout(() =>{
+              isUploadToQiniuSuccess = true;
+
+              resolve(imgUrl);
+            }, 3000));
           }
         });
 
