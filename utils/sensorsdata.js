@@ -1200,6 +1200,19 @@ sa.send = function (t) {
   logger.info(t);
 
   if (t.type == 'track' && !(t.event.slice(0, 1) === '$') || t.type == 'profile_set') {
+
+    t.sensorsData = {
+      properties: t.properties,
+      event: t.event,
+    }
+
+    t.uploadType = t.type,
+
+    delete t.properties;
+    delete t.event;
+    delete t.type;
+
+    
     //屏蔽神策
     request({
       url:"/upload_sensors_data",
@@ -1208,7 +1221,7 @@ sa.send = function (t) {
 
       },
       fail: () =>{
-        
+
       }
     })
   } else {
