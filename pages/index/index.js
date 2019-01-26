@@ -220,7 +220,8 @@ Page({
           this.paySuccess()
         },  
         fail:()=>{
-          console.log('fail---',e)
+          console.log('fail---',e);
+          this.showErrorMsg(e.msg)
         }
       });
     }
