@@ -217,11 +217,23 @@ Page({
         number:this.data.number,
         success:(e)=>{
           console.log('success---',e);
-          this.paySuccess()
+          this.paySuccess();
+          //支付成功埋点
+          getApp().sensors.track('recharge', {
+            recharge_money:this.data.money,
+            is_success:true,
+            recharge_fee:this.serviceMoney,
+          })
         },  
         fail:()=>{
           console.log('fail---',e);
-          this.showErrorMsg(e.msg)
+          this.showErrorMsg(e.msg);
+          //失败埋点
+          getApp().sensors.track('recharge', {
+            recharge_money: this.data.money,
+            is_success: false,
+            recharge_fee: this.serviceMoney,
+          })
         }
       });
     }
