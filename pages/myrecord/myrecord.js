@@ -24,10 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //let count = this.data.requestData.sendRedPackList.length > this.data.requestData.redPackVieRecordList.length ? this.data.requestData.sendRedPackList.length : this.data.requestData.redPackVieRecordList.length;
-    this.setData({
-      scrollViewHeight: 3 * 140
-    });
+
 
     requestData().then((data) => {
       this.setData({
@@ -37,14 +34,19 @@ Page({
         monry: data.sendTotalMoney,
         count: data.sendTotalNum
       })
+      this.setListHeight();
       console.error(data);
     }).catch(e => {
       console.error("catch");
     });
-    
 
-
-
+  },
+  //设置列表的高度
+  setListHeight : function(){
+    let count = this.data.requestData.sendRedPackList.length > this.data.requestData.redPackVieRecordList.length ? this.data.requestData.sendRedPackList.length : this.data.requestData.redPackVieRecordList.length;
+    this.setData({
+      scrollViewHeight: count * 140 + 85
+    });
   },
 
   /**

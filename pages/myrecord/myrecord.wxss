@@ -61,6 +61,7 @@
   font-family:PingFangSC-Regular;
   font-weight:400;
   color:rgba(87,107,149,1);
+  background-color : white;
 }
 .info{
   width : 100%;
@@ -171,4 +172,8 @@
   margin : 28rpx -12rpx 0 28rpx;
   width : 84rpx;
   height : 84rpx;
+}
+.bottomBlock{
+  height : 85rpx;
+  width : 100%;
 }

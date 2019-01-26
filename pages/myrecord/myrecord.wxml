@@ -26,13 +26,14 @@
       <view class="sendItem" wx:for="{{requestData.sendRedPackList}}" wx:key="sendItem{{index}}">
         <view class="left_item">
           <view class="blessing">{{item.greeting}}</view>
-          <view class="date">{{item.dateStrin}}</view>
+          <view class="date">{{item.dateString}}</view>
         </view>
         <view class="right_item">
           <view class="money">{{item.redPackMoney}}元</view>
           <view class="count">{{item.receiveCount}}/{{item.redPackCount}}</view>
         </view>
       </view>
+      <view class="bottomBlock"></view>
     </swiper-item>
     <swiper-item class="list" wx:for="{{requestData.redPackVieRecordList}}" wx:key="redPack{{index}}">
       <view class="sendItem">
@@ -46,6 +47,7 @@
           <view class="count">{{item.redPackSendOrder.receiveCount}}/{{item.redPackSendOrder.redPackCount}}</view>
         </view>
       </view>
+      <view class="bottomBlock"></view>
     </swiper-item>
   </swiper>
   <view class="tip">常见问题</view>
