@@ -3,7 +3,7 @@
  */
 
 const shortToCompleteJSON = {
-  "u": "userid", //userid
+  "u": "userId", //userid
   "c": "channel", //渠道号
   "f": "from", //from
   "t": "type", //分享的类型，参考shareType.js

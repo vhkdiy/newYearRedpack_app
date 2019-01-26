@@ -50,7 +50,13 @@ const UploadImg = {
           }
         });
       }).catch(() => {
+        wx.showToast({
+          title: '上传图片失败了， 请稍后重试',
+          icon: "none",
+        });
+
         j();
+
       });
     });
   }
