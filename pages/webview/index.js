@@ -1,5 +1,5 @@
 //通用网页
-
+import { submitAuth } from './js/submitAuth.js';
 Page({
 
   /**
@@ -24,5 +24,21 @@ Page({
         url: url
       })
     }
+  },
+  bindmessage : function(e){
+    console.log("收到网页数据了");
+    console.error(e);
+    let data = e.detail.data[0];
+    console.log(data); 
+    let url = `/wxWebPageOauth2CallBack?accessToken=${data.accessToken}&code=${data.code}&state=${data.state}`;
+    console.error(url);
+    submitAuth(this, url).then((data) => {
+      if (data.state  == 1) {
+        console.log("成功");
+        console.error(url);
+      }
+    }).catch(e => {
+      console.error("catch");
+    });
   }
 })

@@ -79,8 +79,8 @@ Component({
     },
     //请求赞赏
     requestData: function (money){
-      let actualMoney = parseFloat(money) +  Math.ceil((parseFloat(money) * parseFloat(this.data.isShowData.serviceCharge)) * 100) / 100;
-      let url = `/like/payParam/${this.data.orderId}?money=${actualMoney}`;
+      // let actualMoney = parseFloat(money) +  Math.ceil((parseFloat(money) * parseFloat(this.data.isShowData.serviceCharge)) * 100) / 100;
+      let url = `/like/payParam/${this.data.orderId}?money=${money}`;
       console.error(url);
       appreciate(this, url).then((data) => {
         if (data.status == 1) {
