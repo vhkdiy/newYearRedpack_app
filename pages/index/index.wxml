@@ -7,7 +7,7 @@
   
   <!-- 生成图片 -->
   <view class='composite-picture'>
-    <image src='{{redPackageImg}}'></image>
+    <image src='{{compositePicture}}'></image>
     <view class='mask'></view>
     <view class='wealth-btn' catchtap='handleWealthBtn'>点击这里扮演财神</view>
   </view>
