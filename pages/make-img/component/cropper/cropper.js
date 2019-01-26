@@ -19,7 +19,7 @@ Component({
   properties: {
     ratio: {
       type: Number,
-      observer: function(newVal, oldVal) {
+      observer: function (newVal, oldVal) {
         this.setData({
           width: 473 * K,
           height: 473 * K,
@@ -234,7 +234,7 @@ Component({
       })
     },
     //事件处理函数
-    touchstartCallback: function(e) {
+    touchstartCallback: function (e) {
       this.startTouchTime = Date.now();
 
       if (e.touches.length === 1) {
@@ -265,11 +265,11 @@ Component({
 
     },
     //图片手势动态缩放
-    touchmoveCallback: function(e) {
+    touchmoveCallback: function (e) {
       let _this = this
       fn(_this, e)
     },
-    touchendCallback: function(e) {
+    touchendCallback: function (e) {
       //触摸结束
       if (e.touches.length === 0) {
         this.setData({
@@ -278,7 +278,7 @@ Component({
       }
 
       if (e.changedTouches.length === 1 && (Date.now() - this.startTouchTime < 200)) {
-        const { clientX, clientY} = e.changedTouches[0];
+        const { clientX, clientY } = e.changedTouches[0];
         const d = Math.sqrt(Math.pow(clientX - this.startX, 2) + Math.pow(clientY - this.startY, 2));
         if (d < 10) {
           this.choseImg();
@@ -296,7 +296,7 @@ Component({
       //   return;
       // }
       updateChoseImgWayStatus.show(this);
-      
+
     },
 
     hideChoseImgWayPop() {
@@ -308,17 +308,29 @@ Component({
         count: 1, //只能选择一张
         success: (res) => {
           const filePath = res.tempFilePaths[0];
-          this.setData({
-            url: filePath,
-          });
+          this.initImg(filePath);
         },
       });
     },
 
     onUseUserIconBtnClick() {
+      // this.initImg(this.data.avatarUrl);
+
       this.setData({
-        url: this.data.avatarUrl,
-      });
+        originImg: {
+          url: this.data.avatarUrl,
+          height: this.data.width,
+          width: this.data.width,
+        },
+        stv: {
+          offsetX: 0,
+          offsetY: 0,
+          zoom: false, //是否缩放状态
+          distance: 0, //两指距离
+          scale: 1, //缩放倍数
+          rotate: 0
+        }
+        });
     },
 
   }
@@ -329,11 +341,11 @@ Component({
  * delay:延迟多长时间
  * mustRun:至少多长时间触发一次
  */
-var throttle = function(fn, delay, mustRun) {
+var throttle = function (fn, delay, mustRun) {
   var timer = null,
     previous = null;
 
-  return function() {
+  return function () {
     var now = +new Date(),
       context = this,
       args = arguments;
@@ -344,7 +356,7 @@ var throttle = function(fn, delay, mustRun) {
       previous = now;
     } else {
       clearTimeout(timer);
-      timer = setTimeout(function() {
+      timer = setTimeout(function () {
         fn.apply(context, args);
       }, delay);
 
@@ -352,7 +364,7 @@ var throttle = function(fn, delay, mustRun) {
   }
 }
 
-var touchMove = function(_this, e) {
+var touchMove = function (_this, e) {
   //触摸移动中
   if (e.touches.length === 1) {
     //单指移动
