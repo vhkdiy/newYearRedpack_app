@@ -9,10 +9,10 @@ const requestQrcode = function (path, scene = sceneUtils.creatQrShareScene(), wi
   }
   return new Promise((resolve, reject) => {
     request({
-      url: "/wxCode/user/juhua",
+      url: "/wxCode/user/scene",
       loading: false,
       data: {
-        "page": path,
+        "path": path,
         "scene": scene,
         "width": width,
       },

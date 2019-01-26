@@ -71,9 +71,9 @@ Component({
      */
     requestUploadFormId(formId) {
       request({
-        funid: 1004,
+        url:"/wx/formId/save",
         data: {
-          formid: [formId]
+          formId: formId
         },
         success: res => {
 
