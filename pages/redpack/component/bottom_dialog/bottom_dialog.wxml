@@ -2,7 +2,7 @@
 <view class="bottom_dialog" wx:if="{{isShowType}}">
   <view class="content">
     <image class="close" src="../img/close.png" bindtap='closePop'/>
-    <view class="title">来而不往非礼也，回赠好友一个新年祝福</view>
+    <view class="title">{{isShowData.title}}</view>
     <block wx:if="{{isEnterMonry}}">
       <view class="inputBar">
         <view class="inputView">

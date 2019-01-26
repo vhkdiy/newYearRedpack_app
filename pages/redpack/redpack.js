@@ -153,11 +153,11 @@ Page({
 
   },
 
-  //去体现
+  //去提现
   gotoReflect : function(){
-    wx.switchTab({
+    wx.navigateTo({
       url: '/pages/reflect/reflect',
-    })
+    });
   },
   //去发红包
   gotoSendRedPack : function(){
