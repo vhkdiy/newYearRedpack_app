@@ -41,6 +41,45 @@
   font-family: PingFangSC-Medium;
   color: #EA5F39;
 }
+.scrollLine{
+  height : 6rpx;
+  width : 100%;
+}
+.scrollBlock{
+  margin-left : 0%;
+  width : 50%;
+  height : 6rpx;
+  text-align: center;
+}
+.scrollBlock0{
+  margin-left : 0%;
+  width : 50%;
+  height : 6rpx;
+  text-align: center;
+  animation: scrollToRight 0.6s;
+}
+@keyframes scrollToRight{
+  from {margin-left : 50%;}
+  to   {margin-left : 0;}
+}
+
+.scrollBlock1{
+  margin-left : 50%;
+  width : 50%;
+  height : 6rpx;
+  text-align: center;
+  animation: scrollToLeft 0.6s;
+}
+@keyframes scrollToLeft{
+  from {margin-left : 0%;}
+  to   {margin-left : 50%;}
+}
+.scrolltag{
+  margin : 0 auto;
+  height : 6rpx;
+  width : 70rpx;
+  background:rgba(234,95,57,1);
+}
 
 .swiper{
   width : 100%;

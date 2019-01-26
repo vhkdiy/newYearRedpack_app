@@ -1,4 +1,6 @@
 // pages/reflect/reflect.js
+import { requestHasSlientOauth } from './js/requestHasSlientOauth.js';
+import { webview } from './../../utils/router.js'
 Page({
 
   /**
@@ -7,6 +9,8 @@ Page({
   data: {
     currentMoney : "",      //表示当前有多少余额
     inputValue : "",        //输入金额
+    hasSlientOauth : false, //是否授权
+    slientOauthUrl : ""     //授权链接
   },
 
   /**
@@ -27,7 +31,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    requestHasSlientOauth(this, "/user/hasSlientOauth").then((data) => {
+      console.log(data);
+      if(data.hasSlientOauth == 0){
+        webview("授权", data.slientOauthUrl);
+      }
+    }).catch(e => {
+      console.error("catch");
+    });
   },
 
   /**

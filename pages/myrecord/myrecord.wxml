@@ -3,6 +3,11 @@
     <view id="0" class="{{selectIndex == 0 ? 'btn0_select' : 'btn0'}}" bindtap='btnClick'>我发出的</view>
     <view id="1" class="{{selectIndex == 1 ? 'btn1_select' : 'btn1'}}" bindtap='btnClick'>我收到的</view>
   </view>
+  <view class="scrollLine">
+      <view class="{{animationCss}}">
+      <view class="scrolltag"></view>
+      </view>
+  </view>
   <view class="info">
     <image class="img" src="{{avatarUrl}}" />
     <view class="name">{{nickName}}{{statusString}}</view>

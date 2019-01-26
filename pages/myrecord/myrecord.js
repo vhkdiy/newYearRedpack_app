@@ -7,6 +7,7 @@ Page({
    */
   data: {
     scrollViewHeight: 0,  //scroll列表高度
+    animationCss: 'scrollBlock',
     selectIndex: 0,       //按钮选中的
 
     avatarUrl  : '',
@@ -102,6 +103,7 @@ Page({
     console.log(e.detail.current);
     this.setData({
       selectIndex: e.detail.current,
+      animationCss: `scrollBlock${e.detail.current}`,
       monry: e.detail.current ? this.data.requestData.gainTotalMoney : this.data.requestData.sendTotalMoney,
       count: e.detail.current ? this.data.requestData.gainTotalNum : this.data.requestData.sendTotalNum,
       statusString : e.detail.current ? "共收到" : "共发出"

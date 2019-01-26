@@ -8,7 +8,8 @@
     "pages/redpack/redpack",
     "pages/guide-share/guide-share",
     "pages/create-img/create-img",
-    "pages/reflect/reflect"
+    "pages/reflect/reflect",
+    "pages/webview/index"
   ],
   "tabBar": {
   "list": [
