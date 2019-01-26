@@ -19,12 +19,29 @@
   width : 22rpx;
   height : 22rpx;
 }
-.content{
+.content_open{
   position: relative;
   width : 100%;
   height : 690rpx;
   background-color : white;
   text-align: center;
+  animation: dialogOpen 0.3s;
+}
+@keyframes dialogOpen{
+  from {top : 690rpx;}
+  to   {top : 0;}
+}
+.content_close{
+  position: relative;
+  width : 100%;
+  height : 690rpx;
+  background-color : white;
+  text-align: center;
+  animation: dialogClose 0.3s;
+}
+@keyframes dialogClose{
+  from {top : 0;}
+  to   {top : 690rpx;}
 }
 .title{
   margin-top : 64rpx;
