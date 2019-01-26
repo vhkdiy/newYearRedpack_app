@@ -230,6 +230,9 @@ Page({
   paySuccess(){
     request({
       url: '/pay/paySuccess',
+      data: {
+        orderId: this.data.orderId
+      }
     })
     //跳分享页
     wx.navigateTo({
