@@ -5,7 +5,8 @@ import {
 const getUserInfo = function(success, fail) {
   return new Promise((resolve, reject) => {
     request({
-      funid: 9,
+      url: "/user",
+      method: "GET",
       loading: false,
       success: (data) => {
         resolve(data);
