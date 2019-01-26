@@ -26,11 +26,12 @@ const UploadFileManager = {
         let isUploadToQiniuSuccess = false;
 
         qiniuUploader.upload(tempFilePath, (res) => {
-
-          console.log("图片上传成功： " + imgUrl);
-          isUploadToQiniuSuccess = true;
-          delayNotifySuccussFunc && clearTimeout(delayNotifySuccussFunc);
-          resolve(imgUrl);
+          if (!isUploadToQiniuSuccess) {
+            console.log("图片上传成功： " + imgUrl);
+            isUploadToQiniuSuccess = true;
+            delayNotifySuccussFunc && clearTimeout(delayNotifySuccussFunc);
+            resolve(imgUrl);
+          }
 
         }, (error) => {
 
@@ -53,6 +54,8 @@ const UploadFileManager = {
             delayNotifySuccussFunc && clearTimeout(delayNotifySuccussFunc);
 
             !isUploadToQiniuSuccess && (delayNotifySuccussFunc = setTimeout(() =>{
+              isUploadToQiniuSuccess = true;
+
               resolve(imgUrl);
             }, 3000));
           }
