@@ -1,6 +1,6 @@
-
 <AcquireFormidView>
 <view class='container'>
+
   <!-- 头像 -->
   <image class='user-img' src='{{userImg}}'/>
   <view class='look-instance' bindtap='handleInstance'>查看示例</view>
@@ -34,5 +34,7 @@
       <button wx:if="{{!scopeUserInfo}}" class='scope-userInfo' open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo"></button>
     </view>
   </form>
+
 </view>
+
 </AcquireFormidView>

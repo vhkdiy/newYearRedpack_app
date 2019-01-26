@@ -17,10 +17,6 @@ let getUserIdKey = function (test = config.testServer) {
   return test ? 'userid_test' : 'userid';
 }
 
-let getBBZUserIdKey = function (test = config.testServer) {
-  return test ? 'bbz_userid_test' : 'bbz_userid';
-}
-
 let getAccessTokenKey = function (test = config.testServer) {
   return test ? 'access_token_test' : 'access_token';
 }
@@ -34,7 +30,6 @@ let checkLocalLoginInfo = function () {
     wx.removeStorageSync(getOpenIdKey(!config.testServer));
     wx.removeStorageSync(getUserIdKey(!config.testServer));
     wx.removeStorageSync(getAccessTokenKey(!config.testServer));
-    wx.removeStorageSync(getBBZUserIdKey(!config.testServer));
   } catch (e) {
     // Do something when catch error
   }
@@ -86,12 +81,10 @@ let login = function (forceUpdate) {
         withoutLogin: true,
         success: res => {
           const openid = res.openId;
-          const userid = res.userId;
+          const userId = res.userId;
           const access_token = res.accessToken;
-          if (userid) {
-            app.globalData.userid = userid;
-
-            sensors.login(userid, {
+          if (userId) {
+            sensors.login(userId, {
               b_channel: config.prdid,
               s_channel: config.channel
             });
@@ -101,7 +94,7 @@ let login = function (forceUpdate) {
             sensors.init();
           }
           if (openid) {
-            //todo 调整为userid
+            //todo 调整为userId
             phead.init(openid, access_token);
             //当前是新用户 也就是 true 才设置，否则默认就是false
             if (res.isNewbie) {
@@ -116,10 +109,15 @@ let login = function (forceUpdate) {
               key: getOpenIdKey(),
               data: openid,
             })
-            userid && wx.setStorage({
-              key: getUserIdKey(),
-              data: userid,
-            })
+            
+            if (userId) {
+              phead.phead.userId = userId;
+              wx.setStorage({
+                key: getUserIdKey(),
+                data: userId,
+              });
+            }
+
             access_token && wx.setStorage({
               key: getAccessTokenKey(),
               data: access_token,
@@ -130,15 +128,6 @@ let login = function (forceUpdate) {
             console.error('fail to login');
             //登录失败
             LOGIN_MESSAGE.notifyLoginFail();
-          }
-
-          const bbz_userid = res.bbz_userid;
-          if (bbz_userid) {
-            app.globalData.bbz_userid = bbz_userid;
-            wx.setStorage({
-              key: getBBZUserIdKey(),
-              data: bbz_userid,
-            })
           }
 
           forceUpdate === true && wx.reLaunch({
@@ -167,16 +156,18 @@ let loginLocal = function() {
     key: getOpenIdKey(),
     success: function (res) {
       const openid = res.data;
-      const bbz_userid = wx.getStorageSync(getBBZUserIdKey());
-      getApp().globalData.bbz_userid = bbz_userid;
+      const userId = wx.getStorageSync(getUserIdKey());
 
-      //openid与bbz_userid同时存在本地，才不用重新登陆
-      if (openid && bbz_userid) {
+      //openid与userId同时存在本地，才不用重新登陆
+      if (openid && userId) {
         wx.getStorage({
           key: getAccessTokenKey(),
           success: function (res) {
             const access_token = res.data;
+
             phead.init(openid, access_token);
+            phead.phead.userId = userId;
+
             if (!access_token) {
               fail();
             } else {
@@ -187,6 +178,7 @@ let loginLocal = function() {
           fail: fail
         })
 
+
       } else {
         fail();
       }
@@ -194,12 +186,10 @@ let loginLocal = function() {
       wx.getStorage({
         key: getUserIdKey(),
         success: function (res) {
-          const userid = res.data;
-          if (userid) {
+          const userId = res.data;
+          if (userId) {
             
-            getApp().globalData.userid = userid;
-
-            sensors.login(userid, {
+            sensors.login(userId, {
               b_channel: config.prdid,
               s_channel: config.channel
             });

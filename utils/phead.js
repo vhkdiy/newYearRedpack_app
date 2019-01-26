@@ -6,7 +6,8 @@ const phead = {
   cversionname: cversionname,
   channel: channel,
   prdid: prdid,
-  phoneid:''
+  phoneid:'',
+  userId: '',
 }
 
 const init = (openid, access_token) => {

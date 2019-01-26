@@ -61,7 +61,6 @@ App({
     shareTicket: '',
     query: [],
     userid: null,
-    bbz_userid: null,
     isFinishBindInviteRelations:false,
     sceneObj: {
       userid: null,//邀请者的userid

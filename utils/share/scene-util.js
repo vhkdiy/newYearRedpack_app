@@ -10,11 +10,10 @@ const sceneUtil = {
    */
   creatQrShareScene: function(originShareObj) {
     const app = getApp();
-    const userid = app.globalData.bbz_userid;
 
     let finalShareObj = {};
-    if (userid) {
-      finalShareObj['u'] = userid;
+    if (phead.userId) {
+      finalShareObj['u'] = phead.userId;
     }
 
     if (phead.channel) {
