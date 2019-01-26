@@ -19,10 +19,11 @@ Page({
     console.log('index--load')
     request.request({
       url:'/index',
+      method:'get',
       success:(result)=>{
         // console.log(result);
         this.setData({
-          userImg : result.user,
+          userImg: result.user.avatarUrl,
           contentImg: result.templateImgUrl,
           contentText: result.templateText
         })

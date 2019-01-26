@@ -1,18 +1,32 @@
 // pages/other/other.js
+import {request} from './../../utils/request.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    properties: {
+      app_title: '拜年红包',
+      $title: '拜年红包',
+      url: 'page/other/other'
+    },
+    adArr:[],
+    unitId:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    request({
+      url:'http://test.ibestfanli.com/newYearRedpack_service/ad',
+      success:(result)=>{
+        this.setData({
+          adArr: result.adJson && result.adJson.ad_list,
+        })
+      },
+    })
   },
 
   /**

@@ -6,7 +6,10 @@ page{
 
 
 /* 列表项 */
-.items .item{
+.items{
+  padding-bottom: 20rpx;
+}
+.items .itemAd{
   height: 180rpx;
   width: 710rpx;
   margin: 20rpx auto 0 auto;
@@ -19,32 +22,36 @@ page{
   justify-content: space-between;
   align-items: center;
 }
-.items .item image{
+.items .itemAd image{
   height: 112rpx;
   width: 112rpx;
   border-radius: 50%;
   background: #ccc;
 }
-.items .item .middle{
+.items .itemAd .middle{
   flex:1;
   box-sizing: border-box;
   padding-left: 24rpx;
   display: flex;
   flex-direction: column;
 }
-.items .item .middle .title{
+.items .itemAd .middle .title{
   font-family: PingFangSC-Semibold;
   font-size: 32rpx;
   color: #333333;
 }
-.items .item .middle .desc{
+.items .itemAd .middle .desc{
+  width: 360rpx;
   margin-top: 8rpx;
   font-family: PingFangSC-Regular;
   font-size: 26rpx;
   color: #888888;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.items .item .play{
+.items .itemAd .play{
   height: 60rpx;
   width: 136rpx;
   background: #07C160;
@@ -57,4 +64,15 @@ page{
   font-family: PingFangSC-Regular;
   font-size: 26rpx;
   color: #FFFFFF;
+}
+
+.ad{
+  position: relative;
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.ad image{
+  width: 678rpx;
+  height: 228rpx;
 }
