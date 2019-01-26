@@ -1,5 +1,4 @@
 // pages/index/index.js
-const {phead} = require('./../../utils/phead.js');
 import handleShare from './modules/handle-share.js';
 import config from './../../utils/config.js';
 import loginUtils from './../../utils/login/login-utils.js';
@@ -146,8 +145,8 @@ Page({
   },
   goInstacne(){
     //开红包页
-    let userId = getApp().globalData.userid;
-    let openId = phead.phoneid;
+    let openId = wx.getStorageSync(loginUtils.getOpenIdKey());
+    let userId = wx.getStorageSync(loginUtils.getUserIdKey());
     wx.navigateTo({
       url: `/pages/redpack/redpack?orderId=1&openid=${openId}&userId=${userId}`,
     })
