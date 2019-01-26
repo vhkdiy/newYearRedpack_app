@@ -267,6 +267,7 @@ export default class Painter {
     const preLineLength = Math.round(view.text.length / lines);
     let start = 0;
     let alreadyCount = 0;
+
     for (let i = 0; i < lines; ++i) {
       alreadyCount = preLineLength;
       let text = view.text.substr(start, alreadyCount);
@@ -313,7 +314,11 @@ export default class Painter {
       }
       const y = -(height / 2) + (i === 0 ? view.css.fontSize.toPx() : (view.css.fontSize.toPx() + i * lineHeight));
       if (view.css.textStyle === 'stroke') {
+        this.ctx.fillText(text, x, y, measuredWith);
+        this.ctx.strokeStyle = view.css.strokeStyle || "#000";
+        this.ctx.lineWidth = view.css.lineWidth.toPx() || 1;
         this.ctx.strokeText(text, x, y, measuredWith);
+
       } else {
         this.ctx.fillText(text, x, y, measuredWith);
       }

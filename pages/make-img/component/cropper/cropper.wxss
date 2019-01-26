@@ -68,11 +68,13 @@
   font-family: SourceHanSansCN-Heavy;
   font-weight: 800;
   color: rgba(255, 255, 255, 1);
-  /* line-height: 189rpx; */
+  
   -webkit-text-stroke: 8rpx #D62A29;
   position: absolute;
-  bottom: 19rpx;
+  width: 200%;
+  bottom: -6rpx;
   left: 50%;
+  text-align: center;
   transform: translateX(-50%);
 
 }

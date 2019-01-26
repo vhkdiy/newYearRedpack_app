@@ -11,9 +11,9 @@
 
   </view>
 
-  <view class='input_text'>{{inputValue}}</view>
+  <view bindtap='handleShowInput' class='input_text' style="font-size:{{inputFontObj.fontSize}}rpx;-webkit-text-stroke-width:{{inputFontObj.strokeWidth}}rpx;bottom:{{inputFontObj.bottom}}rpx">{{inputValue}}</view>
 
-  <!-- <view class='guide_input_text' bindtap='handleShowInput'>填写新年祝福</view> -->
+  <view wx:if="{{!inputValue || inputValue.length == 0}}" class='guide_input_text' bindtap='handleShowInput'>填写新年祝福</view>
 
   <painter class="painter" customStyle="display:block; width:{{ width * canvasScale}}px;height:{{ height * canvasScale}}px;" palette="{{template}}" bind:imgOK="onImgOK" bind:imgErr="imgErr" />
 

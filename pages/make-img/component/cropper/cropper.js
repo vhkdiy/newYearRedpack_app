@@ -54,6 +54,11 @@ Component({
    * 组件的初始数据
    */
   data: {
+    inputFontObj: {
+      fontSize: 126,
+      strokeWidth: 8,
+      bottom: -6,
+    },
     inputValue: '',
     keyboardHeight: 0,
     isShowInput: false,
@@ -95,6 +100,7 @@ Component({
       this.triggerEvent("getCropperImg", {
         url: imagePath
       });
+
     },
 
     imgErr() {
@@ -146,8 +152,8 @@ Component({
 
       this.setData({
         template: {
-          width: `${this.data.width}px`,
-          height: `${this.data.height}px`,
+          width: `${this.data.width * SCALE}px`,
+          height: `${this.data.height * SCALE}px`,
           views: [{
               //镂空出来的那个图片  
               type: 'rect',
@@ -183,12 +189,39 @@ Component({
                 top: `0px`,
                 mode: "aspectFill",
               },
-            }
-
+            },
+            {
+              type: 'text',
+              text: this.data.inputValue || "",
+              css: {
+                textStyle: "stroke",
+                strokeStyle: "#D62A29",
+                lineWidth: `${this.data.inputFontObj.strokeWidth}rpx`,
+                align: 'center',
+                left: `${this.data.width * SCALE / 2}px`,
+                bottom: `${this.getInputTextInCanvasBottom(this.data.inputValue.length)}rpx`,
+                fontWeight: 'bold',
+                color: "#ffffff",
+                fontSize: `${this.data.inputFontObj.fontSize * SCALE}rpx`,
+              },
+            },
           ],
         },
       });
 
+    },
+
+    getInputTextInCanvasBottom(strLen) {
+      let bottom = 37;
+      if (strLen <= 4) {
+        bottom = 37;
+      } else if (strLen <= 6) {
+        bottom = 39;
+      } else {
+        bottom = 47;
+      }
+
+      return bottom;
     },
 
     initImg(url) {
@@ -366,9 +399,35 @@ Component({
       const inputValue = event.detail.value;
       this.setData({
         inputValue: inputValue,
+        inputFontObj: this.getInputFontObj(inputValue.length),
       });
 
-    }
+    },
+    getInputFontObj(strLen) {
+      let fontSize = 95;
+      let strokeWidth = 6;
+      let bottom =  19;
+ 
+      if (strLen <= 4) {
+        fontSize = 95;
+        bottom = 19;
+        let strokeWidth = 5;
+      } else if (strLen <= 6) {
+        fontSize = 68;
+        strokeWidth = 4;
+        bottom = 30;
+      } else {
+        fontSize = 54;
+        strokeWidth = 3;
+        bottom = 35;
+      }
+
+      return {
+        fontSize: fontSize,
+        strokeWidth: strokeWidth,
+        bottom: bottom,
+      }
+    },
 
   }
 });
