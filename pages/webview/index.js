@@ -36,6 +36,10 @@ Page({
       if (data.state  == 1) {
         console.log("成功");
         console.error(url);
+      }else{
+        wx.showToast({
+          title: '授权失败，请进行授权后才能完成提现',
+        })
       }
     }).catch(e => {
       console.error("catch");

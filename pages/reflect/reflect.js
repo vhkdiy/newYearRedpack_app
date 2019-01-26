@@ -1,5 +1,7 @@
 // pages/reflect/reflect.js
 import { requestHasSlientOauth } from './js/requestHasSlientOauth.js';
+import { requestData } from './js/requestData.js';
+import { requestGetMoney } from './js/requestGetMoney.js';
 import { webview } from './../../utils/router.js'
 Page({
 
@@ -7,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentMoney : "37.21",      //表示当前有多少余额
+    currentMoney : "",      //表示当前有多少余额
     inputValue : "",        //输入金额
     hasSlientOauth : false, //是否授权
   },
@@ -16,12 +18,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.error(options);
-    // if (options.accessToken && options.response_type && options.scope && options.state){
-    //     //上传授权参数
-    //   }else{
-    //     // webview("授权", "https://xmiles.cn/frontend_step_service/common?funid=2005&appid=2&service=static_pages&accessToken=123&response_type=456&scope=789&state=123#wechat_redirect");
-    //   }
+    requestData(this, "/balance/getUserBalance").then((data) => {
+        if (data.state == 1) {
+          this.setData({
+            currentMoney: data.userBalance
+          })
+        } else {
+          wx.showToast({
+            title: data.message,
+            icon : 'none'
+          })
+        }
+      }).catch(e => {
+        console.error("catch");
+      });
+    
+  },
+  //提现
+  txFunc : function(monry){
+    requestData(this, "/balance/withdrawBalance").then((data) => {
+      if (data.state == 1) {
+        this.setData({
+          currentMoney: data.userBalance
+        })
+        wx.showToast({
+          title: "提现成功",
+          icon: 'none'
+        })
+      } else {
+        wx.showToast({
+          title: data.message,
+          icon: 'none'
+        })
+      }
+    }).catch(e => {
+      console.error("catch");
+    });
   },
 
 
@@ -53,6 +85,8 @@ Page({
         webview("授权", data.slientOauthUrl);
       }else{
         //提交金额
+        this.txFunc();
+        
       }
     }).catch(e => {
       console.error("catch");

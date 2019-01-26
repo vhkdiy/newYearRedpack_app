@@ -35,11 +35,11 @@
           <view class="txt">去提现</view>
         </view>
         <view class="button" bindtap='gotoSendRedPack'>
-          <image class="smallIcon" src="./image/btn1.png" />
+          <image class="smallIcon" src="./image/btn2.png" />
           <view class="txt">我也发一个</view>
         </view>
         <view class="button" bindtap='gotoAdmire'>
-          <image class="smallIcon" src="./image/btn1.png" />
+          <image class="smallIcon" src="./image/btn3.png" />
           <view class="txt">赞赏</view>
         </view>
       </view>

@@ -113,7 +113,7 @@
   width : 125rpx;
   height : 125rpx;
   border: 2rpx solid #d6d6d6;
-  border-radius: 60rpx;
+  border-radius: 125rpx;
   vertical-align: middle;
 }
 .name{
@@ -142,7 +142,7 @@
   width : 1rpx;
   background-color : #BBBABD;
   height : 88rpx;
-  margin-top : 26rpx;
+  margin-top : 14rpx;
 }
 .block{
   flex: 1;

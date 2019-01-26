@@ -12,7 +12,7 @@
       <view class="input_money">
         <!-- <view class="tag">￥</view> -->
         <image class='input_tag' src="./img/tag.png" mode='widthFix' />
-        <input class="input" value="{{inputValue}}"  bindinput="bindInput"/>
+        <input class="input" value="{{inputValue}}" type="number" bindinput="bindInput"/>
       </view>
       <view class="line"></view>
       <view class="txt">提现到微信钱包，<text class="tx" bindtap='allMoneyInput' >全部提现</text></view>
