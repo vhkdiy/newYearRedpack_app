@@ -1,0 +1,12 @@
+<view class="cover_layer" catchtouchmove='catchtouchmove' catchtap='onCoverLayerClick' style="width:{{guideData.width}}rpx;height:{{guideData.height}}rpx;border-radius:{{guideData.radius}}rpx;top:{{guideData.top-maxWidth}}rpx;left:{{guideData.left-maxWidth}}rpx;border-width:{{maxWidth}}rpx;">
+</view>
+
+<image class='guide_img' mode='aspectFit' src="{{guideData.guideImg}}" style="top:{{guideData.guideImgTop}}rpx;left:{{guideData.guideImgLeft}}rpx;height:{{guideData.guideImgHeight}}rpx;"></image>
+
+<view wx:if="{{isLast}}" class='last_tip_container'>
+  <view class='ok_btn' bindtap='closePop'>知道了</view>
+  <view class='see_again_btn' bindtap='seeAgain'>
+    <text>再看一遍</text>
+    <image class='arror' src='./images/arrow.png'></image>
+  </view>
+</view>

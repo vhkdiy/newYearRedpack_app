@@ -2,7 +2,7 @@ const { request } = require('../request.js');
 /**
  * 更新微信用户信息
  */
-let update_wx_userinfo = function() {
+let update_wx_userinfo = function(config) {
   // 获取用户信息
   wx.getSetting({
     success: res => {
@@ -20,7 +20,9 @@ let update_wx_userinfo = function() {
                 encryptedData: res.encryptedData,
                 iv: res.iv
               },
-              success: (res) => { },
+              success: () => { 
+                config && config.success && config.success(res.rawData)
+               },
               fail: (e) => {
               },
               complete: () => {

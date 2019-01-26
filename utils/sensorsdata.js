@@ -1201,10 +1201,16 @@ sa.send = function (t) {
 
   if (t.type == 'track' && !(t.event.slice(0, 1) === '$') || t.type == 'profile_set') {
     //屏蔽神策
-    // request({
-    //   funid: 21,
-    //   data: t
-    // })
+    request({
+      url:"/upload_sensors_data",
+      data: t,
+      success: () => {
+
+      },
+      fail: () =>{
+        
+      }
+    })
   } else {
     t = JSON.stringify(t);
 

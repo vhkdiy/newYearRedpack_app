@@ -48,15 +48,14 @@ const request = config => {
     });
   wx.showNavigationBarLoading();
 
-  let url = `${host}${config.service}${config.url}`;
-  url += `${url.includes("?") ? "&" : "?"}rd=${new Date().getTime()}`;
-
+  let url = host +
+    config.service +
+    config.url + "?rd=" + Date.now();
+  if(config.url.indexOf('http') == 0){
+    url = config.url
+  }
   wx.request({
-    url:
-      host +
-      config.service +
-      config.url+"?rd=" +Date.now(),
-
+    url: url,
     data: data,
     header: {"Authorization" : JSON.stringify(phead)},
     method: config.method || 'POST',
@@ -67,7 +66,7 @@ const request = config => {
       //console.log(res.statusCode);
       if (res.statusCode >= 400) {
         if (config.fail) {
-          config.fail(COMMON_FAIL_DATA);
+          config.fail(res.data || COMMON_FAIL_DATA);
         } else {
           wx.showToast({
             title: "网络异常" + res.statusCode,
@@ -88,8 +87,7 @@ const request = config => {
             config.fail(data && data.result);
           } else {
             wx.showToast({
-              title:
-                (data && data.result && data.result.msg) || "网络异常，请重试",
+              title:(data && data.msg) || "网络异常，请重试",
               icon: "none"
             });
           }

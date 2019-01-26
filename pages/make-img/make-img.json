@@ -1,6 +1,7 @@
 {
   "navigationBarBackgroundColor": "#F35443",
   "usingComponents": {
-        "cropper": "./component/cropper/cropper"
+        "cropper": "./component/cropper/cropper",
+        "GuideNewUser": "./component/guide-new-user/guide-new-user"
   }
 }

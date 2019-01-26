@@ -213,14 +213,15 @@ Page({
       //支付 1获取支付信息，2调用支付接口
       requestPayment({
         orderId:this.data.orderId,
-        money:(parseFloat(this.data.money)+parseFloat(this.data.serviceMoney)),
+        money:this.data.money,
         number:this.data.number,
         success:(e)=>{
           console.log('success---',e);
           this.paySuccess()
         },  
         fail:()=>{
-          console.log('fail---',e)
+          console.log('fail---',e);
+          this.showErrorMsg(e.msg)
         }
       });
     }
@@ -232,6 +233,9 @@ Page({
       url: '/pay/paySuccess',
       data: {
         orderId: this.data.orderId
+      },
+      success:function(result){
+        console.log('paysuccess------------------callback', result)
       }
     })
     //跳分享页
@@ -244,7 +248,13 @@ Page({
   handleGetUserInfo(obj){
     if(obj.detail.userInfo){
       console.log('updateUserInfo')
-      updateWxUserinfo();
+      updateWxUserinfo({
+        success:(userData)=>{
+          this.setData({
+            userImg:JSON.parse(userData).avatarUrl
+          })
+        }
+      });
       this.setData({
         scopeUserInfo:true
       })

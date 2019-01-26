@@ -1,0 +1,54 @@
+.cover_layer {
+  position: fixed;
+  z-index: 1000;
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 2000rpx;
+  border: 2000rpx solid rgba(0, 0, 0, 0.8);
+  left: -2000rpx;
+  top: -2000rpx;
+}
+
+.guide_img {
+  position: fixed;
+  width: 454rpx;
+  z-index: 1002;
+}
+
+.last_tip_container {
+  width: 100%;
+  position: fixed;
+  z-index: 1002;
+  left: 0;
+  bottom: 165rpx;
+}
+
+.ok_btn {
+  width: 480rpx;
+  height: 85rpx;
+  background: rgba(255, 226, 177, 1);
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: bold;
+  color: rgba(225, 75, 56, 1);
+  text-align: center;
+  line-height: 85rpx;
+  margin: 0 auto;
+}
+
+.see_again_btn {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  margin-top: 24rpx;
+}
+
+.arror{
+  height: 24rpx;
+  width: 15rpx;
+  margin-left: 12rpx;
+  vertical-align: middle;
+}

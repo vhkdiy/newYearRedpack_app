@@ -48,9 +48,10 @@ const UploadFileManager = {
           console.log('上传进度', res.progress)
           console.log('已经上传的数据长度', res.totalBytesSent)
           console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
-          console.log("图片上传进度100%： " + imgUrl);
 
           if (res.progress >= 100) {
+            console.log("图片上传进度100%： " + imgUrl);
+
             delayNotifySuccussFunc && clearTimeout(delayNotifySuccussFunc);
 
             !isUploadToQiniuSuccess && (delayNotifySuccussFunc = setTimeout(() =>{
