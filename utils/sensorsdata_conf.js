@@ -2,7 +2,7 @@ const config = require('./config.js')
 var conf = {
   // 神策分析注册在APP全局函数中的变量名，在非app.js中可以通过getApp().sensors(你这里定义的名字来使用)
   name: 'sensors',
-  appid: 'wx3ea72e7f718afaec',
+  appid: 'wxd84fc97c17b064ae',
   // 神策分析数据接收地址
   server_url: config.testServer ? 'https://sensors.yingzhongshare.com/sa?project=maibuhuan_test' : 'https://sensors.yingzhongshare.com/sa?project=maibuhuan',
   //请求发送超时时间
