@@ -179,7 +179,14 @@ App({
           globeQuery.type = sceneObj.type;
         }
 
-        
+        if (!globeQuery.orderId && sceneObj.orderId) {
+          globeQuery.orderId = sceneObj.orderId;
+        }
+
+        if (!globeQuery.userId && sceneObj.userId) {
+          globeQuery.userId = sceneObj.userId;
+        }
+
       }
     }
   },

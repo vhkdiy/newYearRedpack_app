@@ -82,9 +82,13 @@ Page({
 
   
   onLoginSuccess(){
-    let options = getApp().globalData.options;
+    let options = getApp().globalData.query;
+
+
+    console.log("onLoginSuccess  options: ", options);
+
     if (options.orderId) {
-      if (options.openId && options.type == 2){
+      if ((options.openId || options.userId) && options.type == 2){
         //开红包页
         wx.navigateTo({
           url: `/pages/redpack/redpack?orderId=${options.orderId}&openid=${options.openId}&userId=${options.userId}`,
