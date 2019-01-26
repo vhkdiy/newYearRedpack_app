@@ -209,11 +209,11 @@ Page({
 
   //提交表单
   handleSubmit(e){
-    if(this.formCheckMoney() && this.formCheckNumber() && this.formCheckOrderId()){ 
+    // if(this.formCheckMoney() && this.formCheckNumber() && this.formCheckOrderId()){ 
       //支付 1获取支付信息，2调用支付接口
       requestPayment({
         orderId:this.data.orderId,
-        money:(parseFloat(this.data.money)+parseFloat(this.data.serviceMoney)),
+        money:this.data.money,
         number:this.data.number,
         success:(e)=>{
           console.log('success---',e);
@@ -223,7 +223,7 @@ Page({
           console.log('fail---',e)
         }
       });
-    }
+    // }
   },
 
   //支付成功回调
@@ -232,6 +232,9 @@ Page({
       url: '/pay/paySuccess',
       data: {
         orderId: this.data.orderId
+      },
+      success:function(result){
+        console.log('paysuccess------------------callback', result)
       }
     })
     //跳分享页
