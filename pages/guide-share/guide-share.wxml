@@ -1,9 +1,10 @@
 <view class="container">
-  <image class='share_tip_img' mode="aspectFill" src='https://img.xmiles.cn//cash_tutorial/wx_banner.png'></image>
+  <image class='share_tip_img' mode="aspectFill" src="{{order.imgUrl}}"></image>
 
 
   <view class='share_btn'>转发到好友或群聊
-    <button id="share_btn" open-type='share' class='fade_btn'></button>
+    <button wx:if="{{isPaySuccess}}" id="share_btn" open-type='share' class='fade_btn'></button>
+    <view wx:else class='fade_btn' bindtap='onShareBtnClick' ></view>
   </view>
 
   <view class='share_tip'>*只有你自己转发的卡片好友才能领取红包</view>

@@ -1,4 +1,5 @@
 
+<AcquireFormidView>
 <view class='container'>
   <!-- 头像 -->
   <image class='user-img' src='{{userImg}}'/>
@@ -34,3 +35,4 @@
     </view>
   </form>
 </view>
+</AcquireFormidView>

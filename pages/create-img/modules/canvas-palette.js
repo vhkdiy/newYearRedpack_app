@@ -24,9 +24,31 @@ export default class CanvasPalette {
           css: {
             top: '-3rpx',
             left: '0rpx',
-            color: "#F35543",
+            color: "#Fa5c47",
             width: `${bmpWidth + 3}rpx`,
             height: `${btmHeight + 3}rpx`,
+          },
+        },
+        {
+          //画背景
+          type: 'rect',
+          css: {
+            top: '319rpx',
+            left: '0rpx',
+            color: "#f35543",
+            width: `${bmpWidth + 3}rpx`,
+            height: `${btmHeight + 3}rpx`,
+          },
+        },
+        {
+          //画用户头像
+          type: 'image',
+          url: "https://img.xmiles.cn/caiziwanzhe/red_bg.png",
+          css: {
+            top: '319rpx',
+            left: '0',
+            width: `${bmpWidth + 3}rpx`,
+            height: `96rpx`,
           },
         },
         {

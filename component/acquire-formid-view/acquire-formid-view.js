@@ -70,10 +70,11 @@ Component({
      * 请求更新formid
      */
     requestUploadFormId(formId) {
+      console.log("请求更新formid: " + formId);
       request({
-        funid: 1004,
+        url:"/wx/formId/save",
         data: {
-          formid: [formId]
+          formId: formId
         },
         success: res => {
 

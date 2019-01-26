@@ -7,9 +7,7 @@ const shortToCompleteJSON = {
   "c": "channel", //渠道号
   "f": "from", //from
   "t": "type", //分享的类型，参考shareType.js
-  "p": "productId", //商品的id
-  "a": "oem_type", //商品的某个区分参数
-  "b": "oem_id", //商品的某个区分参数,好像兑换一定要用的
+  "o": "orderId",//
 };
 
 /**
