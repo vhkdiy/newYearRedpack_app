@@ -1,6 +1,7 @@
 // pages/redpack/component/bottom_dialog/bottom_dialog.js
 import { requestAppreciate } from './js/requestAppreciate.js';
 import { appreciate } from './js/appreciate.js';
+import loginUtils from './../../../../utils/login/login-utils.js'
 
 Component({
   /**
@@ -97,6 +98,14 @@ Component({
                 title: '赞赏成功',
                 icon: 'none'
               });
+              try {
+                getApp().sensors.track('admire', {
+                  "admire_money": money,
+                  "admire_order_user_id": wx.getStorageSync(loginUtils.getUserIdKey())
+                });
+              } catch (e) {
+
+              }
             },
             fail(res) {
               console.error(res);

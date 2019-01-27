@@ -127,6 +127,15 @@ Page({
               isShowType: 4,
               isShowData: data.record
             })
+            try{
+              getApp().sensors.track('get_redpack', {
+                "redpack_id": data.record.id,
+                "get_redpack_money": data.record.redPackMoney,
+                "redpack_order_user_id": wx.getStorageSync(loginUtils.getUserIdKey())
+              });
+            }catch(e){
+
+            }
           } else {
             wx.showToast({
               title: '领取失败',
