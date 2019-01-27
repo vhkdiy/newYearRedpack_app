@@ -30,6 +30,7 @@ Page({
 
 
     requestData().then((data) => {
+      console.error(data);
       this.setData({
         requestData : data,
         avatarUrl: data.avatarUrl,
@@ -41,6 +42,7 @@ Page({
       console.error(data);
     }).catch(e => {
       console.error("catch");
+      console.error(e);
     });
 
   },

@@ -21,36 +21,37 @@ let getSharemessage = function (){
   let shareIv = '';
   let app = getApp();
   let query = app.globalData.query;
-  wx.getShareInfo({
-    shareTicket: app.globalData.shareTicket || '',
-    success(res) {
-      shareId = res.encryptedData;
-      shareIv = res.iv;
-    },
-    fail(res) {
-    },
-    complete(res) {
-      request({
-        funid: 1005,
-        data: {
-          invitePhoneId: query && query.openId,
-          encryptedData: shareId,
-          iv: shareIv,
-          share_content: query && query.share_content,
-          share_content_id: query && query.share_id,
-          event: 'invite_success',
-          properties: app.sensors.getPresetProperties(),
-          share_type: query && query.type,
-          product_id: query.productId || '',
-          invite_userid: (app.globalData.sceneObj && app.globalData.sceneObj.userid)
-        },
-        success: (res) => { 
-          getApp().globalData.isFinishBindInviteRelations = true;
-          messageCenter.sendMessage(msgKey.BIND_INVITE_RELATIONS_SUCCESS);
-        }
-      })
-    }
-  });
+  console.log("getSharemessage");
+  // wx.getShareInfo({
+  //   shareTicket: app.globalData.shareTicket || '',
+  //   success(res) {
+  //     shareId = res.encryptedData;
+  //     shareIv = res.iv;
+  //   },
+  //   fail(res) {
+  //   },
+  //   complete(res) {
+  //     request({
+  //       funid: 1005,
+  //       data: {
+  //         invitePhoneId: query && query.openId,
+  //         encryptedData: shareId,
+  //         iv: shareIv,
+  //         share_content: query && query.share_content,
+  //         share_content_id: query && query.share_id,
+  //         event: 'invite_success',
+  //         properties: app.sensors.getPresetProperties(),
+  //         share_type: query && query.type,
+  //         product_id: query.productId || '',
+  //         invite_userid: (app.globalData.sceneObj && app.globalData.sceneObj.userid)
+  //       },
+  //       success: (res) => { 
+  //         getApp().globalData.isFinishBindInviteRelations = true;
+  //         messageCenter.sendMessage(msgKey.BIND_INVITE_RELATIONS_SUCCESS);
+  //       }
+  //     })
+  //   }
+  // });
   }
 
 export default {
