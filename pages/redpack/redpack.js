@@ -48,8 +48,12 @@ Page({
     this.setData({
       orderId : options.orderId,
       userId: options.userId,
-      openId: options.openId
-
+      openId: options.openId,
+      requestData : {
+        orderId: options.orderId,
+        openId: options.openId,
+        phead: phead
+      }
     })
     this.requestData();
     this.getAppreciate();
@@ -87,7 +91,8 @@ Page({
           redPackMoney: data.redPackMoney,
           vieRecords: data.vieRecords,
           imgUrl: data.order.imgUrl,
-          authorized: data.user.authorized
+          authorized: data.user.authorized,
+
         })
       }).catch(e => {
         console.error("catch");
@@ -100,6 +105,50 @@ Page({
     });
 
   },
+  requestRedPack : function(id){
+    let that = this;
+    requestRedPack(that, "/redPack", { "orderId": this.data.orderId, "redPackIndex": id }).then(data => {
+      if (data.status == 1) {
+        this.setData({
+          isShowType: 1
+        })
+      } else if (data.status == 2) {
+        //没猜中还可以分享，调起微信分享
+        this.setData({
+          isShowType: 2
+        })
+      } else if (data.status == 3) {
+        //没猜中不可分享
+        this.setData({
+          isShowType: 3
+        })
+      } else if (data.status == 4) {
+        //猜中了
+        this.setData({
+          isShowType: 4,
+          isShowData: data.record
+        })
+        try {
+          getApp().sensors.track('get_redpack', {
+            "redpack_id": data.record.id,
+            "get_redpack_money": data.record.redPackMoney,
+            "redpack_order_user_id": wx.getStorageSync(loginUtils.getUserIdKey())
+          });
+        } catch (e) {
+
+        }
+      } else {
+        wx.showToast({
+          title: '领取失败',
+          icon: 'none'
+        })
+      }
+      this.requestData();
+
+    }).catch(e => {
+      console.error(e);
+    })
+  },
   //点击红包
   clickRedPack : function(e){
     if (this.data.authorized){
@@ -107,52 +156,18 @@ Page({
       let that = this;
       if (this.data.status == 6) {
         console.error("点击红包");
-        requestRedPack(that, "/redPack", { "orderId": this.data.orderId, "redPackIndex": e.currentTarget.id }).then(data => {
-          if (data.status == 1) {
-            this.setData({
-              isShowType : 1
-            })
-          } else if (data.status == 2) {
-            //没猜中还可以分享，调起微信分享
-            this.setData({
-              isShowType: 2
-            })
-          } else if (data.status == 3) {
-            //没猜中不可分享
-            this.setData({
-              isShowType: 3
-            })
-          } else if (data.status == 4) {
-            //猜中了
-            this.setData({
-              isShowType: 4,
-              isShowData: data.record
-            })
-            try{
-              getApp().sensors.track('get_redpack', {
-                "redpack_id": data.record.id,
-                "get_redpack_money": data.record.redPackMoney,
-                "redpack_order_user_id": wx.getStorageSync(loginUtils.getUserIdKey())
-              });
-            }catch(e){
-
-            }
-          } else {
-            wx.showToast({
-              title: '领取失败',
-              icon: 'none'
-            })
-          }
-          this.requestData();
-
-        }).catch(e => {
-          console.error(e);
-        })
+        this.requestRedPack(e.currentTarget.id);
       } else if (this.data.status == 5) {
         this.setData({
           isShowType: 2
         })
+        // this.requestRedPack(e.currentTarget.id);
+      } else if (this.data.status == 4) {
+        this.setData({
+          isShowType: 3
+        })
       }
+
     }else{
 
     }

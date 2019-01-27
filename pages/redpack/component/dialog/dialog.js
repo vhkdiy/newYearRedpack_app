@@ -20,6 +20,14 @@ Component({
           isShowData: newVal
         })
       }
+    },
+    requestData : {
+      type : Object,
+      observer: function (newVal, oldVal) {
+        this.setData({
+          requestData: newVal
+        })
+      }
     }
   },
 
@@ -28,7 +36,8 @@ Component({
    */
   data: {
     isShowType : 0,
-    isShowData : null
+    isShowData : null,
+    requestData : null
   },
 
   /**
@@ -41,13 +50,16 @@ Component({
       })
     },
     shareclick : function(){
+      console.error(this.data.requestData);
       let that = this;
       request({
         url: "/share",
+        data: this.data.requestData,
         method: 'POST',
         success: function (res) {
           console.log(res);
-          that.triggerEvent('shareclick')
+          that.triggerEvent('shareclick');
+          that.closePOP();
         },
         fail: function (e) {
         }
