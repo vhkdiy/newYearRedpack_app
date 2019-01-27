@@ -1,5 +1,6 @@
 // pages/my/my.js
 import getUserInfo from './../../utils/user/get-user-info.js';
+import router from './../../utils/router.js'
 Page({
 
   /**
@@ -85,9 +86,12 @@ Page({
       })
     }
     if (value == "question") {
-      wx.navigateTo({
-        url: '/pages/question/question',
-      })
+      router.webview(
+        "常见问题",
+        host.replace(/xmiles.cn/, "yingzhongshare.com") +
+        "frontend_step_service/views/step/normalQuestion1/normalQuestion1.html?v=" +
+        new Date().getTime()
+      );
     }
   }
 
