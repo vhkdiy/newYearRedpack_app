@@ -122,14 +122,19 @@ Page({
   },
   //点击我自己发送出去的纪录
   sendItemClick : function(e){
-    console.log(e.currentTarget.dataset.data);
     let data = e.currentTarget.dataset.data;
+    console.log(`/pages/redpack/redpack?orderId=${data.id}&openid=${phead.phoneid}&userId=${wx.getStorageSync(loginUtils.getUserIdKey())}`);
     wx.navigateTo({
       url: `/pages/redpack/redpack?orderId=${data.id}&openid=${phead.phoneid}&userId=${wx.getStorageSync(loginUtils.getUserIdKey())}`,
     })
   },
   //点击我收到的记录
   receiveItemClick : function(e){
-    console.log(e.currentTarget.dataset.data);
+    let data = e.currentTarget.dataset.data;
+    console.log(data);
+    console.log(`/pages/redpack/redpack?orderId=${data.orderId}&openid=${data.redPackSendOrder.user.openId}&userId=${data.userId}`);
+    wx.navigateTo({
+      url: `/pages/redpack/redpack?orderId=${data.orderId}&openid=${data.redPackSendOrder.user.openId}&userId=${data.userId}`,
+    })
   }
 })

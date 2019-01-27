@@ -74,7 +74,8 @@ Page({
       let url = `/redPack/${this.data.orderId}?openId=${this.data.openId}&userId=${this.data.userId}`;
       console.error(url);
       requestData(this, url).then((data) => {
-        console.log(data);
+        console.log("红包数据");
+        console.error(data);
         this.setData({
           title: data.title,
           subTitle: data.subTitle,
@@ -196,13 +197,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    console.error(this.data.vieRecords[0].greeting);
     // return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId});
     return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId}`, null, {
       page: "红包分享页",
       share_module: "红包页面分享"
-    },
-      this.data.vieRecords && this.data.vieRecords.length > 0 && this.data.vieRecords[0].greeting);
+    },"恭喜发财");
+      // this.data.vieRecords && this.data.vieRecords.length > 0 && this.data.vieRecords[0].greeting);
   }
 
 
