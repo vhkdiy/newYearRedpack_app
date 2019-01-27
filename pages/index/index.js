@@ -329,7 +329,7 @@ Page({
     //数量
     let money = this.data.money;
     let number = this.data.number;
-    number = parse(number);
+    number = parseInt(number);
 
     if (checkNull && !number) {
       this.showErrorMsg('请输入数量');
