@@ -256,7 +256,7 @@ Page({
       data: {
         orderId: this.data.orderId
       },
-      success:function(result){
+      success:(result) => {
         console.log('paysuccess------------------callback', result);
         //清空数据
         this.setData({
