@@ -2,6 +2,7 @@ import UploadFileManager from "../../utils/upload/UploadFileManager";
 import CanvasPalette from './modules/canvas-palette.js';
 import wxPromisify from './../../utils/wx-promisify/wx-promisify.js';
 const wxSaveImageToPhotosAlbum = wxPromisify(wx.saveImageToPhotosAlbum);
+import regeneratorRuntime from './../../utils/regenerator-runtime/runtime.js';;
 
 import shareType from './../../utils/share-type.js';
 import sceneUtil from './../../utils/share/scene-util.js';
@@ -26,7 +27,7 @@ Page({
   onLoad: function(options) {
     const extraData = JSON.parse(decodeURIComponent(options.data));
     this.setData({
-      extraData : JSON.parse(decodeURIComponent(options.data)),
+      extraData: JSON.parse(decodeURIComponent(options.data)),
     });
 
     this.shareSceneStr = sceneUtil.creatQrShareScene({
@@ -55,38 +56,53 @@ Page({
       title: '图片生成中',
       mask: true,
     });
+    const extraData = this.data.extraData;
 
-    Promise.all([
-      requestQrcode('', this.shareSceneStr),
-      getUserInfo(),
-    ]).then((datas) => {
+    // Promise.all([
+    //   getUserInfo(),
+    //   requestQrcode('', this.shareSceneStr),
+    // ]).then((datas) => {
+
+    //   this.setData({
+    //     template: new CanvasPalette({
+    //       userName: datas[1].nickName,
+    //       userIcon: datas[1].avatarUrl,
+    //       contentImg: extraData.imgUrl,
+    //       qrCodeImg: datas[0],
+    //     }).palette(),
+    //   });
+
+    // }).catch((errMsg) => {
+    //   console.error("获取菊花二维码失败了：" + JSON.stringify(errMsg));
+    //   this.handleError();
+    // });
+
+    const f = async() => {
+      let userInfo = {};
+      let qrCodeUrl = '';
+      try{
+        userInfo = await getUserInfo();
+      } catch(e) {
+
+      }
+      try{
+        qrCodeUrl = await requestQrcode('', this.shareSceneStr);
+      } catch(e) {
+
+      }
 
       this.setData({
         template: new CanvasPalette({
-          userName: datas[1].nickName,
-          userIcon: datas[1].avatarUrl,
+          userName: userInfo && userInfo.nickName,
+          userIcon: userInfo && userInfo.avatarUrl,
           contentImg: extraData.imgUrl,
-          qrCodeImg: datas[0],
+          qrCodeImg: qrCodeUrl,
         }).palette(),
       });
+    }
 
-    }).catch((errMsg) => {
-      console.error("获取菊花二维码失败了：" + JSON.stringify(errMsg));
-      this.handleError();
-    });
+    f();
 
-    const extraData = this.data.extraData;
-
-
-
-    this.setData({
-      template: new CanvasPalette({
-        userName: extraData.nickName,
-        userIcon: extraData.avatarUrl,
-        contentImg: extraData.imgUrl,
-        qrCodeImg: "https://img.xmiles.cn//discovery_service_toutiao_videoprize.png",
-      }).palette(),
-    });
   },
 
   onImgOK(e) {
@@ -115,8 +131,8 @@ Page({
     }
 
     wxSaveImageToPhotosAlbum({
-      filePath: imagePath,
-    })
+        filePath: imagePath,
+      })
       .then(() => {
         wx.showToast({
           title: '保存图片成功！',
