@@ -100,6 +100,7 @@ Page({
 
 
     console.log("onLoginSuccess  options: ", options);
+    let showOldData = false;
 
     if (options.orderId) {
       if ((options.openId || options.userId) && options.type == 2){
@@ -110,7 +111,7 @@ Page({
         wx.setStorageSync("newUserGuidPage", true)
       }else{
         //数据回显
-        this.requestPageData(options.orderId)
+        showOldData = true;
       }
     }else{
       //判断是否是新用户
@@ -121,8 +122,9 @@ Page({
         })
         wx.setStorageSync("newUserGuidPage",true)
       }
-      this.requestPageData();
     }
+
+    this.requestPageData( showOldData?options.orderId:'')
   },
 
 
@@ -327,6 +329,7 @@ Page({
     //数量
     let money = this.data.money;
     let number = this.data.number;
+    number = parse(number);
 
     if (checkNull && !number) {
       this.showErrorMsg('请输入数量');
