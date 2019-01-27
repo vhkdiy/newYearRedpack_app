@@ -1,5 +1,8 @@
 // pages/other/other.js
 import {request} from './../../utils/request.js'
+import share from './../../utils/share.js';
+
+
 Page({
 
   /**
@@ -75,6 +78,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return share.get("/pages/index/index", "", getApp(), {
+      page: '更多好玩',
+      share_module: "右上角分享"
+    });
   }
 })
