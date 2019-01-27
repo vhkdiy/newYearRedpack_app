@@ -10,11 +10,11 @@ var username = "好友";   //默认
 var shareId = '';
 var utm_source, utm_medium, utm_campaign, utm_content, utm_term;
 
-var title = '[财神@我]2019年看看你的财运在哪里，一夜暴富的机会别错过了';
-var imageUrl = 'https://img.xmiles.cn/fortune_telling/shareImage.png';
+var title = '[新年红包] $userName给你发了一个红包';
+var imageUrl = 'https://img.xmiles.cn/newYearRedpack/redPack/redPackBg.png';
 
 var title1 = '[新年红包] $userName给你发了一个红包【$redpackTitle】';
-var imageUrl1 = 'https://img.xmiles.cn/caiziwanzhe/basicprofile.png';
+var imageUrl1 = 'https://img.xmiles.cn/newYearRedpack/redPack/redPackBg.png';
 
 
 var getPath = function (path_url,param, type, shareId, title, button) {
@@ -97,7 +97,7 @@ module.exports = {
 
   get: function (path_url = "/pages/index/index", param, app, shareContent, innerImageUrl, goodLuck) {
     //只是执行了name的替换
-    title = title.replace(/\$name/g,username);
+    title = title.replace(/\$userName/g,username);
     title = title.replace(/\$goodLuck/g, goodLuck || "");
     if (app) {
       app.sensors.track('Share', Object.assign({
