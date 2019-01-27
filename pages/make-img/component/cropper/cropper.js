@@ -350,6 +350,13 @@ Component({
         count: 1, //只能选择一张
         success: (res) => {
           const filePath = res.tempFilePaths[0];
+          if (filePath.includes('.gif')) {
+              wx.showToast({
+                title: '不支持gif图片',
+                icon: "none",
+              });
+              return;
+          }
           this.initImg(filePath);
         },
       });
