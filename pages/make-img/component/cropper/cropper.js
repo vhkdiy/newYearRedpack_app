@@ -60,7 +60,7 @@ Component({
       bottom: -6,
     },
     inputValue: '',
-    keyboardHeight: 0,
+    keyboardHeight: 470,
     isShowInput: false,
     canvasScale: 2, //canvas缩放的比
     template: null,
@@ -387,9 +387,9 @@ Component({
         keyboardHeight: keyboardHeight,
       });
 
-      wx.pageScrollTo({
-        scrollTop: 0,
-      });
+      // wx.pageScrollTo({
+      //   scrollTop: 0,
+      // });
     },
 
     //失去焦点
