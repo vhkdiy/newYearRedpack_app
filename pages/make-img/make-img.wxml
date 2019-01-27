@@ -1,3 +1,5 @@
+<image class='top_bg' src='./images/top_bg.png'></image>
+
 <view class="canvas_container">
   <cropper id="cropper" bind:getCropperImg="getCropperImg" topImg="{{topImg}}" url="{{ originUrl }}" ratio="{{ ratio }}" avatarUrl="{{avatarUrl}}"></cropper>
 </view>
