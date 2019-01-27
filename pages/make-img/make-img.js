@@ -103,6 +103,15 @@ Page({
       count: 1, //只能选择一张
       success: (res) => {
         const filePath = res.tempFilePaths[0];
+        
+        if (filePath.includes('.gif')) {
+          wx.showToast({
+            title: '不支持gif图片',
+            icon: "none",
+          });
+          return;
+        }
+
         const templates = this.data.templates;
 
         for (let i = 0, len = templates.length; i < len; i++) {

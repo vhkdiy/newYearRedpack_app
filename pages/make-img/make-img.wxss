@@ -3,6 +3,17 @@ page {
   background: hsl(6, 88%, 61%);
   padding-bottom: 158rpx;
   box-sizing: border-box;
+  position: relative;
+  width: 100%;
+}
+
+.top_bg{
+  position: absolute;
+  height: 399rpx;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
 
 .canvas_container {

@@ -1,6 +1,10 @@
+<image class='top_bg' src='./images/top_bg.png'></image>
+
 <view class="canvas_container">
   <cropper id="cropper" bind:getCropperImg="getCropperImg" topImg="{{topImg}}" url="{{ originUrl }}" ratio="{{ ratio }}" avatarUrl="{{avatarUrl}}"></cropper>
 </view>
+
+<AcquireFormidView>
 
 <view class='chose_redpack_container'>
   <view  class='chose_redpack_tip'>选一款红包封面，将红包藏在其中</view>
@@ -41,3 +45,5 @@
 <view class='ok_btn' bindtap='createNewImg'>确定</view>
 
 <GuideNewUser wx:if="{{isShowNewUserGuide}}" />
+
+</AcquireFormidView>

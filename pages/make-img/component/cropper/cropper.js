@@ -60,7 +60,7 @@ Component({
       bottom: -6,
     },
     inputValue: '',
-    keyboardHeight: 0,
+    keyboardHeight: 470,
     isShowInput: false,
     canvasScale: 2, //canvas缩放的比
     template: null,
@@ -350,6 +350,13 @@ Component({
         count: 1, //只能选择一张
         success: (res) => {
           const filePath = res.tempFilePaths[0];
+          if (filePath.includes('.gif')) {
+              wx.showToast({
+                title: '不支持gif图片',
+                icon: "none",
+              });
+              return;
+          }
           this.initImg(filePath);
         },
       });
@@ -387,9 +394,9 @@ Component({
         keyboardHeight: keyboardHeight,
       });
 
-      wx.pageScrollTo({
-        scrollTop: 0,
-      });
+      // wx.pageScrollTo({
+      //   scrollTop: 0,
+      // });
     },
 
     //失去焦点
