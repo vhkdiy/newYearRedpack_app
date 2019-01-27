@@ -134,7 +134,7 @@ Page({
     console.log(data);
     console.log(`/pages/redpack/redpack?orderId=${data.orderId}&openid=${data.redPackSendOrder.user.openId}&userId=${data.userId}`);
     wx.navigateTo({
-      url: `/pages/redpack/redpack?orderId=${data.orderId}&openid=${data.redPackSendOrder.user.openId}&userId=${data.userId}`,
+      url: `/pages/redpack/redpack?orderId=${data.redPackSendOrder.id}&openid=${data.redPackSendOrder.user.openId}&userId=${data.userId}`,
     })
   }
 })
