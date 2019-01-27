@@ -23,8 +23,8 @@ Page({
     },
 
 
-    userImg:'//img.xmiles.cn//cheated-register/top_banner.png',        //头像
-    compositePicture:'//img.xmiles.cn//cheated-register/top_banner.png',  //分享图
+    userImg:'',        //头像
+    compositePicture:'',  //分享图
 
     orderId:'', 
 
@@ -182,34 +182,42 @@ Page({
 
 
   //金额失去焦点
-  handleMoneyBlur(e){
-    this.setData({
-      money: e.detail.value
-    },()=>{
-      if(this.formCheckMoney()){
-        let money = parseFloat(this.data.money).toFixed(2)*100/100;
-        this.setData({
-          money,
-          serviceMoney:  Math.ceil((money*parseFloat(this.data.serviceRate))*100)/100
-        })
-      }else{
-        this.setData({serviceMoney: '0.00'})
-      }
-    })
+  handleMoneyChange(e){
+    console.log(e.detail.value)
+    let value = e.detail.value;
+    if((value.match(/^([0-9]+)(\.[0-9]{0,2})?$/) || value == '') && value.length<=8){
+      let money = parseFloat(value) || 0
+      this.setData({
+        money: value,
+        serviceMoney: Math.ceil((money * parseFloat(this.data.serviceRate)) * 100) / 100
+      }, () => {
+        if(value != ''){
+          this.formCheckMoney() && this.formCheckNumber()
+        }
+      })
+    }else{
+      this.setData({
+        money: this.data.money
+      })
+    }
+
   },
 
   //数量失去焦点
-  handleNumberBlur(e) {
+  handleNumberChange(e) {
+    let value = e.detail.value;
     this.setData({
       number: e.detail.value
     }, () => {
-      this.formCheckNumber()
+      if (value != '') {
+        this.formCheckNumber()
+      }
     })
   },
 
   //提交表单
   handleSubmit(e){
-    if(this.formCheckMoney() && this.formCheckNumber() && this.formCheckOrderId()){ 
+    if (this.formCheckMoney(true) && this.formCheckNumber(true) && this.formCheckOrderId()){ 
       //支付 1获取支付信息，2调用支付接口
       requestPayment({
         orderId:this.data.orderId,
@@ -247,12 +255,19 @@ Page({
         orderId: this.data.orderId
       },
       success:function(result){
-        console.log('paysuccess------------------callback', result)
+        console.log('paysuccess------------------callback', result);
+        //清空数据
+        this.setData({
+          orderId:'',
+          money:'',
+          number:''
+        })
+
+        //跳分享页
+        wx.navigateTo({
+          url: `/pages/guide-share/guide-share?orderId=${this.data.orderId}`,
+        })
       }
-    })
-    //跳分享页
-    wx.navigateTo({
-      url: `/pages/guide-share/guide-share?orderId=${this.data.orderId}`,
     })
   },
 
@@ -288,11 +303,11 @@ Page({
     })
   },
 
-  formCheckMoney(){
+  formCheckMoney(checkNull){
     let flag = false;
     //赏金判断
     let money = this.data.money;
-    if(!money){
+    if (checkNull && !money){
       this.showErrorMsg('请输入赏金');
       return flag;
     }
@@ -307,13 +322,13 @@ Page({
     }
     return flag;
   },
-  formCheckNumber(){
+  formCheckNumber(checkNull){
     let flag = false;
     //数量
     let money = this.data.money;
     let number = this.data.number;
 
-    if (!number) {
+    if (checkNull && !number) {
       this.showErrorMsg('请输入数量');
       return flag;
     }
@@ -336,5 +351,5 @@ Page({
     return flag
   }
 
-  
+
 })
