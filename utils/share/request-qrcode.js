@@ -17,7 +17,7 @@ const requestQrcode = function (path, scene = sceneUtils.creatQrShareScene(), wi
         "width": width,
       },
       success: (data) => {
-        resolve(imgUtils.getTinyImg(data.url));
+        resolve(imgUtils.getTinyImg(data.codeUrl));
       },
       fail: (e) => {
         reject(e);

@@ -180,6 +180,9 @@ module.exports = {
     const page = (shareContent && shareContent.page) || "";
     const share_module = (shareContent && shareContent.share_module) || "";
 
+    wx.showShareMenu({
+      withShareTicket: true,
+    });
 
     return {
       ...params,

@@ -8,7 +8,7 @@ const GuideDatas = [{
     radius: 2500,
     guideImg: "./images/guide_1.png",
     guideImgTop: 290,
-    guideImgLeft: 34,
+    guideImgLeft: 94,
     guideImgHeight: 99,
   },
   {

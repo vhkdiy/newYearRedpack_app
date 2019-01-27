@@ -1,3 +1,5 @@
+import ImageUtils from './../../../utils/img-utils.js';
+
 const bmpWidth = 750,
   btmHeight = 1030,
   centerX = bmpWidth / 2,
@@ -10,7 +12,7 @@ export default class CanvasPalette {
     this.qrCodeImg = data.qrCodeImg;
     this.userName = data.userName;
     this.userInviteTip = (this.userName || '').replace(/(.{10})(?:.*)/, "$1...") + '发了一个拜年红包';
-    this.contentImg = data.contentImg;
+    this.contentImg = ImageUtils.completeImgUrl(data.contentImg);
   }
 
   palette() {
@@ -41,7 +43,7 @@ export default class CanvasPalette {
           },
         },
         {
-          //画用户头像
+          //背景
           type: 'image',
           url: "https://img.xmiles.cn/caiziwanzhe/red_bg.png",
           css: {
