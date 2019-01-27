@@ -27,6 +27,7 @@ Page({
       success:(result)=>{
         this.setData({
           adArr: result.adJson && result.adJson.ad_list,
+          unitId: result.gdtId
         })
       },
     })
