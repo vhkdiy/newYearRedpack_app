@@ -1,5 +1,4 @@
 import UploadImg from './modules/uploadTempUrl.js';
-import ChoseRedpackData from './modules/ChoseRedpackData.js';
 import requestData from './modules/requestData.js';
 //消息中心
 import messageCenter from './../../utils/messagecenter/message_center.js';
@@ -19,7 +18,7 @@ Page({
     ratio: 1 / 1,
     originUrl: null,
     topImg: "",
-    choseRedpackData: ChoseRedpackData,
+    choseRedpackData: [],
     choseRedpackIndex: -1,
     marqueeIndex: -1,
     templates: [],
@@ -45,7 +44,8 @@ Page({
         this.setData({
           templates: data.templates,
           topImg: data.templates[0].imgUrl,
-          avatarUrl: avatarUrl
+          avatarUrl: avatarUrl,
+          choseRedpackData: data.redPackTemplates,
         });
 
         this.checkShowNewUserGuide();
