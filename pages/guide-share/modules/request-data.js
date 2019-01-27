@@ -13,7 +13,6 @@ const requestData = (orderId) => {
       },
       fail: (e) => {
         j(e);
-
         wx.showToast({
           title: e && e.msg || "服务器异常，请稍后重试",
           icon: "none",

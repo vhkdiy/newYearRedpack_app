@@ -168,7 +168,7 @@ Page({
     let openId = wx.getStorageSync(loginUtils.getOpenIdKey());
     let userId = wx.getStorageSync(loginUtils.getUserIdKey());
     wx.navigateTo({
-      url: `/pages/redpack/redpack?orderId=1&openid=${openId}&userId=${userId}`,
+      url: `/pages/redpack/redpack?orderId=1&openId=${openId}&userId=${userId}`,
     })
   },
 

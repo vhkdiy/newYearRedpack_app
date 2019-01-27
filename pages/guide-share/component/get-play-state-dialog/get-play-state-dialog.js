@@ -67,7 +67,6 @@ Component({
       this.setData({
         requesting: true,
       });
-
       requestPayState(Conts.orderId).then((data) => {
         if (data.status == 1) {
           setTimeout(() => {
@@ -81,7 +80,6 @@ Component({
         }
 
       }).catch(() => {
-
       });
     },
 

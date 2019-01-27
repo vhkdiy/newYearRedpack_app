@@ -40,8 +40,8 @@
       </view>
       <view class="bottomBlock"></view>
     </swiper-item>
-    <swiper-item class="list" wx:for="{{requestData.redPackVieRecordList}}" wx:key="redPack{{index}}" data-data="{{item}}" bindtap="receiveItemClick">
-      <view class="sendItem">
+    <swiper-item class="list" >
+      <view class="sendItem"  wx:for="{{requestData.redPackVieRecordList}}" wx:key="redPack{{index}}" data-data="{{item}}" bindtap="receiveItemClick">
         <image class="icon" src="{{item.redPackSendOrder.user.avatarUrl}}" />
         <view class="left_item">
           <view class="blessing">{{item.redPackSendOrder.greeting || '恭喜发财'}}</view>
@@ -55,5 +55,5 @@
       <view class="bottomBlock"></view>
     </swiper-item>
   </swiper>
-  <view class="tip">常见问题</view>
+  <view class="tip" bindtap="clickQuestion">常见问题</view>
 

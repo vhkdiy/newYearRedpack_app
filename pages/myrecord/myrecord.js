@@ -1,4 +1,5 @@
 // pages/myrecord/myrecord.js
+import router from './../../utils/router.js';
 import { requestData } from './js/requestData.js';
 import { phead } from './../../utils/phead.js'
 import loginUtils from './../../utils/login/login-utils.js'
@@ -136,5 +137,12 @@ Page({
     wx.navigateTo({
       url: `/pages/redpack/redpack?orderId=${data.redPackSendOrder.id}&openId=${data.redPackSendOrder.user.openId}&userId=${data.redPackSendOrder.userId}`,
     })
+  },
+  clickQuestion : function(){
+    router.webview(
+      "常见问题",
+      "https://ibestfanli.com/frontend_step_service/views/step/normalQuestion1/normalQuestion1.html?v=" +
+      new Date().getTime()
+    );
   }
 })

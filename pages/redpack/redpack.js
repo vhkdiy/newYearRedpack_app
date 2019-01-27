@@ -38,7 +38,8 @@ Page({
     isShowData : null,    //红包数据
 
     isShowBottomDialogType : 0,
-    isShowBottomData : null //弹窗数据
+    isShowBottomData : null, //弹窗数据
+    redPackTemplates : []   //红包下发的图片
   },
 
   /**
@@ -92,6 +93,7 @@ Page({
           vieRecords: data.vieRecords,
           imgUrl: data.order.imgUrl,
           authorized: data.user.authorized,
+          redPackTemplates: data.redPackTemplates
 
         })
       }).catch(e => {

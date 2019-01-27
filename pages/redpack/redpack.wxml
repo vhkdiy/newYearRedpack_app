@@ -12,11 +12,13 @@
         <view class="paddingView">
           <image class="userImage" mode="widthFix" src="{{imgUrl}}"/>
         </view>
-        <block wx:if="{{status == 5 || status == 6 || status == 4}}">
-          <button class="getUserInfoBtn" open-type="{{authorized ? '' :'getUserInfo'}}">
-            <image id="0" class="redpack1" src="./image/redpack0.png" bindtap="clickRedPack" />
-          </button>
-          <button class="getUserInfoBtn" open-type='getUserInfo'>
+        <view wx:if="{{status == 5 || status == 6 || status == 4}}">
+          <block wx:for="{{redPackTemplates}}" wx:key="{{index}}">
+            <button  class="getUserInfoBtn" open-type="{{authorized ? '' :'getUserInfo'}}">
+              <image id="{{index}}" class="redpack{{index + 1}}" src="{{item.imgUrl}}" bindtap="clickRedPack" />
+            </button>
+          </block>
+          <!-- <button class="getUserInfoBtn" open-type='getUserInfo'>
             <image id="1" class="redpack2" src="./image/redpack1.png" bindtap="clickRedPack" />
           </button>
           <button class="getUserInfoBtn" open-type='getUserInfo'>
@@ -24,8 +26,8 @@
           </button>
           <button class="getUserInfoBtn" open-type='getUserInfo'>
             <image id="3" class="redpack4" src="./image/redpack3.png" bindtap="clickRedPack" />
-          </button>
-        </block>
+          </button> -->
+        </view>
       </view>
       <view class="btn" wx:if="{{status ==  1}}">红包已经失效了</view>
       <view class="monry" wx:if="{{status ==  2}}">共<test class="num">{{redPackMoney}}元</test><text class="money_tip">(已领完)</text></view>
