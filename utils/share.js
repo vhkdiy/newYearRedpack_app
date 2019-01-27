@@ -14,7 +14,7 @@ var title = '[财神@我]2019年看看你的财运在哪里，一夜暴富的机
 var imageUrl = 'https://img.xmiles.cn/fortune_telling/shareImage.png';
 
 var title1 = '[新年红包] $userName给你发了一个红包【$redpackTitle】';
-var imageUrl1 = 'https://img.xmiles.cn/wechat/shareicon.png';
+var imageUrl1 = 'https://img.xmiles.cn/caiziwanzhe/basicprofile.png';
 
 
 var getPath = function (path_url,param, type, shareId, title, button) {
