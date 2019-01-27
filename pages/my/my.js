@@ -88,8 +88,7 @@ Page({
     if (value == "question") {
       router.webview(
         "常见问题",
-        host.replace(/xmiles.cn/, "yingzhongshare.com") +
-        "frontend_step_service/views/step/normalQuestion1/normalQuestion1.html?v=" +
+        "https://ibestfanli.com/frontend_step_service/views/step/normalQuestion1/normalQuestion1.html?v=" +
         new Date().getTime()
       );
     }
