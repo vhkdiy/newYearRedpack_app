@@ -80,7 +80,7 @@ Page({
             money: data.order.redPackMoney,
             number: data.order.redPackCount,
             serviceRate: data.serviceCharge,
-            serviceMoney: Math.ceil((money * parseFloat(serviceRate)) * 100) / 100
+            serviceMoney: Math.ceil((money * parseFloat(serviceRate)/100) * 100) / 100
           })
         }else{
           this.setData({
@@ -191,7 +191,7 @@ Page({
       let money = parseFloat(value) || 0
       this.setData({
         money: value,
-        serviceMoney: Math.ceil((money * parseFloat(this.data.serviceRate)) * 100) / 100
+        serviceMoney: Math.ceil((money * parseFloat(this.data.serviceRate)/100) * 100) / 100
       }, () => {
         if(value != ''){
           this.formCheckMoney();
