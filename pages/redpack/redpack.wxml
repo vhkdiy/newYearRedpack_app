@@ -12,7 +12,7 @@
         <view class="paddingView">
           <image class="userImage" mode="widthFix" src="{{imgUrl}}"/>
         </view>
-        <block wx:if="{{status == 5 || status == 6}}">
+        <block wx:if="{{status == 5 || status == 6 || status == 4}}">
           <button class="getUserInfoBtn" open-type="{{authorized ? '' :'getUserInfo'}}">
             <image id="0" class="redpack1" src="./image/redpack0.png" bindtap="clickRedPack" />
           </button>
