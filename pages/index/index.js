@@ -105,7 +105,7 @@ Page({
       if ((options.openId || options.userId) && options.type == 2){
         //开红包页
         wx.navigateTo({
-          url: `/pages/redpack/redpack?orderId=${options.orderId}&openid=${options.openId}&userId=${options.userId}`,
+          url: `/pages/redpack/redpack?orderId=${options.orderId}&openId=${options.openId}&userId=${options.userId}`,
         })
         wx.setStorageSync("newUserGuidPage", true)
       }else{
