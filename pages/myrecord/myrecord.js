@@ -132,9 +132,9 @@ Page({
   receiveItemClick : function(e){
     let data = e.currentTarget.dataset.data;
     console.log(data);
-    console.log(`/pages/redpack/redpack?orderId=${data.orderId}&openId=${data.redPackSendOrder.user.openId}&userId=${data.userId}`)
+    console.log(`/pages/redpack/redpack?orderId=${data.redPackSendOrder.id}&openId=${data.redPackSendOrder.user.openId}&userId=${data.redPackSendOrder.userId}`)
     wx.navigateTo({
-      url: `/pages/redpack/redpack?orderId=${data.orderId}&openId=${data.redPackSendOrder.user.openId}&userId=${data.userId}`,
+      url: `/pages/redpack/redpack?orderId=${data.redPackSendOrder.id}&openId=${data.redPackSendOrder.user.openId}&userId=${data.redPackSendOrder.userId}`,
     })
   }
 })
