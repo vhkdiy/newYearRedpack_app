@@ -18,7 +18,12 @@ var imageUrl1 = 'https://img.xmiles.cn/wechat/shareicon.png';
 
 
 var getPath = function (path_url,param, type, shareId, title, button) {
-  var path = path_url + '?openId=' + phead.phoneid;
+  let sufix = '?';
+  if (path_url.includes("?")) {
+    sufix = "&"
+  }
+  var path = path_url + `${sufix}openId=${phead.phoneid}&userId=${phead.userId}`;
+
   if (utm_source) {
     path += '&utm_source=' + utm_source;
   }
