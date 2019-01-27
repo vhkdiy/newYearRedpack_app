@@ -71,12 +71,12 @@ let login = function (forceUpdate) {
         method : 'POST',
         data: {
           code: res.code,
-          share_pathway: globalData.scene,
-          share_type: query && query.type,
-          invest_openid: query && query.openId,
-          query: query,
-          invite_userid: globalData.sceneObj && globalData.sceneObj.userid,//菊花二维码进来的传userid
-          options: globalData.options
+          sharePathway : globalData.scene,
+          shareType: query && query.type,
+          investOpenid: query && query.openId,
+          // query: query,
+          queryStr: JSON.stringify(query),
+          investUserId: globalData.sceneObj && globalData.sceneObj.userId,//菊花二维码进来的传userid
         },
         withoutLogin: true,
         success: res => {

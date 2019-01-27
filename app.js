@@ -63,7 +63,7 @@ App({
     userid: null,
     isFinishBindInviteRelations:false,
     sceneObj: {
-      userid: null,//邀请者的userid
+      userId: null,//邀请者的userid
       type: null,//邀请类型
     },
   },
