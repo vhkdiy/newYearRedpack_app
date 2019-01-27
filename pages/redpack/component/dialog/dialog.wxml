@@ -15,7 +15,7 @@
     <image class="share_image"  src="../img/icon.png"/>
     <view class="title">猜错了</view>
     <view class="subtitle">还有一次机会</view>
-    <view class="again">再试一次</view>
+    <view class="again" bindtap='closePOP'>再试一次</view>
   </view>
   <view class="content2" wx:if="{{isShowType == 3 || isShowType == 2}}">
     <image class="close" src="../img/close1.png"  bindtap='closePOP'/>

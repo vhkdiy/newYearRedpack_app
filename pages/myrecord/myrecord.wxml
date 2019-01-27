@@ -42,7 +42,7 @@
     </swiper-item>
     <swiper-item class="list" wx:for="{{requestData.redPackVieRecordList}}" wx:key="redPack{{index}}" data-data="{{item}}" bindtap="receiveItemClick">
       <view class="sendItem">
-        <image class="icon" src="{{item.redPackSendOrder.avatarUrl}}" />
+        <image class="icon" src="{{item.redPackSendOrder.user.avatarUrl}}" />
         <view class="left_item">
           <view class="blessing">{{item.redPackSendOrder.greeting || '恭喜发财'}}</view>
           <view class="date">{{item.dateString}}</view>

@@ -78,7 +78,7 @@ Page({
         this.setData({
           title: data.title,
           subTitle: data.subTitle,
-          avatarUrl: data.user.avatarUrl,
+          avatarUrl: data.sendUser.avatarUrl,
           status: data.status,
           receiveCount: data.receiveCount,
           redPackCount: data.redPackCount,
@@ -86,7 +86,7 @@ Page({
           redPackMoney: data.redPackMoney,
           vieRecords: data.vieRecords,
           imgUrl: data.order.imgUrl,
-          authorized: data.user.authorized 
+          authorized: data.user.authorized
         })
       }).catch(e => {
         console.error("catch");
@@ -105,11 +105,11 @@ Page({
       console.log(e.currentTarget.id);
       let that = this;
       if (this.data.status == 6) {
-        requestRedPack(that, "/redPack", { "orderId": this.data.rderId, "redPackIndex": e.currentTarget.id }).then(data => {
+        console.error("点击红包");
+        requestRedPack(that, "/redPack", { "orderId": this.data.orderId, "redPackIndex": e.currentTarget.id }).then(data => {
           if (data.status == 1) {
-            wx.showToast({
-              title: '没猜中，请继续',
-              icon: 'none'
+            this.setData({
+              isShowType : 1
             })
           } else if (data.status == 2) {
             //没猜中还可以分享，调起微信分享
@@ -145,6 +145,7 @@ Page({
           this.requestData();
 
         }).catch(e => {
+          console.error(e);
         })
       } else if (this.data.status == 5) {
         this.setData({
@@ -195,7 +196,14 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId}`);
-  },
+    console.error(this.data.vieRecords[0].greeting);
+    // return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId});
+    return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId}`, null, {
+      page: "红包分享页",
+      share_module: "红包页面分享"
+    },
+      this.data.vieRecords && this.data.vieRecords.length > 0 && this.data.vieRecords[0].greeting);
+  }
+
 
 })

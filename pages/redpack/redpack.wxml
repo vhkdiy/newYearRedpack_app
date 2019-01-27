@@ -28,7 +28,7 @@
         </block>
       </view>
       <view class="btn" wx:if="{{status ==  1}}">红包已经失效了</view>
-      <view class="monry" wx:if="{{status ==  1}}">共<test class="num">{{redPackMoney}}元</test><text class="money_tip">(已领完)</text></view>
+      <view class="monry" wx:if="{{status ==  2}}">共<test class="num">{{redPackMoney}}元</test><text class="money_tip">(已领完)</text></view>
       <view class="btns">
         <view class="button" bindtap='gotoReflect'>
           <image class="smallIcon" src="./image/btn1.png" />
