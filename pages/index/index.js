@@ -194,7 +194,10 @@ Page({
         serviceMoney: Math.ceil((money * parseFloat(this.data.serviceRate)) * 100) / 100
       }, () => {
         if(value != ''){
-          this.formCheckMoney() && this.formCheckNumber()
+          this.formCheckMoney();
+          if(parseInt(this.data.number)){
+            this.formCheckNumber();
+          }
         }
       })
     }else{
