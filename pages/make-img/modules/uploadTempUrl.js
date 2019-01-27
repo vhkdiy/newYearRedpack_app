@@ -41,15 +41,19 @@ const UploadImg = {
             r(data);
           },
           fail: (e) => {
-            j();
+            wx.hideLoading();
             wx.showToast({
               title: e && e.msg,
               icon: "none",
               mask: true,
-            })
+            });
+            
+            j();
           }
         });
       }).catch(() => {
+        wx.hideLoading();
+
         wx.showToast({
           title: '上传图片失败了， 请稍后重试',
           icon: "none",

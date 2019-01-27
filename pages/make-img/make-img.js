@@ -140,16 +140,10 @@ Page({
     }
 
     UploadImg.uploadComplete(createImg, inputString, this.data.choseRedpackIndex).then((data) => {
-      data.order.imgUrl = createImg;
       messageCenter.sendMessage("compositePictureInfo", data.order);
+      wx.navigateBack({});
+    }).catch(() => {
 
-      wx.navigateBack({
-        
-      });
-
-    }).catch(() =>{
-
-      wx.hideLoading();
     });
   },
 
