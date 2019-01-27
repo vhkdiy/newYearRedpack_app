@@ -20,7 +20,7 @@ Page({
    */
   onLoad: function (options) {
     request({
-      url:'http://test.ibestfanli.com/newYearRedpack_service/ad',
+      url:'/ad',
       success:(result)=>{
         this.setData({
           adArr: result.adJson && result.adJson.ad_list,
