@@ -261,6 +261,13 @@ Page({
       },
       success:(result) => {
         console.log('paysuccess------------------callback', result);
+
+
+        //跳分享页
+        wx.navigateTo({
+          url: `/pages/guide-share/guide-share?orderId=${this.data.orderId}`,
+        });
+
         //清空数据
         this.setData({
           orderId:'',
@@ -268,10 +275,6 @@ Page({
           number:''
         })
 
-        //跳分享页
-        wx.navigateTo({
-          url: `/pages/guide-share/guide-share?orderId=${this.data.orderId}`,
-        })
       }
     })
   },
