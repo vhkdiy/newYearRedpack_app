@@ -235,7 +235,7 @@ Page({
             recharge_fee:this.serviceMoney,
           })
         },  
-        fail:()=>{
+        fail:(e)=>{
           console.log('fail---',e);
           this.showErrorMsg(e.msg);
           //失败埋点
