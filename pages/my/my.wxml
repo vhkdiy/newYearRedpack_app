@@ -1,4 +1,4 @@
-<!--pages/my/my.wxml-->
+<AcquireFormidView>
 <!-- 头部 -->
 <view class='header'>
   <image src='{{userImg}}'></image>
@@ -26,3 +26,4 @@
     </view>
   </button>
 </view>
+</AcquireFormidView>

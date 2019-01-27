@@ -1,5 +1,5 @@
 <!--pages/other/other.wxml-->
-
+<AcquireFormidView>
 <!-- 列表 -->
 <view class='items'>
   <ad class="ad" wx:if="{{unitId}}" unit-id="{{unitId}}" />
@@ -17,3 +17,5 @@
   </view>
 
 </view>
+
+</AcquireFormidView>
