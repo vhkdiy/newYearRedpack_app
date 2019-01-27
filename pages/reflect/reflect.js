@@ -1,7 +1,6 @@
 // pages/reflect/reflect.js
 import { requestHasSlientOauth } from './js/requestHasSlientOauth.js';
 import { requestData } from './js/requestData.js';
-import { requestGetMoney } from './js/requestGetMoney.js';
 import { webview } from './../../utils/router.js'
 Page({
 
@@ -18,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    requestData(this, "/balance/getUserBalance").then((data) => {
+    requestData(this, "/balance/getUserBalance",{}).then((data) => {
         if (data.state == 1) {
           this.setData({
             currentMoney: data.userBalance
@@ -35,8 +34,8 @@ Page({
     
   },
   //提现
-  txFunc : function(monry){
-    requestData(this, "/balance/withdrawBalance").then((data) => {
+  txFunc: function (){
+    requestData(this, "/balance/withdrawBalance", { withdrawBalance: this.data.inputValue}).then((data) => {
       if (data.state == 1) {
         this.setData({
           currentMoney: data.userBalance

@@ -80,6 +80,7 @@ Component({
     },
     //请求赞赏
     requestData: function (money){
+      let that = this;
       // let actualMoney = parseFloat(money) +  Math.ceil((parseFloat(money) * parseFloat(this.data.isShowData.serviceCharge)) * 100) / 100;
       if(parseFloat(money) >= 0.1 && parseFloat(money) <= 200){
         let url = `/like/payParam/${this.data.orderId}?money=${money}`;
@@ -96,7 +97,7 @@ Component({
               signType: payParam.signType,
               paySign: payParam.paySign,
               success(res) {
-                this.closePop();
+                that.closePop();
                 wx.showToast({
                   title: '赞赏成功',
                   icon: 'none'
