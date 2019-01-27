@@ -1,5 +1,7 @@
 // pages/myrecord/myrecord.js
 import { requestData } from './js/requestData.js';
+import { phead } from './../../utils/phead.js'
+import loginUtils from './../../utils/login/login-utils.js'
 Page({
 
   /**
@@ -101,19 +103,31 @@ Page({
 
   swiperChange: function (e) {
     console.log(e.detail.current);
-    this.setData({
-      selectIndex: e.detail.current,
-      animationCss: `scrollBlock${e.detail.current}`,
-      monry: e.detail.current ? this.data.requestData.gainTotalMoney : this.data.requestData.sendTotalMoney,
-      count: e.detail.current ? this.data.requestData.gainTotalNum : this.data.requestData.sendTotalNum,
-      statusString : e.detail.current ? "共收到" : "共发出"
-    })
+    this.setCurrentData(e.detail.current);
   },
   btnClick: function (e) {
-    let index = e.currentTarget.id;
+    console.log(e.currentTarget.id);
+    this.setCurrentData(e.currentTarget.id);
+  },
+  setCurrentData : function(index){
     this.setData({
       selectIndex: index,
       animationCss: `scrollBlock${index}`,
+      monry: index == 1 ? this.data.requestData.gainTotalMoney : this.data.requestData.sendTotalMoney,
+      count: index == 1 ? this.data.requestData.gainTotalNum : this.data.requestData.sendTotalNum,
+      statusString: index==1 ? "共收到" : "共发出"
     })
+  },
+  //点击我自己发送出去的纪录
+  sendItemClick : function(e){
+    console.log(e.currentTarget.dataset.data);
+    let data = e.currentTarget.dataset.data;
+    wx.navigateTo({
+      url: `/pages/redpack/redpack?orderId=${data.id}&openid=${phead.phoneid}&userId=${wx.getStorageSync(loginUtils.getUserIdKey())}`,
+    })
+  },
+  //点击我收到的记录
+  receiveItemClick : function(e){
+    console.log(e.currentTarget.dataset.data);
   }
 })

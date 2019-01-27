@@ -46,9 +46,9 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      orderId : options.orderId || 1,
-      userId: options.userId || wx.getStorageSync(loginUtils.getUserIdKey()),
-      openId: options.openId || phead.phoneid
+      orderId : options.orderId,
+      userId: options.userId,
+      openId: options.openId
 
     })
     this.requestData();

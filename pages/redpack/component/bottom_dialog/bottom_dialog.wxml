@@ -1,7 +1,7 @@
 <!--pages/redpack/component/dialog.wxml-->
 <view class="bottom_dialog" wx:if="{{isShowType}}">
   <view class="{{isShowType ? 'content_open' : 'content_close'}}">
-    <image class="close" src="../img/close.png" bindtap='closePop'/>
+    <image class="close" src="./img/close.png" bindtap='closePop'/>
     <view class="title">{{isShowData.title}}</view>
     <block wx:if="{{isEnterMonry}}">
       <view class="inputBar">

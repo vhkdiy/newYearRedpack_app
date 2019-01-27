@@ -81,50 +81,57 @@ Component({
     //请求赞赏
     requestData: function (money){
       // let actualMoney = parseFloat(money) +  Math.ceil((parseFloat(money) * parseFloat(this.data.isShowData.serviceCharge)) * 100) / 100;
-      let url = `/like/payParam/${this.data.orderId}?money=${money}`;
-      console.error(url);
-      appreciate(this, url).then((data) => {
-        if (data.status == 1) {
-          let payParam = data.payParam;
-          wx.requestPayment({
-            timeStamp: JSON.stringify(payParam.timestamp),
-            nonceStr: payParam.nonceStr,
-            package: payParam.prepayId,
-            signType: payParam.signType,
-            paySign: payParam.paySign,
-            success(res) {
-              this.closePop();
-              wx.showToast({
-                title: '赞赏成功',
-                icon: 'none'
-              });
-              try {
-                getApp().sensors.track('admire', {
-                  "admire_money": money,
-                  "admire_order_user_id": wx.getStorageSync(loginUtils.getUserIdKey())
+      if(parseFloat(money) >= 1 && parseFloat(money) <= 200){
+        let url = `/like/payParam/${this.data.orderId}?money=${money}`;
+        console.error(url);
+        appreciate(this, url).then((data) => {
+          if (data.status == 1) {
+            let payParam = data.payParam;
+            wx.requestPayment({
+              timeStamp: JSON.stringify(payParam.timestamp),
+              nonceStr: payParam.nonceStr,
+              package: payParam.prepayId,
+              signType: payParam.signType,
+              paySign: payParam.paySign,
+              success(res) {
+                this.closePop();
+                wx.showToast({
+                  title: '赞赏成功',
+                  icon: 'none'
                 });
-              } catch (e) {
+                try {
+                  getApp().sensors.track('admire', {
+                    "admire_money": money,
+                    "admire_order_user_id": wx.getStorageSync(loginUtils.getUserIdKey())
+                  });
+                } catch (e) {
 
+                }
+              },
+              fail(res) {
+                console.error(res);
+                wx.showToast({
+                  title: '赞赏失败',
+                  icon: 'none'
+                })
               }
-            },
-            fail(res) {
-              console.error(res);
-              wx.showToast({
-                title: '赞赏失败',
-                icon: 'none'
-              })
-            }
-          })
-        } else {
-          wx.showToast({
-            title: data.msg,
-            icon: 'none'
-          })
-        }
-      }).catch(e => {
-        console.log(e);
-        console.error("catch");
-      });
+            })
+          } else {
+            wx.showToast({
+              title: data.msg,
+              icon: 'none'
+            })
+          }
+        }).catch(e => {
+          console.log(e);
+          console.error("catch");
+        });
+      }else{
+        wx.showToast({
+          title: '请输入1-200金额',
+          icon : 'none'
+        })
+      }
     },
     //changeInput
     changeInput : function(e){

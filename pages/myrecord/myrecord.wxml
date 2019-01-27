@@ -28,9 +28,9 @@
 
   <swiper current="{{selectIndex}}" class="swiper" style="height : {{scrollViewHeight}}rpx !important;" bindchange="swiperChange" bindanimationfinish="animationfinish">
     <swiper-item class="list">
-      <view class="sendItem" wx:for="{{requestData.sendRedPackList}}" wx:key="sendItem{{index}}">
+      <view class="sendItem" wx:for="{{requestData.sendRedPackList}}" wx:key="sendItem{{index}}" data-data="{{item}}" bindtap="sendItemClick">
         <view class="left_item">
-          <view class="blessing">{{item.greeting}}</view>
+          <view class="blessing">{{item.greeting || '恭喜发财'}}</view>
           <view class="date">{{item.dateString}}</view>
         </view>
         <view class="right_item">
@@ -40,11 +40,11 @@
       </view>
       <view class="bottomBlock"></view>
     </swiper-item>
-    <swiper-item class="list" wx:for="{{requestData.redPackVieRecordList}}" wx:key="redPack{{index}}">
+    <swiper-item class="list" wx:for="{{requestData.redPackVieRecordList}}" wx:key="redPack{{index}}" data-data="{{item}}" bindtap="receiveItemClick">
       <view class="sendItem">
         <image class="icon" src="{{item.redPackSendOrder.avatarUrl}}" />
         <view class="left_item">
-          <view class="blessing">{{item.redPackSendOrder.greeting}}</view>
+          <view class="blessing">{{item.redPackSendOrder.greeting || '恭喜发财'}}</view>
           <view class="date">{{item.dateString}}</view>
         </view>
         <view class="right_item">
