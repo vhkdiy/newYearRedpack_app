@@ -13,6 +13,7 @@ Component({
 
 
   data: {
+    isPayFail: false,
     requesting: false,
     countdownTime: max_countdown_time,
   },
@@ -30,11 +31,7 @@ Component({
     },
 
     onRequestPayStateBtnClick() {
-      this.setData({
-        requesting: true,
-      });
-      this.startCountdown();
-
+      this.requestState();
     },
     clearCountdown() {
       this.intervalFunc && clearInterval(this.intervalFunc);
@@ -52,9 +49,9 @@ Component({
           countdownTime = 0;
           clearInterval(this.intervalFunc);
 
-          this.setData({
-            requesting: false,
-          });
+          // this.setData({
+          //   requesting: false,
+          // });
         }
 
         this.setData({
@@ -65,21 +62,38 @@ Component({
 
     },
 
+    requestState() {
+      this.startCountdown();
+      this.setData({
+        requesting: true,
+      });
+
+      requestPayState(Conts.orderId).then((data) => {
+        if (data.status == 1) {
+          setTimeout(() => {
+            this.close();
+          }, 2000 - this.data.countdownTime);
+        } else if (data.status == -2) {
+          //付款失败
+          this.setData({
+            isPayFail: true,
+          });
+        }
+
+      }).catch(() => {
+
+      });
+    },
+
+    goBack() {
+      wx.navigateBack({
+
+      });
+    },
+
   },
   attached: function() {
-    this.startCountdown();
-    this.setData({
-      requesting: true,
-    });
-
-    requestPayState(Conts.orderId).then(() => {
-      setTimeout(() => {
-        this.close();
-      }, 2000 - this.data.countdownTime);
-
-    }).catch(() => {
-
-    });
+    this.requestState();
   },
   detached() {
     this.clearCountdown();

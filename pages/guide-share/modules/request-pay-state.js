@@ -8,13 +8,12 @@ const requestPayState = (orderId) =>{
       url: `/pay/payResult/${orderId}`,
       method: "GET",
       success: (data) =>{
-        if (data.code == 1) {
+        if (data.status == 1) {
           Conts.isPaySuccess = true;
           GuideShareSignal.notifyPaySuccess.dispatch();
-          r();
-        } else {
-          j();
         }
+
+        r(data);
       },
       fail: (e) => {
         j();
