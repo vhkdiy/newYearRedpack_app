@@ -110,8 +110,10 @@ Page({
     })
   },
   btnClick: function (e) {
+    let index = e.currentTarget.id;
     this.setData({
-      selectIndex: e.currentTarget.id
+      selectIndex: index,
+      animationCss: `scrollBlock${index}`,
     })
   }
 })
