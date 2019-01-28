@@ -6,10 +6,10 @@
   <view class='look-instance' bindtap='handleInstance'>查看示例</view>
   
   <!-- 生成图片 -->
-  <view class='composite-picture'>
+  <view class='composite-picture' catchtap='handleWealthBtn'>
     <image src='{{compositePicture}}'></image>
     <view wx:if="{{!orderId}}" class='mask'></view>
-    <view wx:if="{{!orderId}}" class='wealth-btn' catchtap='handleWealthBtn'>点击这里扮演财神</view>
+    <view wx:if="{{!orderId}}" class='wealth-btn'>点击这里扮演财神</view>
   </view>
 
   <!-- 表单 -->
