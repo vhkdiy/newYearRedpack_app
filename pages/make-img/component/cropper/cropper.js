@@ -416,7 +416,7 @@ Component({
     },
     getInputFontObj(strLen) {
       let fontSize = 95;
-      let strokeWidth = 6;
+      let strokeWidth = 4;
       let bottom =  19;
  
       if (strLen <= 4) {
@@ -425,7 +425,7 @@ Component({
         let strokeWidth = 5;
       } else if (strLen <= 6) {
         fontSize = 68;
-        strokeWidth = 4;
+        strokeWidth = 3;
         bottom = 30;
       } else {
         fontSize = 54;
