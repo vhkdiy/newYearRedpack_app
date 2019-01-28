@@ -67,17 +67,17 @@ page{
 .mg0{
   margin-top: 0 !important;
 }
-.bd-top{
+.bd-buttom{
   position: relative;
 }
-.bd-top::after{
+.bd-buttom::after{
   content: '';
   display: block;
   position: absolute;
   height: 1rpx;
   width: 638rpx;
   background: #dfdfdf;
-  top: 0;
+  bottom: 0;
   right: 0;
 }
 
