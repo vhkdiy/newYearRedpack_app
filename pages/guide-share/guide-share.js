@@ -71,7 +71,8 @@ Page({
         page: "红包分享页",
         share_module: "转发到好友或群聊"
       },
-      order && order.greeting);
+      order && order.greeting,
+      order && order.imgUrl);
   },
 
   createImgClick() {
