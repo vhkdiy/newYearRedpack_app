@@ -48,15 +48,7 @@
   background-color : white;
   height: 618rpx;
 }
-.window{
-  position: absolute;
-  top : -640rpx ;
-  left: -930rpx;
-  width :616rpx;
-  height : 300rpx;
-  border: 1000rpx solid rgba(0,0,0,0.50);
-  border-radius: 12rpx;
-}
+
 .userImage{
 
   border-radius: 8rpx;
@@ -83,12 +75,20 @@
   width : 565rpx;
   left : 50%;
   transform: translate(-50%,0);
-  top : 220rpx;
-
+  top : 230rpx;
+}
+.window{
+  position: absolute;
+  top : -634rpx ;
+  left: -930rpx;
+  width :616rpx;
+  height : 280rpx;
+  border: 1000rpx solid rgba(0,0,0,0.50);
+  border-radius: 12rpx;
 }
 .redpack1{
   position : absolute;
-  bottom : 249rpx;
+  bottom : 262rpx;
   left : 34rpx;
   width : 140rpx;
   height : 140rpx;
@@ -112,7 +112,7 @@
 }
 .redpack4{
    position : absolute;
-  bottom : 249rpx;
+  bottom : 262rpx;
   right : 34rpx;
   width : 140rpx;
   height : 140rpx;

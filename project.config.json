@@ -78,10 +78,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "redpack",
+					"id": 7,
+					"name": "红包",
 					"pathName": "pages/redpack/redpack",
-					"query": ""
+					"query": "openId=okUUg5e3hENvsbJAKdJwydMTOgzk&userId=39&orderId=9"
 				}
 			]
 		}
