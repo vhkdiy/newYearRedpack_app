@@ -33,7 +33,7 @@
   background-image : url("https://img.ibestfanli.com/redpack/redpack.png");
   background-size : 580rpx auto;
   text-align: center;
-  animation: content 0.22s;
+  animation: content 0.3s;
 }
 @keyframes content{
   0%    {opacity: 0.5; transform: scale(0.4,0.4)}
@@ -127,7 +127,7 @@
   text-align: center;
   background: #F9F7FA;
   border-radius: 6px;
-  animation: content 0.22s;
+  animation: content 0.3s;
 }
 
 .close1{
@@ -190,7 +190,7 @@
   text-align: center;
   background: #F9F7FA;
   border-radius: 6px;
-  animation: content 0.22s;
+  animation: content 0.3s;
 }
 .share{
   margin : 89rpx auto 0;
