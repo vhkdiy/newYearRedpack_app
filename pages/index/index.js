@@ -255,7 +255,7 @@ Page({
         },  
         fail:(e)=>{
           console.log('fail---',e);
-          this.showErrorMsg(e.msg);
+          this.showErrorMsg(e.msg||'');
           //失败埋点
           getApp().sensors.track('recharge', {
             recharge_money: this.data.money,
