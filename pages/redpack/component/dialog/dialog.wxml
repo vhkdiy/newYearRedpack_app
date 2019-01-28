@@ -1,6 +1,6 @@
 <!--pages/redpack/component/dialog.wxml-->
 <view class="dialog_pop" wx:if="{{isShowType != 0}}">
-  <view class="content" wx:if="{{isShowType == 4}}">
+  <view class="{{isShowType == 4 ? 'content_animation': 'content'}}" wx:if="{{isShowType == 4}}">
     <image class="close" src="../img/close.png" bindtap='closePOP' />
     <view class="redpack_tip">恭喜你猜对啦，获得红包奖励</view>
     <view class="redpack_monry">{{isShowData.redPackMoney }}<text class="redpack_unit">元</text></view>
@@ -10,14 +10,14 @@
     <view class="redpack_name">{{isShowData.user.nickName}}</view>
     <view class="redpack_btn" bindtap="sendRedPack">我也发一个</view>
   </view>
-  <view class="content1" wx:if="{{isShowType == 1}}">
+  <view class="{{isShowType == 1 ? 'content1_animation': 'content1'}}" wx:if="{{isShowType == 1}}">
     <image class="close" src="../img/close1.png" bindtap='closePOP'/>
     <image class="share_image"  src="../img/icon.png"/>
     <view class="title">猜错了</view>
     <view class="subtitle">还有一次机会</view>
     <view class="again" bindtap='closePOP'>再试一次</view>
   </view>
-  <view class="content2" wx:if="{{isShowType == 3 || isShowType == 2}}">
+  <view class="{{(isShowType == 3 || isShowType == 2) ? 'content2_animation': 'content2'}}" wx:if="{{isShowType == 3 || isShowType == 2}}">
     <image class="close" src="../img/close1.png"  bindtap='closePOP'/>
     <image class="share_image"  src="../img/icon.png"/>
     <view class="title">机会用完啦</view>
