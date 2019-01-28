@@ -32,7 +32,7 @@ Page({
 
     this.shareSceneStr = sceneUtil.creatQrShareScene({
       "o": extraData.id,
-      "t": shareType.RED_PACK,
+      "t": shareType.RED_PACK_WITH_IMG,
     });
 
     console.log("this.shareSceneStr: " + this.shareSceneStr);

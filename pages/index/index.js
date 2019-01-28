@@ -6,6 +6,7 @@ import updateWxUserinfo from './../../utils/user/update-wx-userinfo.js';
 import { request } from './../../utils/request.js';
 import { requestPayment} from './modules/pay.js';
 import messageCenter from './../../utils/messagecenter/message_center.js';
+import shareType from './../../utils/share-type.js';
 
 
 let timeOut = null;
@@ -104,7 +105,7 @@ Page({
     let showOldData = false;
 
     if (options.orderId) {
-      if ((options.openId || options.userId) && options.type == 2){
+      if ((options.openId || options.userId) && (options.type == shareType.RED_PACK || options.type == shareType.RED_PACK_WITH_IMG)){
         //开红包页
         wx.navigateTo({
           url: `/pages/redpack/redpack?orderId=${options.orderId}&openId=${options.openId}&userId=${options.userId}`,
