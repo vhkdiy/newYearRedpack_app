@@ -107,7 +107,7 @@ Component({
       this.handleError();
     },
 
-    getInputString(){
+    getInputString() {
       return this.data.inputValue;
     },
 
@@ -351,11 +351,11 @@ Component({
         success: (res) => {
           const filePath = res.tempFilePaths[0];
           if (filePath.includes('.gif')) {
-              wx.showToast({
-                title: '不支持gif图片',
-                icon: "none",
-              });
-              return;
+            wx.showToast({
+              title: '不支持gif图片',
+              icon: "none",
+            });
+            return;
           }
           this.initImg(filePath);
         },
@@ -416,14 +416,10 @@ Component({
     },
     getInputFontObj(strLen) {
       let fontSize = 95;
-      let strokeWidth = 4;
-      let bottom =  19;
- 
-      if (strLen <= 4) {
-        fontSize = 95;
-        bottom = 19;
-        let strokeWidth = 5;
-      } else if (strLen <= 6) {
+      let strokeWidth = 3;
+      let bottom = 19;
+
+      if (strLen <= 6) {
         fontSize = 68;
         strokeWidth = 3;
         bottom = 30;
