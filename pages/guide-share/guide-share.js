@@ -30,11 +30,14 @@ Page({
     requestData(Conts.orderId).then((data) => {
       const isPaySuccess = data.order.status > 0;
 
+      Conts.isPaySuccess = isPaySuccess;
+
       data.order.notice = data.notice;
 
       this.setData({
         order: data.order,
-        isShowGetPayStateDialog: isPaySuccess
+        isShowGetPayStateDialog: !isPaySuccess,
+        isPaySuccess: isPaySuccess,
       });
     }).catch(() => {
 
