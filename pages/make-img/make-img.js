@@ -33,7 +33,6 @@ Page({
     PageSignal.guideSignal.add(this.updateNewUserGuideDialog);
     this.refreshPageData();
 
-    this.startChoseMarquee();
   },
 
   refreshPageData() {
@@ -47,6 +46,9 @@ Page({
           avatarUrl: avatarUrl,
           choseRedpackData: data.redPackTemplates,
         });
+
+
+        this.startChoseMarquee();
 
         this.checkShowNewUserGuide();
 
