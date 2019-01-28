@@ -36,6 +36,17 @@ Page({
   //提现
   txFunc: function (){
     console.log(typeof this.data.inputValue);
+    let index = (this.data.inputValue + "" ).indexOf(".");
+    if (index != -1){
+      let inputString = (this.data.inputValue + "").substring(index);
+      if (inputString.length > 3){
+        wx.showToast({
+          title: '小数点后只能2位',
+          icon : "none"
+        })
+        return;
+      }
+    }
 
     requestData(this, "/balance/withdrawBalance", { withdrawBalance: this.data.inputValue}).then((data) => {
       if (data.state == 1) {
