@@ -1,7 +1,7 @@
 // pages/redpack/redpack.js
 import share from './../../utils/share.js';
 import { requestData } from './js/requestData.js';
-import { requestRedPack } from './js/requestRedPack.js';
+import { requestRedPackFunc } from './js/requestRedPack.js';
 import { requestAppreciate } from './js/requestAppreciate.js';
 
 import { phead } from './../../utils/phead.js'
@@ -129,7 +129,11 @@ Page({
   },
   requestRedPack : function(id){
     let that = this;
-    requestRedPack(that, "/redPack", { "orderId": this.data.orderId, "redPackIndex": id }).then(data => {
+    console.log("请求红包");
+    console.log(id);
+    requestRedPackFunc(that, "/redPack", { "orderId": this.data.orderId, "redPackIndex": id }).then(data => {
+      console.error("requestRedPack");
+      console.error(data);
       if (data.status == 1) {
         this.setData({
           isShowType: 1
@@ -152,7 +156,7 @@ Page({
         })
         try {
           getApp().sensors.track('get_redpack', {
-            "redpack_id": this.data.order,
+            "redpack_id": this.data.orderId,
             "get_redpack_money": data.record.redPackMoney,
             "redpack_order_user_id": this.data.userId || this.data.openId || "链接上没有带"
           });
@@ -169,17 +173,20 @@ Page({
       this.requestData();
 
     }).catch(e => {
+      console.error("catch");
       console.error(e);
     })
   },
   //点击红包
   clickRedPack: function (e, idString){
     var idString = idString ? idString : e.currentTarget.id;
+
     if (this.data.authorized){
       console.log(idString);
       let that = this;
       if (this.data.status == 6) {
         console.error("点击红包");
+        console.error(idString);
         this.requestRedPack(idString);
       } else if (this.data.status == 5) {
         this.setData({
@@ -227,19 +234,31 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function (res) {
-    // return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId});
-    console.log(this.data.isSelf);
-    if (!this.data.isSelf){
-      return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId}`, null, {
-        page: "红包分享页",
-        share_module: "红包页面分享"
-      },"恭喜发财");
+  onShareAppMessage: function (e) {
+    if (e.target.id == "share"){
+      if (!this.data.isSelf) {
+        return share.getRedpackShare(`/pages/index/index?orderId=${this.data.orderId}`, null, {
+          page: "红包分享页",
+          share_module: "红包页面分享"
+        }, "恭喜发财");
+      } else {
+        return share.getRedpackShare(`/pages/index/index?orderId=1`, null, {
+          page: "红包分享页",
+          share_module: "红包页面分享"
+        }, "恭喜发财");
+      }
     }else{
-      return share.getRedpack(`/pages/index/index?orderId=1`, null, {
-        page: "红包分享页",
-        share_module: "红包页面分享"
-      }, "恭喜发财");
+      if (!this.data.isSelf) {
+        return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId}`, null, {
+          page: "红包分享页",
+          share_module: "红包页面分享"
+        }, "恭喜发财");
+      } else {
+        return share.getRedpack(`/pages/index/index?orderId=1`, null, {
+          page: "红包分享页",
+          share_module: "红包页面分享"
+        }, "恭喜发财");
+      }
     }
   },
 

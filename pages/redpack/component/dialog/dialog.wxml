@@ -23,7 +23,7 @@
     <view class="title">机会用完啦</view>
     <view wx:if="{{isShowType == 2}}" class="subtitle">分享给好友可再猜一次</view>
     <view wx:else class="subtitle">推荐给其他好友玩一玩吧</view>
-    <button class="share" open-type='share' bindtap='shareclick'>转发到好友或群聊</button>
+    <button class="share" id="share" open-type='share' bindtap='shareclick'>转发到好友或群聊</button>
     <view class="hourse">（非红包主人转发，好友将无法领取此红包）</view>
   </view>
 </view>

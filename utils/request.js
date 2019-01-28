@@ -63,7 +63,7 @@ const request = config => {
     success: function(res) {
       config.loading && wx.hideLoading();
       wx.hideNavigationBarLoading();
-      //console.log(res.statusCode);
+      console.log(res.statusCode);
       if (res.statusCode >= 400) {
         if (config.fail) {
           config.fail(res.data || COMMON_FAIL_DATA);

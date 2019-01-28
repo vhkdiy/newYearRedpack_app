@@ -45,8 +45,8 @@
           <view class="txt">回赠祝福</view>
         </view>
         <view wx:else class="button">
-          <image class="smallIcon" src="./image/btn3.png" />
-          <button open-type='share' class="smallShare">去分享</button>
+          <image class="smallIcon" src="./image/btn4.png" />
+          <button id="" open-type='share' class="smallShare">去分享</button>
         </view>
 
       </view>
