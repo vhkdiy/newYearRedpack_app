@@ -4,7 +4,7 @@
     <image class="close" src="../img/close.png" bindtap='closePOP' />
     <view class="redpack_tip">恭喜你猜对啦，获得红包奖励</view>
     <view class="redpack_monry">{{isShowData.redPackMoney }}<text class="redpack_unit">元</text></view>
-    <view class="redpack_image_bg">
+    <view class="redpack_image_bg" bindtap="sendRedPack">
       <image class="redpack_image" src="{{isShowData.user.avatarUrl }}" />
     </view>
     <view class="redpack_name">{{isShowData.user.nickName}}</view>
