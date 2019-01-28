@@ -21,8 +21,8 @@
 
 <view animation="{{animationPop}}" class="accelerate_pop" bindtap="hideChoseImgWayPop" wx:if="{{isShowAcceleratePop}}" catchtouchmove="handlePopMove">
   <view animation="{{animationData}}" class="accelerate_pop_container" wx:if="{{isShowAcceleratePop}}">
-    <view class='accelerate_pop_item' bindtap='choseImgFromAlbum'>从手机相册选择</view>
     <view class='accelerate_pop_item' bindtap='onUseUserIconBtnClick'>使用默认头像</view>
+    <view class='accelerate_pop_item' bindtap='choseImgFromAlbum'>从手机相册选择</view>
     <view class='accelerate_pop_item'>取消</view>
   </view>
 </view>
@@ -32,6 +32,6 @@
     <view class='input_num_tip'>{{inputValue.length}}/9</view>
   </view>
 
-  <input class='input' placeholder="填写新年祝福" maxlength="9" focus="{{true}}" bindfocus="bindfocus" bindblur="bindblur" bindinput="bindinput" value="{{inputValue}}" adjust-position="{{false}}"/>
+  <input class='input' placeholder="填写新年祝福" maxlength="9" focus="{{true}}" bindfocus="bindfocus" bindblur="bindblur" bindinput="bindinput" value="{{inputValue}}" adjust-position="{{false}}" />
   <view class='input_ok_btn'>确定</view>
 </view>

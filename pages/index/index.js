@@ -249,18 +249,18 @@ Page({
           //支付成功埋点
           getApp().sensors.track('recharge', {
             recharge_money:this.data.money,
-            is_success:true,
-            recharge_fee:this.serviceMoney,
+            is_succuess:true,
+            recharge_fee:this.data.serviceMoney,
           })
         },  
         fail:(e)=>{
           console.log('fail---',e);
-          this.showErrorMsg(e.msg);
+          this.showErrorMsg(e.msg||'');
           //失败埋点
           getApp().sensors.track('recharge', {
             recharge_money: this.data.money,
-            is_success: false,
-            recharge_fee: this.serviceMoney,
+            is_succuess: false,
+            recharge_fee: this.data.serviceMoney,
           })
         }
       });
