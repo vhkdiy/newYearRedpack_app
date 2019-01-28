@@ -23,8 +23,9 @@
       </view>
       <view class="enterBtn" bindtap='setEnterMonry'>土豪随意金额</view>
     </block>
-    
-    <view class="joinNum">{{isShowData.records.length > 18 ? '18' : isShowData.records.length}}个人已回赠祝福</view>
+    <view class="poundage">回赠祝福会收取2%的服务费</view>
+    <view class="joinNum" wx:if="{{isShowData.records.length == 0}}">金猪送福，财源滚滚</view>
+    <view class="joinNum" wx:else>{{isShowData.records.length > 18 ? '18' : isShowData.records.length}}个人已回赠祝福</view>
     <view class="images">
       <block wx:for="{{isShowData.records}}" wx:key="images{{index}}">
         <image wx:if="{{index <= 18}}" class="joinImage" src="{{item.user.avatarUrl}}" mode="widthFix"/>

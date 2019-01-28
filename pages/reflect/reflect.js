@@ -35,6 +35,8 @@ Page({
   },
   //提现
   txFunc: function (){
+    console.log(typeof this.data.inputValue);
+
     requestData(this, "/balance/withdrawBalance", { withdrawBalance: this.data.inputValue}).then((data) => {
       if (data.state == 1) {
         this.setData({
@@ -76,7 +78,7 @@ Page({
       inputValue : this.data.currentMoney
     })
   },
-  //体现
+  //提现
   submitData : function(){
     requestHasSlientOauth(this, "/user/hasSlientOauth").then((data) => {
       console.error(data);

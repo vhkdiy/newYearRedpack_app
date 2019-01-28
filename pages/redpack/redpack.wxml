@@ -14,8 +14,8 @@
         </view>
         <view wx:if="{{status == 5 || status == 6 || status == 4}}">
           <block wx:for="{{redPackTemplates}}" wx:key="{{index}}">
-            <button  class="getUserInfoBtn" open-type="{{authorized ? '' :'getUserInfo'}}">
-              <image id="{{index}}" class="redpack{{index + 1}}" src="{{item.imgUrl}}" bindtap="clickRedPack" />
+            <button  id="{{index}}" class="getUserInfoBtn" open-type="{{authorized ? '' :'getUserInfo'}}" bindgetuserinfo="{{ authorized ? '' : 'onGotUserInfo'}}" >
+              <image id="{{index}}" class="redpack{{index + 1}}" src="{{item.imgUrl}}" bindtap="{{authorized ? 'clickRedPack' : ''}}" />
             </button>
           </block>
           <!-- <button class="getUserInfoBtn" open-type='getUserInfo'>
@@ -40,15 +40,20 @@
           <image class="smallIcon" src="./image/btn2.png" />
           <view class="txt">我也发一个</view>
         </view>
-        <view class="button" bindtap='gotoAdmire'>
+        <view wx:if="{{isSelf}}" class="button" bindtap='gotoAdmire'>
           <image class="smallIcon" src="./image/btn3.png" />
-          <view class="txt">赞赏</view>
+          <view class="txt">回赠祝福</view>
         </view>
+        <view wx:else class="button">
+          <image class="smallIcon" src="./image/btn3.png" />
+          <button open-type='share' class="smallShare">去分享</button>
+        </view>
+
       </view>
     </view>
     <view class="countBar">
       <view class="count">已领取{{receiveCount}}/{{redPackCount}}个，共{{receiveMoney}}/{{redPackMoney}}元</view>
-      <view class="countBtn">投诉</view>
+      <button open-type="contact" session-from="tousu" class="countBtn">投诉</button>
     </view>
     <view>
         <view class="item" wx:for="{{vieRecords}}" wx:key="record{{index}}">
@@ -60,13 +65,9 @@
             <view class="date">{{item.dateString}}</view>
           </view>
           <view class="right_item">
-            <block wx:if="{{item.icon}}">
               <view class="money">{{item.redPackMoney}}元</view>
-              <image class="status" mode="WidthFix" src="{{item.icon}}" ></image>
-            </block>
-            <block wx:else>
-              <view class="monry_error">猜错啦</view>
-            </block>
+              <image wx:if="{{item.icon}}" class="status" mode="WidthFix" src="{{item.icon}}" ></image>
+              <view wx:elif="{{!item.redPackMoney}}" class="monry_error">猜错啦</view>
           </view>
         </view>
     </view>
