@@ -2,12 +2,12 @@ import UploadFileManager from "../../utils/upload/UploadFileManager";
 import CanvasPalette from './modules/canvas-palette.js';
 import wxPromisify from './../../utils/wx-promisify/wx-promisify.js';
 const wxSaveImageToPhotosAlbum = wxPromisify(wx.saveImageToPhotosAlbum);
-import regeneratorRuntime from './../../utils/regenerator-runtime/runtime.js';;
 
 import shareType from './../../utils/share-type.js';
 import sceneUtil from './../../utils/share/scene-util.js';
 import requestQrcode from './../../utils/share/request-qrcode.js';
 import getUserInfo from './../../utils/user/get-user-info.js';
+import ImgUtils from './../../utils/img-utils.js';
 
 
 Page({
@@ -58,50 +58,23 @@ Page({
     });
     const extraData = this.data.extraData;
 
-    // Promise.all([
-    //   getUserInfo(),
-    //   requestQrcode('', this.shareSceneStr),
-    // ]).then((datas) => {
-
-    //   this.setData({
-    //     template: new CanvasPalette({
-    //       userName: datas[1].nickName,
-    //       userIcon: datas[1].avatarUrl,
-    //       contentImg: extraData.imgUrl,
-    //       qrCodeImg: datas[0],
-    //     }).palette(),
-    //   });
-
-    // }).catch((errMsg) => {
-    //   console.error("获取菊花二维码失败了：" + JSON.stringify(errMsg));
-    //   this.handleError();
-    // });
-
-    const f = async() => {
-      let userInfo = {};
-      let qrCodeUrl = '';
-      try{
-        userInfo = await getUserInfo();
-      } catch(e) {
-
-      }
-      try{
-        qrCodeUrl = await requestQrcode('', this.shareSceneStr);
-      } catch(e) {
-
-      }
-
+    Promise.all([
+      requestQrcode('', this.shareSceneStr),
+      getUserInfo(),
+    ]).then((datas) => {
       this.setData({
         template: new CanvasPalette({
-          userName: userInfo && userInfo.nickName,
-          userIcon: userInfo && userInfo.avatarUrl,
-          contentImg: extraData.imgUrl,
-          qrCodeImg: qrCodeUrl,
+          userName: datas[1].nickName,
+          userIcon: datas[1].avatarUrl,
+          contentImg: ImgUtils.getTinyImg(extraData.imgUrl),
+          qrCodeImg: datas[0],
         }).palette(),
       });
-    }
 
-    f();
+    }).catch((errMsg) => {
+      console.error("获取菊花二维码失败了：" + JSON.stringify(errMsg));
+      this.handleError();
+    });
 
   },
 

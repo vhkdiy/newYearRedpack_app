@@ -7,7 +7,7 @@ page {
   width: 100%;
 }
 
-.top_bg{
+.top_bg {
   position: absolute;
   height: 399rpx;
   width: 100%;
@@ -44,7 +44,7 @@ page {
   text-align: left;
 }
 
-.chose_redpack_tip_img{
+.chose_redpack_tip_img {
   position: absolute;
   top: -60rpx;
   left: 50%;
@@ -54,21 +54,28 @@ page {
 }
 
 .redpack_items {
-  margin-top: 18rpx;
-  padding-left: 21rpx;
+  margin-top: 21rpx;
+  padding-left: 16rpx;
 }
 
 .redpack_item {
   display: inline-block;
-  padding: 0rpx 3rpx;
   border-radius: 18rpx;
   box-sizing: border-box;
-  border: 3rpx solid transparent;
-  margin: 0 1px;
+  margin: 0 6rpx;
+  position: relative;
 }
 
-.select_redpack_item {
-  border: 3rpx solid #108ee8;
+.select_redpack_item::after {
+  content: '';
+  width: 160rpx;
+  height: 186rpx;
+  border: 6rpx solid #108ee8;
+  border-radius: 18rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .unSelect_redpack_item {
@@ -105,6 +112,14 @@ page {
   display: inline-block;
 }
 
+.select_temp_icon{
+  position: absolute;
+  height: 28rpx;
+  width: 28rpx;
+  bottom: 10rpx;
+  right: 10rpx;
+}
+
 .zhuti_item_img {
   width: 154rpx;
   height: 154rpx;
@@ -131,7 +146,7 @@ page {
   border-radius: 0;
 }
 
-.fade_bottom{
+.fade_bottom {
   width: 100%;
   text-align: center;
   height: 138rpx;

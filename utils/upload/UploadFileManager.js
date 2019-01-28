@@ -5,13 +5,14 @@ import {
 
 const UploadFileManager = {
   domain: "https://img.xmiles.cn",
+  commonPath: "newyear_redpack",
 
   /**
    * 上传图片到七牛
    */
   uploadImgToQiniu(tempFilePath) {
     const stringList = tempFilePath.split('/');
-    const KEY = stringList[stringList.length - 1];
+    const KEY = `${this.commonPath}/${stringList[stringList.length - 1]}`;
     const imgUrl = `${this.domain}/${KEY}`;
 
     return new Promise((resolve, reject) => {
@@ -58,7 +59,7 @@ const UploadFileManager = {
               isUploadToQiniuSuccess = true;
 
               resolve(imgUrl);
-            }, 3000));
+            }, 6000));
           }
         });
 

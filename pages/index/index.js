@@ -64,6 +64,7 @@ Page({
     loginUtils.waitToLogin(this.onLoginSuccess, this.onLoginFail);
   }, 
   
+  //请求页面数据
   requestPageData(orderId){
     request({
       url:`/share/index${orderId?"?orderId="+orderId:""}`, 
@@ -94,7 +95,7 @@ Page({
     })
   },
 
-  
+  //登录成功
   onLoginSuccess(){
     let options = getApp().globalData.query;
 
@@ -135,7 +136,20 @@ Page({
 
 
   onShow: function(e) {
-    
+    //领红包页面授权后返回这个页面要更新用户显示
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo'] && !this.data.money){
+          wx.getUserInfo({
+            success:res=>{
+              this.setData({
+                userImg: JSON.parse(res.rawData).avatarUrl
+              })
+            }
+          })
+        }
+      }
+    })
   },
 
   onUnload(){
