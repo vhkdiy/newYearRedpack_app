@@ -30,7 +30,7 @@
   <block wx:if="{{templates}}" wx:for="{{templates}}" wx:key="{{index}}">
 
     <view class='zhuti_item' data-index="{{index}}" bindtap='zhutiItemClick'>
-      <image class='zhuti_item_img' src="{{item.imgUrl}}" mode="aspectFill"></image>
+      <image class="zhuti_item_img {{(index != selectTempIndex) ? 'zhuti_item_img_unselect' : ''}}" src="{{item.imgUrl}}" mode="aspectFill"></image>
       <view wx:if="{{item.name}}" class='zhuti_name'>{{item.name}}</view>
       <image wx:if="{{index == selectTempIndex}}" class='select_temp_icon' src='./images/select_temp_icon.png' ></image>
     </view>
