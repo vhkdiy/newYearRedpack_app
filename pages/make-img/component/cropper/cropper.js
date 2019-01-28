@@ -62,7 +62,7 @@ Component({
     inputValue: '',
     keyboardHeight: 470,
     isShowInput: false,
-    canvasScale: 2, //canvas缩放的比
+    canvasScale: 1, //canvas缩放的比
     template: null,
     isTouching: false,
     width: 473 * K, //剪裁框的宽度
@@ -200,7 +200,7 @@ Component({
               css: {
                 textStyle: "stroke",
                 strokeStyle: "#D62A29",
-                lineWidth: `${this.data.inputFontObj.strokeWidth}rpx`,
+                lineWidth: `${this.data.inputFontObj.strokeWidth * SCALE / 2}rpx`,
                 align: 'center',
                 left: `${this.data.width * SCALE / 2}px`,
                 bottom: `${this.getInputTextInCanvasBottom(this.data.inputValue.length) * SCALE}rpx`,
