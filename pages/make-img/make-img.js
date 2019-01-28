@@ -25,7 +25,7 @@ Page({
     avatarUrl: "",
     isShowNewUserGuide: false,
     isShowChoseRedpackTip: false,
-    selectTempIndex: -1,
+    selectTempIndex: 0,
   },
 
   /**
