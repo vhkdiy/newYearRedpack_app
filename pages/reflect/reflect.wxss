@@ -86,6 +86,7 @@ page{
   height : 120rpx;
   line-height:120rpx;
   margin-top:16rpx;
+  font-family: DINPro;
 }
 .line{
   height : 2rpx;

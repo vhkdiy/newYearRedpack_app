@@ -244,24 +244,24 @@ Page({
         return share.getRedpackShare(`/pages/index/index?orderId=${this.data.orderId}`, null, {
           page: "红包分享页",
           share_module: "红包页面分享"
-        }, "恭喜发财");
+        }, "恭喜发财", this.data.imgUrl);
       } else {
         return share.getRedpackShare(`/pages/index/index?orderId=1`, null, {
           page: "红包分享页",
           share_module: "红包页面分享"
-        }, "恭喜发财");
+        }, "恭喜发财", this.data.imgUrl);
       }
     }else{
       if (!this.data.isSelf) {
         return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId}`, null, {
           page: "红包分享页",
           share_module: "红包页面分享"
-        }, "恭喜发财");
+        }, "恭喜发财", this.data.imgUrl);
       } else {
         return share.getRedpack(`/pages/index/index?orderId=1`, null, {
           page: "红包分享页",
           share_module: "红包页面分享"
-        }, "恭喜发财");
+        }, "恭喜发财", this.data.imgUrl);
       }
     }
   },
@@ -296,6 +296,12 @@ Page({
       isFirstEnter : false
     })
     wx.setStorageSync("isFirstEnter", "false");
+  },
+  //跳转到分享页面
+  gotoShare : function(){
+    wx.navigateTo({
+      url: `/pages/guide-share/guide-share?orderId=${this.data.orderId}`,
+    })
   }
   //   if (this.data.orderId !== '1' && 
   //   ((this.data.openId == phead.phoneid) || (this.data.userId == wx.getStorageSync(loginUtils.getUserIdKey())))){
