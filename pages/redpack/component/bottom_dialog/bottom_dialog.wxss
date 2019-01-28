@@ -1,4 +1,5 @@
 /* pages/redpack/component/bottom_dialog/bottom_dialog.wxss */
+@import "/fonts/DINPro.wxss";
 .bottom_dialog{
   width : 100%;
   height : 100%;
@@ -56,13 +57,13 @@
 .buttons{
   text-align: center;
   margin : 0 auto 0;   
-  width :  690rpx;
-  height : 278rpx;
+  width :  678rpx;
+  height : 280rpx;
   display: flex;
   flex-wrap: wrap;
 }
 .item{
-    margin : 0 9rpx 18rpx;
+    margin : 0 9rpx 18rpx 9rpx;
     width:206rpx;
     height:130rpx;
     border-radius:10rpx;
@@ -70,6 +71,7 @@
     font-size : 30rpx;
     display: flex;
     align-items: center;
+    box-sizing : border-box；
 }
 .txt{
   color : #FA5C47;
@@ -82,6 +84,7 @@
   margin-top : 10rpx;
 }
 .number{
+  font-family: DINPro;
   font-size: 60rpx;
 }
 .enterBtn{
