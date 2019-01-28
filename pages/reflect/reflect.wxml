@@ -21,3 +21,8 @@
     </view>
   </view>
 </view>
+
+<!-- 广告 -->
+<view class="ad">
+  <ad  unit-id="adunit-ad5b7271e214c429" />
+</view>

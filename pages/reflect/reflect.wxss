@@ -130,3 +130,10 @@ page{
   line-height:33rpx;
   padding-bottom : 30rpx;
 }
+
+.ad{
+  position: absolute;
+  bottom: 20rpx;
+  width: 710rpx;
+  left: 20rpx;
+}
