@@ -39,7 +39,9 @@ Page({
 
     isShowBottomDialogType : 0,
     isShowBottomData : null, //弹窗数据
-    redPackTemplates : []   //红包下发的图片
+    redPackTemplates : [],   //红包下发的图片
+
+    isFirstEnter : false //是否首次进入
   },
 
   /**
@@ -47,10 +49,12 @@ Page({
    */
   onLoad: function (options) {
     console.error("onLoad");
+    
     this.setData({
       orderId : options.orderId,
       userId: options.userId,
       openId: options.openId,
+      isFirstEnter: wx.getStorageSync("isFirstEnter") !== 'false',
       requestData : {
         orderId: options.orderId,
         openId: options.openId,
@@ -286,6 +290,12 @@ Page({
         isSelf: true
       })
     }
+  },
+  firstClick : function(){
+    this.setData({
+      isFirstEnter : false
+    })
+    wx.setStorageSync("isFirstEnter", "false");
   }
   //   if (this.data.orderId !== '1' && 
   //   ((this.data.openId == phead.phoneid) || (this.data.userId == wx.getStorageSync(loginUtils.getUserIdKey())))){
