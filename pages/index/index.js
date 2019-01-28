@@ -249,7 +249,7 @@ Page({
           //支付成功埋点
           getApp().sensors.track('recharge', {
             recharge_money:this.data.money,
-            is_success:true,
+            is_succuess:true,
             recharge_fee:this.data.serviceMoney,
           })
         },  
@@ -259,7 +259,7 @@ Page({
           //失败埋点
           getApp().sensors.track('recharge', {
             recharge_money: this.data.money,
-            is_success: false,
+            is_succuess: false,
             recharge_fee: this.data.serviceMoney,
           })
         }
