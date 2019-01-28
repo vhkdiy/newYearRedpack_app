@@ -40,21 +40,19 @@ Page({
   refreshPageData() {
     requestData().then((data) => {
       const avatarUrl = data.user && data.user.avatarUrl;
-      if (data.templates.length > 0) {
 
-        this.setData({
-          templates: data.templates,
-          topImg: data.templates[0].imgUrl,
-          avatarUrl: avatarUrl,
-          choseRedpackData: data.redPackTemplates,
-        });
+      this.setData({
+        templates: data.templates || [],
+        topImg: data.templates && data.templates[0] && data.templates[0].imgUrl,
+        avatarUrl: avatarUrl,
+        choseRedpackData: data.redPackTemplates,
+      });
 
 
-        this.startChoseMarquee();
+      this.startChoseMarquee();
 
-        this.checkShowNewUserGuide();
+      this.checkShowNewUserGuide();
 
-      }
 
     }).catch((e) => {});
   },
@@ -107,7 +105,7 @@ Page({
       count: 1, //只能选择一张
       success: (res) => {
         const filePath = res.tempFilePaths[0];
-        
+
         if (filePath.includes('.gif')) {
           wx.showToast({
             title: '不支持gif图片',
