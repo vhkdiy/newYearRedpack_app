@@ -36,6 +36,44 @@ Page({
     this.refreshPageData();
 
   },
+  onUnload: function () {
+    this.saveStateData();
+    const cropper = this.selectComponent("#cropper");
+    if (cropper) {
+      cropper.saveStateData();
+    }
+  },
+
+  saveStateData() {
+    const selectTempIndex = this.data.selectTempIndex;
+    const choseRedpackIndex = this.data.choseRedpackIndex;
+    const lastMakeImgData = {};
+    lastMakeImgData.selectTempIndex = selectTempIndex;
+    lastMakeImgData.choseRedpackIndex = choseRedpackIndex;
+    const app = getApp();
+    app.lastMakeImgData = lastMakeImgData;
+  },
+
+  restoreSateData() {
+    const app = getApp();
+    const lastMakeImgData = app.lastMakeImgData;
+    const data = this.data;
+    if (lastMakeImgData) {
+
+      this.setData({
+        ...lastMakeImgData
+      });
+
+      const selectTempIndex = lastMakeImgData.selectTempIndex;
+      if (selectTempIndex > -1) {
+        const topImg = data.templates && data.templates[selectTempIndex] && data.templates[selectTempIndex].imgUrl;
+
+        this.setData({
+          topImg: topImg
+        });
+      }
+    }
+  },
 
   refreshPageData() {
     requestData().then((data) => {
@@ -52,6 +90,12 @@ Page({
       this.startChoseMarquee();
 
       this.checkShowNewUserGuide();
+
+      const cropper = this.selectComponent("#cropper");
+      if (cropper) {
+        cropper.restoreStateData();
+      }
+      this.restoreSateData();
 
 
     }).catch((e) => {});

@@ -80,10 +80,36 @@ Component({
     },
   },
 
+
   /**
    * 组件的方法列表
    */
   methods: {
+
+    saveStateData() {
+      const lastMakeImgCanvasData = {};
+      lastMakeImgCanvasData.inputFontObj = this.data.inputFontObj;
+      lastMakeImgCanvasData.inputValue = this.data.inputValue;
+      lastMakeImgCanvasData.originImg = this.data.originImg;
+      // lastMakeImgCanvasData.topImg = this.data.inputFontObj;
+      // lastMakeImgCanvasData.avatarUrl = this.data.inputFontObj;
+      lastMakeImgCanvasData.stv = this.data.stv;
+
+      const app = getApp();
+      app.lastMakeImgCanvasData = lastMakeImgCanvasData;
+
+    },
+
+    restoreStateData(){
+      const app = getApp();
+      const lastMakeImgCanvasData = app.lastMakeImgCanvasData;
+      if (lastMakeImgCanvasData) {
+        this.setData({
+          ...lastMakeImgCanvasData,
+        });
+      }
+    },
+
     rotate() {
       let _this = this;
       _this.setData({
