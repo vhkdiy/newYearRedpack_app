@@ -172,7 +172,7 @@
   flex : 1;
   font-size:30rpx;
   font-family:PingFangSC-Regular;
-  font-weight:400;
+  font-weight:700;
   line-height:42rpx;
   color : #FA5C47;
 }
