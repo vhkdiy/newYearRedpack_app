@@ -221,8 +221,10 @@ Component({
         bottom = 37;
       } else if (strLen <= 6) {
         bottom = 39;
+      } else if (strLen <= 8){
+        bottom = 42;
       } else {
-        bottom = 47;
+        bottom = 48;
       }
 
       return bottom;
@@ -418,15 +420,22 @@ Component({
       let fontSize = 95;
       let strokeWidth = 3;
       let bottom = 19;
-
-      if (strLen <= 6) {
+      if (strLen <= 4) {
+        fontSize = 95;
+        strokeWidth = 3;
+        bottom = 19;
+      } else if (strLen <= 6) {
         fontSize = 68;
         strokeWidth = 3;
         bottom = 30;
-      } else {
+      } else if (strLen <= 8){
         fontSize = 54;
         strokeWidth = 3;
         bottom = 35;
+      } else {
+        fontSize = 47;
+        strokeWidth = 3;
+        bottom = 42;
       }
 
       return {
