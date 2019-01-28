@@ -29,9 +29,9 @@
 
 <view wx:if="{{isShowInput}}" class='input_text_dialog' style="bottom:{{keyboardHeight}}px">
   <view class='fade_input_container'>
-    <view class='input_num_tip'>{{inputValue.length}}/8</view>
+    <view class='input_num_tip'>{{inputValue.length}}/9</view>
   </view>
 
-  <input class='input' placeholder="填写新年祝福" maxlength="8" focus="{{true}}" bindfocus="bindfocus" bindblur="bindblur" bindinput="bindinput" value="{{inputValue}}" adjust-position="{{false}}"/>
+  <input class='input' placeholder="填写新年祝福" maxlength="9" focus="{{true}}" bindfocus="bindfocus" bindblur="bindblur" bindinput="bindinput" value="{{inputValue}}" adjust-position="{{false}}"/>
   <view class='input_ok_btn'>确定</view>
 </view>
