@@ -250,7 +250,7 @@ Page({
           getApp().sensors.track('recharge', {
             recharge_money:this.data.money,
             is_success:true,
-            recharge_fee:this.serviceMoney,
+            recharge_fee:this.data.serviceMoney,
           })
         },  
         fail:(e)=>{
@@ -260,7 +260,7 @@ Page({
           getApp().sensors.track('recharge', {
             recharge_money: this.data.money,
             is_success: false,
-            recharge_fee: this.serviceMoney,
+            recharge_fee: this.data.serviceMoney,
           })
         }
       });
