@@ -202,18 +202,11 @@ Page({
   handleMoneyChange(e){
     console.log(e.detail.value)
     let value = e.detail.value;
-    if((value.match(/^([0-9]+)(\.[0-9]{0,2})?$/) || value == '') && value.length<=8){
+    if(value.match(/^(([0-9]+)(\.[0-9]{0,2})?)$/) || value == ''){
       let money = parseFloat(value) || 0
       this.setData({
         money: value,
         serviceMoney: Math.ceil((money * parseFloat(this.data.serviceRate)/100) * 100) / 100
-      }, () => {
-        if(value != ''){
-          this.formCheckMoney();
-          if(parseInt(this.data.number)){
-            this.formCheckNumber();
-          }
-        }
       })
     }else{
       this.setData({
@@ -227,11 +220,7 @@ Page({
   handleNumberChange(e) {
     let value = e.detail.value;
     this.setData({
-      number: e.detail.value
-    }, () => {
-      if (value != '') {
-        this.formCheckNumber()
-      }
+      number: value
     })
   },
 
@@ -243,25 +232,14 @@ Page({
         orderId:this.data.orderId,
         money:this.data.money,
         number:this.data.number,
+        serviceMoney:this.data.serviceMoney,
         success:(e)=>{
           console.log('success---',e);
           this.paySuccess();
-          //支付成功埋点
-          getApp().sensors.track('recharge', {
-            recharge_money:this.data.money,
-            is_succuess:true,
-            recharge_fee:this.data.serviceMoney,
-          })
         },  
         fail:(e)=>{
           console.log('fail---',e);
           this.showErrorMsg(e.msg||'');
-          //失败埋点
-          getApp().sensors.track('recharge', {
-            recharge_money: this.data.money,
-            is_succuess: false,
-            recharge_fee: this.data.serviceMoney,
-          })
         }
       });
     }
@@ -326,42 +304,23 @@ Page({
     })
   },
 
-  formCheckMoney(checkNull){
-    let flag = false;
-    //赏金判断
+  formCheckMoney(){
     let money = this.data.money;
-    if (checkNull && !money){
-      this.showErrorMsg('请输入赏金');
-      return flag;
+    if(money>0){
+      return true;
+    }else{
+      this.showErrorMsg('请输入金额');
+      return false;
     }
-    if(money>=1){
-      if(money<=50000){
-        flag = true;
-      }else{
-        this.showErrorMsg('打赏金额不能超过50000');
-      }
-    } else {
-      this.showErrorMsg('红包金额不能小于1元');
-    }
-    return flag;
   },
-  formCheckNumber(checkNull){
-    let flag = false;
-    //数量
-    let money = this.data.money;
+  formCheckNumber() {
     let number = this.data.number;
-    number = parseInt(number);
-
-    if (checkNull && !number) {
-      this.showErrorMsg('请输入数量');
-      return flag;
-    }
-    if (money / number >= 1) {
-      flag = true
+    if (number > 0) {
+      return true;
     } else {
-      this.showErrorMsg('单个红包金额不能小于1元');
+      this.showErrorMsg('请输入数量');
+      return false;
     }
-    return flag;
   },
   formCheckOrderId(){
     let flag = false;

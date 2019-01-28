@@ -19,10 +19,24 @@ module.exports = {
             success: function (res) {
               console.log('requestPayment--success:' + JSON.stringify(res));
               option.success && option.success(res);
+
+              //支付成功埋点
+              getApp().sensors.track('recharge', {
+                recharge_money: option.money,
+                is_succuess: true,
+                recharge_fee: option.serviceMoney,
+              })
             },
             fail: function (res) {
               console.log('requestPayment--fail:' + JSON.stringify(res));
               option.fail && option.fail(res);
+
+              //失败埋点
+              getApp().sensors.track('recharge', {
+                recharge_money: option.money,
+                is_succuess: false,
+                recharge_fee: option.serviceMoney,
+              })
             }
           })
         } else {
