@@ -13,6 +13,7 @@
     "pages/make-img/make-img"
   ],
   "tabBar": {
+    "color" : "#dfdfdf",
     "selectedColor": "#F35443",
     "list": [
       {
