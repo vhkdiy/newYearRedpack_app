@@ -24,6 +24,7 @@ Page({
     templates: [],
     avatarUrl: "",
     isShowNewUserGuide: false,
+    isShowChoseRedpackTip: false,
   },
 
   /**
@@ -161,10 +162,14 @@ Page({
   createNewImg() {
     if (this.data.choseRedpackIndex < 0) {
       //没有选择红包的位置的
-      wx.showToast({
-        title: '请先选择红包藏在哪里哦',
-        mask: true,
-        icon: "none",
+      // wx.showToast({
+      //   title: '请先选择红包藏在哪里哦',
+      //   mask: true,
+      //   icon: "none",
+      // });
+
+      this.setData({
+        isShowChoseRedpackTip: true,
       });
 
       return;

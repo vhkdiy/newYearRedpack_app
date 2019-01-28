@@ -19,7 +19,7 @@
     </block>
   </view>
 
-  <image wx:if="{{choseRedpackIndex < 0 && !isShowNewUserGuide}}" class='chose_redpack_tip_img' src='./images/chose_redpack_tip.png'></image>
+  <image wx:if="{{choseRedpackIndex < 0 && isShowChoseRedpackTip}}" class='chose_redpack_tip_img' src='./images/chose_redpack_tip.png'></image>
 
 </view>
 
