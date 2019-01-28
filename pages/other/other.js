@@ -10,8 +10,8 @@ Page({
    */
   data: {
     properties: {
-      app_title: '拜年红包',
-      $title: '拜年红包',
+      app_title: '财神赐福',
+      $title: '财神赐福',
       url: 'page/other/other'
     },
     adArr:[],

@@ -1,7 +1,7 @@
 // 配置文件
 const isLocal = false;
 const testServer = false;
-const appName = "拜年红包";
+const appName = "财神赐福";
 
 module.exports = {
   testServer: testServer,

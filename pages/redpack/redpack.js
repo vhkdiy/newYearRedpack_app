@@ -239,7 +239,8 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (e) {
-    if (e.target.id == "share"){
+    console.error(e);
+    if (e && e.target && e.target.id == "share"){
       if (!this.data.isSelf) {
         return share.getRedpackShare(`/pages/index/index?orderId=${this.data.orderId}`, null, {
           page: "红包分享页",
