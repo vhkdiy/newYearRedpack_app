@@ -82,7 +82,7 @@ Page({
   shareclick: function () {
     this.requestData();
   },
-  requestData : function(){
+  requestData : function(callback){
     setTimeout(() => {
       let url = `/redPack/${this.data.orderId}?openId=${this.data.openId}&userId=${this.data.userId}`;
       console.error(url);
@@ -104,6 +104,7 @@ Page({
           redPackTemplates: data.redPackTemplates
 
         })
+        callback && callback();
       }).catch(e => {
         console.error("catch");
       });
@@ -112,11 +113,18 @@ Page({
   onGotUserInfo : function(e){
     console.log("授权");
     console.error(e);
+    let that = this;
     let id = e.target.id;
-    UpdateUserInfo(e,()=>{
-      this.requestData();
-      this.clickRedPack(id);
-    });
+    console.error("id"+id);
+    UpdateUserInfo(e,{
+      success : ()=>{
+      console.error("上传授权信息");
+        that.requestData(()=>{
+          console.log("请求成功");
+        that.clickRedPack(null,id);
+      });
+      
+    }});
 
   },
   requestRedPack : function(id){
@@ -165,18 +173,18 @@ Page({
     })
   },
   //点击红包
-  clickRedPack : function(e){
+  clickRedPack: function (e, idString){
+    var idString = idString ? idString : e.currentTarget.id;
     if (this.data.authorized){
-      console.log(e.currentTarget.id);
+      console.log(idString);
       let that = this;
       if (this.data.status == 6) {
         console.error("点击红包");
-        this.requestRedPack(e.currentTarget.id);
+        this.requestRedPack(idString);
       } else if (this.data.status == 5) {
         this.setData({
           isShowType: 2
         })
-        // this.requestRedPack(e.currentTarget.id);
       } else if (this.data.status == 4) {
         this.setData({
           isShowType: 3
@@ -221,7 +229,8 @@ Page({
    */
   onShareAppMessage: function (res) {
     // return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId});
-    if (this.data.isSelf){
+    console.log(this.data.isSelf);
+    if (!this.data.isSelf){
       return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId}`, null, {
         page: "红包分享页",
         share_module: "红包页面分享"
