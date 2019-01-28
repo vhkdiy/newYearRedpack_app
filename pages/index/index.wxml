@@ -8,8 +8,8 @@
   <!-- 生成图片 -->
   <view class='composite-picture'>
     <image src='{{compositePicture}}'></image>
-    <view class='mask'></view>
-    <view class='wealth-btn' catchtap='handleWealthBtn'>点击这里扮演财神</view>
+    <view wx:if="{{!orderId}}" class='mask'></view>
+    <view wx:if="{{!orderId}}" class='wealth-btn' catchtap='handleWealthBtn'>点击这里扮演财神</view>
   </view>
 
   <!-- 表单 -->
