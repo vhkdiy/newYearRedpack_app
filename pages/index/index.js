@@ -232,25 +232,14 @@ Page({
         orderId:this.data.orderId,
         money:this.data.money,
         number:this.data.number,
+        serviceMoney:this.data.serviceMoney,
         success:(e)=>{
           console.log('success---',e);
           this.paySuccess();
-          //支付成功埋点
-          getApp().sensors.track('recharge', {
-            recharge_money:this.data.money,
-            is_succuess:true,
-            recharge_fee:this.data.serviceMoney,
-          })
         },  
         fail:(e)=>{
           console.log('fail---',e);
           this.showErrorMsg(e.msg||'');
-          //失败埋点
-          getApp().sensors.track('recharge', {
-            recharge_money: this.data.money,
-            is_succuess: false,
-            recharge_fee: this.data.serviceMoney,
-          })
         }
       });
     }
