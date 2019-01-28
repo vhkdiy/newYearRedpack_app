@@ -25,6 +25,7 @@ Page({
     avatarUrl: "",
     isShowNewUserGuide: false,
     isShowChoseRedpackTip: false,
+    selectTempIndex: -1,
   },
 
   /**
@@ -184,6 +185,7 @@ Page({
   zhutiItemClick(e) {
     const index = e.currentTarget.dataset.index;
     this.setData({
+      selectTempIndex: index,
       topImg: this.data.templates[index].imgUrl,
     });
   }
