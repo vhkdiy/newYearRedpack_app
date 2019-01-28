@@ -154,5 +154,37 @@ module.exports = {
       path: getPath(path_url, param, shareType.RED_PACK, shareId, title, page + '-' + share_module)
     }
   },
+  getRedpackShare: function (path_url = "/pages/index/index", param, shareContent, redpackTitle, shareImg) {
+    //只是执行了name的替换
+    let title = title1.replace(/\$userName/g, username);
+    title = title.replace(/\$redpackTitle/g, redpackTitle || "恭喜发财");
+
+    const app = getApp();
+    if (app) {
+      app.sensors.track('Share', Object.assign({
+        share_content_id: shareId,
+        share_content: "",
+        ...shareContent
+      }));
+    }
+
+    let params = { imageUrl: shareImg || imageUrl1 };
+    if (!params.imageUrl) {   //如果imageUrl是undefined 就删掉 默认采用截图
+      delete (params.imageUrl);
+    }
+
+    const page = (shareContent && shareContent.page) || "";
+    const share_module = (shareContent && shareContent.share_module) || "";
+
+    wx.showShareMenu({
+      withShareTicket: true,
+    });
+
+    return {
+      ...params,
+      title: title,
+      path: getPath(path_url, param, shareType.GET_NEW_CHANCE, shareId, title, page + '-' + share_module)
+    }
+  },
 
 }

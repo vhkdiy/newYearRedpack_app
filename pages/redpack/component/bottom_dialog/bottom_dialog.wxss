@@ -105,7 +105,7 @@
   color:rgba(153,153,153,1);
 }
 .joinNum{
-  width : 208rpx;
+  width : 248rpx;
   margin: 37rpx auto 0;
   font-size:24rpx;
   font-family:PingFangSC-Regular;

@@ -18,15 +18,6 @@
               <image id="{{index}}" class="redpack{{index + 1}}" src="{{item.imgUrl}}" bindtap="{{authorized ? 'clickRedPack' : ''}}" />
             </button>
           </block>
-          <!-- <button class="getUserInfoBtn" open-type='getUserInfo'>
-            <image id="1" class="redpack2" src="./image/redpack1.png" bindtap="clickRedPack" />
-          </button>
-          <button class="getUserInfoBtn" open-type='getUserInfo'>
-            <image id="2" class="redpack3" src="./image/redpack2.png" bindtap="clickRedPack" />
-          </button>
-          <button class="getUserInfoBtn" open-type='getUserInfo'>
-            <image id="3" class="redpack4" src="./image/redpack3.png" bindtap="clickRedPack" />
-          </button> -->
         </view>
       </view>
       <view class="btn" wx:if="{{status ==  1}}">红包已经失效了</view>
@@ -44,9 +35,9 @@
           <image class="smallIcon" src="./image/btn3.png" />
           <view class="txt">回赠祝福</view>
         </view>
-        <view wx:else class="button">
-          <image class="smallIcon" src="./image/btn3.png" />
-          <button open-type='share' class="smallShare">去分享</button>
+        <view wx:else class="button" bindtap='gotoShare'>
+          <image class="smallIcon" src="./image/btn4.png" />
+          <button id="" class="smallShare">去分享</button>
         </view>
 
       </view>
@@ -65,7 +56,7 @@
             <view class="date">{{item.dateString}}</view>
           </view>
           <view class="right_item">
-              <view class="money">{{item.redPackMoney}}元</view>
+              <view wx:if="{{item.redPackMoney}}" class="money">{{item.redPackMoney}}元</view>
               <image wx:if="{{item.icon}}" class="status" mode="WidthFix" src="{{item.icon}}" ></image>
               <view wx:elif="{{!item.redPackMoney}}" class="monry_error">猜错啦</view>
           </view>
@@ -76,3 +67,7 @@
 </acquire-formid-view>
 <Dialog isShowType="{{isShowType}}" isShowData="{{isShowData}}" requestData="{{requestData}}" bind:shareclick="shareclick" />
 <Bottom_dialog isShowType="{{isShowBottomDialogType}}" isShowData="{{isShowBottomData}}" orderId="{{orderId}}"/>
+<view wx:if="{{isFirstEnter && (status == 5 || status == 6 || status == 4)}}" class="redpackTipBg" bindtap="firstClick">
+  <view class="window"></view>
+  <image class="redpackTip" mode="widthFix" src="./image/tipImage.png"/>
+</view>

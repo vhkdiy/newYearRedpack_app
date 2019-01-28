@@ -46,7 +46,16 @@
 .paddingView{
   border-radius: 8rpx;
   background-color : white;
-
+  height: 618rpx;
+}
+.window{
+  position: absolute;
+  top : -640rpx ;
+  left: -930rpx;
+  width :616rpx;
+  height : 300rpx;
+  border: 1000rpx solid rgba(0,0,0,0.50);
+  border-radius: 12rpx;
 }
 .userImage{
 
@@ -62,9 +71,24 @@
   margin : 13rpx auto 18rpx auto;
   font-weight: bold;
 }
+.redpackTipBg{
+  position: fixed;
+  top : 0;
+  left : 0;
+  width : 100%;
+  height : 100%;
+}
+.redpackTip{
+  position : absolute;
+  width : 565rpx;
+  left : 50%;
+  transform: translate(-50%,0);
+  top : 220rpx;
+
+}
 .redpack1{
   position : absolute;
-  bottom : 186rpx;
+  bottom : 249rpx;
   left : 34rpx;
   width : 140rpx;
   height : 140rpx;
@@ -72,7 +96,7 @@
 }
 .redpack2{
   position : absolute;
-  bottom : 31rpx;
+  bottom : 137rpx;
   left : 108rpx;
   width : 140rpx;
   height : 140rpx;
@@ -80,7 +104,7 @@
 }
 .redpack3{
   position : absolute;
-  bottom : 31rpx;
+  bottom : 137rpx;
   right : 108rpx;
   width : 140rpx;
   height : 140rpx;
@@ -88,7 +112,7 @@
 }
 .redpack4{
    position : absolute;
-  bottom : 186rpx;
+  bottom : 249rpx;
   right : 34rpx;
   width : 140rpx;
   height : 140rpx;

@@ -13,10 +13,10 @@
 }
 .close{
   position : absolute;
-  top : 30rpx;
-  left : 30rpx;
-  width : 22rpx;
-  height : 22rpx;
+  top : 0rpx;
+  left : 0rpx;
+  width : 88rpx;
+  height : 88rpx;
 }
 .content{
   position: relative;
@@ -88,7 +88,7 @@
   content : '';
   position : absolute;
   right : -20rpx;
-  top : 8rpx;
+  top : 9rpx;
   width : 14rpx;
   height : 24rpx;
   background-image : url("https://img.ibestfanli.com/redpack/arrow.png");
@@ -107,10 +107,10 @@
 
 .close1{
   position : absolute;
-  top : 30rpx;
-  left : 30rpx;
-  width : 22rpx;
-  height : 22rpx;
+  top : 0rpx;
+  left : 0rpx;
+  width : 88rpx;
+  height : 88rpx;
 }
 
 .share_image{
