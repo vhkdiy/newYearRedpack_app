@@ -165,6 +165,27 @@
   width : 32rpx;
   height : 32rpx;
 }
+.smallShare{
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #FFFFFE;
+  letter-spacing: 0;
+
+  overflow: inherit;
+  padding: 0;
+  margin : 0 0 0 10rpx;
+
+  line-height: inherit;
+  border-radius: 0;
+  background-color: transparent;
+  text-align: center;
+}
+.smallShare::after{
+  width : auto;
+  display: none;
+}
+
+
 .txt{
   margin-left : 10rpx;
   font-family: PingFangSC-Regular;
@@ -188,9 +209,19 @@
   font-size : 24rpx;
   color: #979797;
 }
-.countBtn{
+.countBtn {
   color: #979797;
-  width : 120rpx;
+  width : 84rpx;
+  overflow: inherit;
+  padding: 0;
+  font-size: inherit;
+  line-height: inherit;
+  border-radius: 0;
+  background-color: transparent;
+  text-align: inherit;
+}
+.countBtn::after {
+  display: none;
 }
 
 .item{

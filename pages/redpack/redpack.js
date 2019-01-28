@@ -33,7 +33,7 @@ Page({
     vieRecords : "",    //领取记录
     imgUrl :     "",     //背景图片
 
-
+    isSelf : true,
     isShowType : 0,       //显示弹窗状态
     isShowData : null,    //红包数据
 
@@ -46,6 +46,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.error("onLoad");
     this.setData({
       orderId : options.orderId,
       userId: options.userId,
@@ -56,8 +57,15 @@ Page({
         phead: phead
       }
     })
+  },
+  onShow: function () {
+    this.reloadData();
+  },
+  reloadData : function(){
     this.requestData();
     this.getAppreciate();
+    //判断是否是自己 和 示例页
+    this.judgeSelf();
   },
   //请求获取赞赏数据
   getAppreciate : function(){
@@ -102,8 +110,12 @@ Page({
     }, 300);
   },
   onGotUserInfo : function(e){
+    console.log("授权");
+    console.error(e);
+    let id = e.target.id;
     UpdateUserInfo(e,()=>{
       this.requestData();
+      this.clickRedPack(id);
     });
 
   },
@@ -132,9 +144,9 @@ Page({
         })
         try {
           getApp().sensors.track('get_redpack', {
-            "redpack_id": data.record.id,
+            "redpack_id": this.data.order,
             "get_redpack_money": data.record.redPackMoney,
-            "redpack_order_user_id": wx.getStorageSync(loginUtils.getUserIdKey())
+            "redpack_order_user_id": this.data.userId || this.data.openId || "链接上没有带"
           });
         } catch (e) {
 
@@ -145,6 +157,7 @@ Page({
           icon: 'none'
         })
       }
+      console.error("请求刷新刷新了");
       this.requestData();
 
     }).catch(e => {
@@ -174,13 +187,6 @@ Page({
 
     }
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
   //去提现
   gotoReflect : function(){
     wx.navigateTo({
@@ -215,12 +221,57 @@ Page({
    */
   onShareAppMessage: function (res) {
     // return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId});
-    return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId}`, null, {
-      page: "红包分享页",
-      share_module: "红包页面分享"
-    },"恭喜发财");
-      // this.data.vieRecords && this.data.vieRecords.length > 0 && this.data.vieRecords[0].greeting);
-  }
+    if (this.data.isSelf){
+      return share.getRedpack(`/pages/index/index?orderId=${this.data.orderId}`, null, {
+        page: "红包分享页",
+        share_module: "红包页面分享"
+      },"恭喜发财");
+    }else{
+      return share.getRedpack(`/pages/index/index?orderId=1`, null, {
+        page: "红包分享页",
+        share_module: "红包页面分享"
+      }, "恭喜发财");
+    }
+  },
 
+  //判断是不是自己进来
+  judgeSelf : function(){
+    console.error(this.data.openId);
+    console.error(phead.phoneid);
+    console.error(this.data.userId);
+    console.error(wx.getStorageSync(loginUtils.getUserIdKey()));
+    console.error(this.data.orderId);
+    console.error(this.data.orderId !== '1' );
+    if (this.data.orderId == '1'){ //示例页
+        //去分享
+      this.setData({
+        isSelf: false
+      })
+    } else if (this.data.openId == phead.phoneid || this.data.userId == wx.getStorageSync(loginUtils.getUserIdKey())){
+        //去分享
+      this.setData({
+        isSelf: false
+      })
+    } else {
+      //去回赠
+      this.setData({
+        isSelf: true
+      })
+    }
+  }
+  //   if (this.data.orderId !== '1' && 
+  //   ((this.data.openId == phead.phoneid) || (this.data.userId == wx.getStorageSync(loginUtils.getUserIdKey())))){
+
+  //     console.log("true");
+  //     this.setData({
+  //       isSelf : true
+  //     })
+  //   }else{
+  //     console.log("false");
+  //     this.setData({
+  //       isSelf: false
+  //     })
+  //   }
+  // }
 
 })

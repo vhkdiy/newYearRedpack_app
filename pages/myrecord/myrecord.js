@@ -24,16 +24,17 @@ Page({
     currentShowList : []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-
+  //刷新页面
+  reloadData : function(){
+    this.setData({
+      scrollViewHeight: 0,  //scroll列表高度
+      animationCss: 'scrollBlock',
+      selectIndex: 0,       //按钮选中的
+    })
     requestData().then((data) => {
       console.error(data);
       this.setData({
-        requestData : data,
+        requestData: data,
         avatarUrl: data.avatarUrl,
         nickName: data.nickName,
         monry: data.sendTotalMoney,
@@ -45,7 +46,12 @@ Page({
       console.error("catch");
       console.error(e);
     });
-
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.reloadData();
   },
   //设置列表的高度
   setListHeight : function(){
@@ -66,7 +72,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

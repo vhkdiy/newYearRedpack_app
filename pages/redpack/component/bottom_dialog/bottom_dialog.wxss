@@ -23,26 +23,26 @@
 .content_open{
   position: relative;
   width : 100%;
-  height : 690rpx;
+  height : 728rpx;
   background-color : white;
   text-align: center;
   animation: dialogOpen 0.3s;
 }
 @keyframes dialogOpen{
-  from {top : 690rpx;}
+  from {top : 728rpx;}
   to   {top : 0;}
 }
 .content_close{
   position: relative;
   width : 100%;
-  height : 690rpx;
+  height : 728rpx;
   background-color : white;
   text-align: center;
   animation: dialogClose 0.3s;
 }
 @keyframes dialogClose{
   from {top : 0;}
-  to   {top : 690rpx;}
+  to   {top : 728rpx;}
 }
 .title{
   margin-top : 64rpx;
@@ -88,16 +88,25 @@
   font-size: 60rpx;
 }
 .enterBtn{
-  margin-top : 46rpx;
+  margin-top : 34rpx;
+  height : 40rpx;
   font-size:28rpx;
   font-family:PingFangSC-Regular;
   font-weight:400;
   color:rgba(87,107,149,1);
   line-height:40rpx;
 }
+.poundage{
+  margin-top : 14rpx;
+  height : 33rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}
 .joinNum{
   width : 208rpx;
-  margin: 44rpx auto 0;
+  margin: 37rpx auto 0;
   font-size:24rpx;
   font-family:PingFangSC-Regular;
   font-weight:400;
@@ -176,6 +185,8 @@
   line-height:42rpx;
   color : #FA5C47;
 }
+
+
 .btn{
   margin-top : 36rpx;
   width:654rpx;
