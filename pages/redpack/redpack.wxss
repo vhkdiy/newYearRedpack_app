@@ -35,7 +35,7 @@
   font-size: 34rpx;
   color: #FFE1B0;
   letter-spacing: 0;
-  margin-left : 18rpx;
+  margin-left : 12rpx;
 }
 .imageView{
   margin: 0 auto;
@@ -108,9 +108,10 @@
   text-align: center;
 }
 .monry{
+  margin-top : 4rpx;
   font-family: PingFangSC-Semibold;
   font-size: 38rpx;
-  color: #F0E4AD;
+  color: #f35443;
   letter-spacing: 2rpx;
 }
 .num{
@@ -219,10 +220,10 @@
   font-family:PingFangSC-Regular;
   font-weight:bold;
   color:rgba(34,34,34,1);
-  height : 42rpx;
   line-height:42rpx;
   display:flex;
   align-items: center;
+  height : 45rpx;
 }
 .sex{
   margin : 0 0 0 5rpx;
@@ -231,12 +232,12 @@
 }
 .date{
   margin-left : 30rpx;
-  margin-top : 13rpx;
+  /* margin-top : 13rpx; */
   font-size:26rpx;
   font-family:PingFangSC-Regular;
   font-weight:400;
   color:rgba(136,136,136,1);
-  height : 37rpx;
+  height : 38rpx;
   line-height:37rpx;
 }
 .right_item{
@@ -255,15 +256,17 @@
 }
 .status{
   margin-right : 30rpx;
-  margin-top : 13rpx;
+  /* margin-top : 13rpx; */
+  margin-top : 2rpx;
   height : 35rpx;
   width : 128rpx;
 }
 
 .image{
-  margin : 28rpx -12rpx 0 28rpx;
-  width : 84rpx;
-  height : 84rpx;
+  margin : 30rpx -12rpx 0 28rpx;
+  width : 80rpx;
+  height : 80rpx;
+  border-radius: 6rpx;
 }
 .myRecord{
   text-align: center;

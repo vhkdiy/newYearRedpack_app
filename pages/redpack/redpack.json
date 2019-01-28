@@ -1,4 +1,5 @@
 {
+  "navigationBarBackgroundColor": "#F35D4C",
   "usingComponents": {
     "Dialog":"./component/dialog/dialog",
     "Bottom_dialog" : "./component/bottom_dialog/bottom_dialog",
