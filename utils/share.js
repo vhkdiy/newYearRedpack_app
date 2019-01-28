@@ -122,7 +122,7 @@ module.exports = {
 
 
   //红包
-  getRedpack: function (path_url = "/pages/index/index", param, shareContent, redpackTitle) {
+  getRedpack: function (path_url = "/pages/index/index", param, shareContent, redpackTitle, shareImg) {
     //只是执行了name的替换
     let title = title1.replace(/\$userName/g, username);
     title = title.replace(/\$redpackTitle/g, redpackTitle || "恭喜发财");
@@ -136,7 +136,7 @@ module.exports = {
       }));
     }
 
-    let params = { imageUrl: imageUrl1 };
+    let params = { imageUrl: shareImg || imageUrl1 };
     if (!params.imageUrl) {   //如果imageUrl是undefined 就删掉 默认采用截图
       delete (params.imageUrl);
     }
