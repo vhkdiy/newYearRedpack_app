@@ -21,7 +21,7 @@
     </view>
     <!-- 输入框 -->
     <view class='item'>
-      <text>赏金 (元)</text>
+      <text>金额 (元)</text>
       <input placeholder="填写金额" placeholder-class='placeholder' type='digit' value='{{money}}' bindinput="handleMoneyChange"></input>
     </view>
     <view class='item mg40'>
