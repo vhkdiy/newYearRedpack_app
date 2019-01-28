@@ -7,13 +7,11 @@ page{
 .container{
   position: relative;
   width:690rpx;
-  height:964rpx;
-  margin: 101rpx auto 0 auto;
+  height:898rpx;
+  margin: 81rpx auto 0 auto;
   background:rgba(255,255,254,1);
   border-radius:6rpx;
-
-  box-sizing: border-box;
-  padding-top: 99rpx;
+  padding-top: 102rpx;
 }
 
 /* 用户头像 */
@@ -46,8 +44,8 @@ page{
 /* 生成图片 */
 .container .composite-picture{
   position: relative;
-  width: 440rpx;
-  height: 440rpx;
+  width: 430rpx;
+  height: 430rpx;
   border-radius:6rpx;
   margin: 0 auto;
   overflow: hidden;
@@ -92,64 +90,41 @@ page{
 
 
 /* 表单 */
-.mg40{
-  margin-top: 40rpx;
+.mg24{
+  margin-top: 24rpx;
 }
 form{
   position: relative;
-  padding-top: 68rpx;
   display: block;
-  width: 550rpx;
-  margin: 0 auto;
+  width: 586rpx;
+  margin: 30rpx auto 0 auto;
 }
 
-form .inputErrorMsg{
-  position: absolute;
-  padding: 0 33rpx;
-  height:48rpx;
-  line-height: 48rpx;
-  top: 6rpx;
-  left: 50%;
-  transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  background:rgba(242,242,242,1);
-  border-radius:25rpx;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-form .inputErrorMsg image{
-  width: 26rpx;
-  height: 26rpx;
-  margin-right: 6rpx;
-}
-form .inputErrorMsg text{ 
-  font-size:26rpx;
-  font-family:PingFangSC-Regular;
-  font-weight:400;
-  color:rgba(235,74,56,1);
-  white-space:nowrap;
-}
 
 form .item{
-  height: 46rpx;
+  width:586rpx;
+  height:96rpx;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  background:rgba(247,247,247,1);
+  border-radius:10rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 form .item text{
-  font-size:30rpx;
+  font-size:32rpx;
   font-family:PingFangSC-Regular;
   font-weight:400;
   color:rgba(34,34,34,1);
 }
 form .item input{
-  width: 390rpx;
-  font-size:30rpx;
+  flex: 1;
   font-family:PingFangSC-Regular;
   font-weight:400;
-  border-bottom: 1rpx solid #ddd;
+  text-align: right;
+  box-sizing: border-box;
+  padding: 0 7rpx;
 }
 .placeholder{
   font-size:30rpx;
@@ -158,10 +133,21 @@ form .item input{
   color:rgba(221,221,221,1);
 }
 
-form .prompt{
+form .inputErrorMsg{
+  font-size:24rpx;
   height:33rpx;
-  margin: 38rpx 0 18rpx 0;
+  margin: 6rpx 0 5rpx 0;
   text-align: center;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(235,74,56,1);
+  line-height:33rpx;
+}
+
+form .prompt{
+  margin-bottom: 14rpx;
+  text-align: center;
+  height:33rpx;
   font-size:24rpx;
   font-family:PingFangSC-Regular;
   font-weight:400;
@@ -170,9 +156,7 @@ form .prompt{
 }
 form .btn{
   position: relative;
-  width:586rpx;
   height:94rpx;
-  margin-left: -16rpx;
 }
 form .btn .submit{
   position: absolute;

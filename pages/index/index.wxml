@@ -13,20 +13,22 @@
   </view>
 
   <!-- 表单 -->
-  <form bindsubmit="handleSubmit">  
-    <!-- 错误提示 -->
-    <view wx:if="{{inputErrorMsg!=''}}" class='inputErrorMsg'>
-      <image src="https://img.xmiles.cn/newYearRedpack/index/notice.png"></image>
-      <text>{{inputErrorMsg}}</text>
-    </view>
+  <form bindsubmit="handleSubmit"> 
     <!-- 输入框 -->
     <view class='item'>
-      <text>金额 (元)</text>
-      <input placeholder="填写金额" placeholder-class='placeholder' type='digit' value='{{money}}' bindinput="handleMoneyChange"></input>
+      <text>总金额</text>
+      <input placeholder="0.00" placeholder-class='placeholder' type='digit' value='{{money}}' bindinput="handleMoneyChange"></input>
+      <text>元</text>
     </view>
-    <view class='item mg40'>
-      <text>数量 (个)</text>
-      <input placeholder='红包数' placeholder-class='placeholder' type='number' value='{{number}}' bindinput='handleNumberChange'></input>
+    <view class='item mg24'>
+      <text>红包个数</text>
+      <input placeholder='填写红包数' placeholder-class='placeholder' type='number' value='{{number}}' bindinput='handleNumberChange'></input>
+      <text>个</text>
+    </view>
+     
+    <!-- 错误提示 -->
+    <view class='inputErrorMsg'>
+      <text wx:if="{{inputErrorMsg!=''}}">*{{inputErrorMsg}}</text>
     </view>
     <view class='prompt'>{{serviceRate == 0?"限时免收服务费":"需支付￥"+serviceMoney+"服务费"}}</view>
     <view class='btn'>
