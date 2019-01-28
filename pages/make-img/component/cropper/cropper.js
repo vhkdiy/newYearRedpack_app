@@ -203,7 +203,7 @@ Component({
                 lineWidth: `${this.data.inputFontObj.strokeWidth}rpx`,
                 align: 'center',
                 left: `${this.data.width * SCALE / 2}px`,
-                bottom: `${this.getInputTextInCanvasBottom(this.data.inputValue.length)}rpx`,
+                bottom: `${this.getInputTextInCanvasBottom(this.data.inputValue.length) * SCALE}rpx`,
                 fontWeight: 'bold',
                 color: "#ffffff",
                 fontSize: `${this.data.inputFontObj.fontSize * SCALE}rpx`,
