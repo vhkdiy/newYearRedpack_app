@@ -90,6 +90,13 @@ button::after{
 }
 
 
+.ad{
+  position: absolute;
+  bottom: 20rpx;
+  width: 710rpx;
+  left: 20rpx;
+}
+
 
 
 
