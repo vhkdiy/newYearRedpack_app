@@ -169,7 +169,7 @@ Page({
         }
       } else {
         wx.showToast({
-          title: '领取失败',
+          title: '红包已领完',
           icon: 'none'
         })
       }

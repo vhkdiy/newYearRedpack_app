@@ -26,6 +26,22 @@
   background-size : 580rpx auto;
   text-align: center;
 }
+.content_animation{
+  position: relative;
+  width : 580rpx;
+  height : 720rpx;
+  background-image : url("https://img.ibestfanli.com/redpack/redpack.png");
+  background-size : 580rpx auto;
+  text-align: center;
+  animation: content 0.3s;
+}
+@keyframes content{
+  0%    {opacity: 0.5; transform: scale(0.4,0.4)}
+  72.7%  {transform: scale(1.2,1.2)}
+  100%  {opacity: 1;  transform: scale(1,1)}
+}
+
+
 .redpack_tip{
   margin-top : 88rpx;
   font-family: PingFangSC-Regular;
@@ -104,6 +120,15 @@
   background: #F9F7FA;
   border-radius: 6px;
 }
+.content1_animation{
+  position: relative;
+  width : 580rpx;
+  height : 550rpx;
+  text-align: center;
+  background: #F9F7FA;
+  border-radius: 6px;
+  animation: content 0.3s;
+}
 
 .close1{
   position : absolute;
@@ -157,6 +182,15 @@
   text-align: center;
   background: #F9F7FA;
   border-radius: 6px;
+}
+.content2_animation{
+  position: relative;
+  width : 580rpx;
+  height : auto;
+  text-align: center;
+  background: #F9F7FA;
+  border-radius: 6px;
+  animation: content 0.3s;
 }
 .share{
   margin : 89rpx auto 0;

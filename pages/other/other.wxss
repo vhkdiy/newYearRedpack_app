@@ -67,12 +67,9 @@ page{
 }
 
 .ad{
+  border-radius: 8rpx;
+  overflow: hidden;
   position: relative;
-  width: 100%;
-  margin-top: 20rpx;
-}
-
-.ad image{
-  width: 678rpx;
-  height: 228rpx;
+  width: 710rpx;
+  margin: 20rpx auto 0 auto;
 }

@@ -2,7 +2,7 @@
 <AcquireFormidView>
 <!-- 列表 -->
 <view class='items'>
-  <ad class="ad" wx:if="{{unitId}}" unit-id="{{unitId}}" />
+  <view class="ad" wx:if="{{unitId}}" ><ad unit-id="{{unitId}}" /></view>
   <view wx:for="{{adArr}}" wx:key="{{key}}">
     <ad-component adData='{{item}}' properties='{{properties}}'>
       <view class='itemAd'>
