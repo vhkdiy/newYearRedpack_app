@@ -11,10 +11,10 @@ var shareId = '';
 var utm_source, utm_medium, utm_campaign, utm_content, utm_term;
 
 var title = '[新年红包] $userName给你发了一个红包';
-var imageUrl = 'https://img.xmiles.cn/newYearRedpack/redPack/redPackBg.png';
+var imageUrl = 'https://img.xmiles.cn/caiziwanzhe/paba/1c5825f9b5925cb07c062616d2ef6a2.png';
 
 var title1 = '[新年红包] $userName给你发了一个红包【$redpackTitle】';
-var imageUrl1 = 'https://img.xmiles.cn/newYearRedpack/redPack/redPackBg.png';
+var imageUrl1 = 'https://img.xmiles.cn/caiziwanzhe/paba/1c5825f9b5925cb07c062616d2ef6a2.png';
 
 
 var getPath = function (path_url,param, type, shareId, title, button) {
