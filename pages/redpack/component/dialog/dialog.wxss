@@ -13,10 +13,10 @@
 }
 .close{
   position : absolute;
-  top : 30rpx;
-  left : 30rpx;
-  width : 22rpx;
-  height : 22rpx;
+  top : 0rpx;
+  left : 0rpx;
+  width : 88rpx;
+  height : 88rpx;
 }
 .content{
   position: relative;
@@ -107,10 +107,10 @@
 
 .close1{
   position : absolute;
-  top : 30rpx;
-  left : 30rpx;
-  width : 22rpx;
-  height : 22rpx;
+  top : 0rpx;
+  left : 0rpx;
+  width : 88rpx;
+  height : 88rpx;
 }
 
 .share_image{
