@@ -65,6 +65,7 @@ const request = config => {
         console.log("==========request============:");
         console.log("url: " + url);
         console.log("data: ", data);
+        console.log("res: ", res);
       }
 
       config.loading && wx.hideLoading();
