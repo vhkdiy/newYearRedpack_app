@@ -7,7 +7,7 @@
       <view class="inputBar">
         <view class="inputView">
           <view class="inputTip">金额 (元)</view>
-          <input class="input" type="number" value="{{inputValue}}" bindinput="changeInput" placeholder='可填入1-200' />
+          <input class="input" type="number" value="{{inputValue}}" bindinput="changeInput" placeholder='可输入1-200'  placeholder-style="font-weight:400;color:rgba(136,136,136,1);" />
         </view>
         <view class="btn" bindtap='sendAction'>回赠</view>
       </view>

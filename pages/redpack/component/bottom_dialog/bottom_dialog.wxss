@@ -201,7 +201,7 @@
   line-height:94rpx;
 }
 .returnBtn{
-  margin : 0 auto 88rpx;
+  margin : 34rpx auto 12rpx;
   width : 120rpx;
   font-size:30rpx;
   font-family:PingFangSC-Regular;
@@ -216,7 +216,7 @@
   height : 30rpx;
   position : absolute;
   left : -30rpx;
-  top : 5rpx;
+  top : 6rpx;
   background-image : url("https://img.ibestfanli.com/redpack/returnBtn.png");
   background-size : 30rpx 30rpx;
 }
