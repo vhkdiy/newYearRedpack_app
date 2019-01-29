@@ -26,6 +26,7 @@ Page({
     isShowNewUserGuide: false,
     isShowChoseRedpackTip: false,
     selectTempIndex: 0,
+    showGreetingInputAndImgUpload: false,
   },
 
   /**
@@ -78,12 +79,13 @@ Page({
   refreshPageData() {
     requestData().then((data) => {
       const avatarUrl = data.user && data.user.avatarUrl;
-
+      const enableCus = data.showGreetingInputAndImgUpload == 1;
       this.setData({
         templates: data.templates || [],
         topImg: data.templates && data.templates[0] && data.templates[0].imgUrl,
         avatarUrl: avatarUrl,
         choseRedpackData: data.redPackTemplates,
+        showGreetingInputAndImgUpload: enableCus,
       });
 
 
@@ -93,10 +95,12 @@ Page({
 
       const cropper = this.selectComponent("#cropper");
       if (cropper) {
+        cropper.setEnableCus(enableCus);
         cropper.restoreStateData();
-      }
-      this.restoreSateData();
 
+      }
+
+      this.restoreSateData();
 
     }).catch((e) => {});
   },
