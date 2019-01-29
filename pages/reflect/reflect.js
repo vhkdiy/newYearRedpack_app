@@ -45,7 +45,7 @@ Page({
   txFunc: function (){
     if (!this.judgeNumber(this.data.inputValue)) {
       wx.showToast({
-        title: '请输入正确金额',
+        title: '只能输入两位小数哦',
         icon: 'none'
       })
       return false;

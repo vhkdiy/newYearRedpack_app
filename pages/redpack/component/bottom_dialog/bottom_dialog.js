@@ -90,7 +90,7 @@ Component({
     requestData: function (money){
       if(!this.judgeNumber(money)){
         wx.showToast({
-          title: '请输入正确金额',
+          title: '只能输入两位小数哦',
           icon : 'none'
         })
         return false;
