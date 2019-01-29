@@ -4,6 +4,7 @@ const { host } = require("./config.js");
 import pako from "../utils/pako.min.js";
 
 const IS_SHANDLE = false; //是否启用压缩
+const showLog = false;//是否打印日志
 
 const COMMON_FAIL_DATA = {
   status: 0,
@@ -61,7 +62,7 @@ const request = config => {
     method: config.method || 'POST',
     responseType: IS_SHANDLE ? "arraybuffer" : "text",
     success: function(res) {
-      if (true) {
+      if (showLog) {
         console.log("==========request============:");
         console.log("url: " + url);
         console.log("data: ", data);
