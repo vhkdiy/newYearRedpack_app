@@ -50,7 +50,6 @@ Page({
       })
       return false;
     }
-
     requestData(this, "/balance/withdrawBalance", { withdrawBalance: this.data.inputValue}).then((data) => {
       if (data.state == 1) {
         this.setData({
@@ -78,8 +77,6 @@ Page({
   onShow: function () {
 
   },
-
-
   //输入金额
   bindInput : function(e){
     this.setData({
@@ -89,7 +86,7 @@ Page({
   //全部体现
   allMoneyInput : function(){
     this.setData({
-      inputValue : this.data.currentMoney
+      inputValue : this.data.currentMoney + ""
     })
   },
   //提现
