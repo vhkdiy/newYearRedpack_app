@@ -2,11 +2,11 @@
 <view class='container'>
 
   <!-- 头像 -->
-  <image class='user-img' src='{{userImg}}'/>
+  <image wx:if="{{hideCompositePicture != 1}}" class='user-img' src='{{userImg}}'/>
   <view class='look-instance' bindtap='handleInstance'>查看示例</view>
   
   <!-- 生成图片 -->
-  <view class='composite-picture' catchtap='handleWealthBtn'>
+  <view class='composite-picture' catchtap='{{hideCompositePicture == 1?"": "handleWealthBtn"}}'>
     <image src='{{compositePicture}}'></image>
     <view wx:if="{{!orderId}}" class='mask'></view>
     <view wx:if="{{!orderId}}" class='wealth-btn'>点击这里扮演财神</view>

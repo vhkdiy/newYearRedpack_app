@@ -82,16 +82,44 @@ Page({
             money: data.order.redPackMoney,
             number: data.order.redPackCount,
             serviceRate: data.serviceCharge,
-            serviceMoney: Math.ceil((money * parseFloat(serviceRate)/100) * 100) / 100
+            serviceMoney: (Math.ceil((money * parseFloat(serviceRate)/100) * 100) / 100).toFixed(2),
+            hideCompositePicture: data.hideCompositePicture,
           })
-        }else{
+        } else {
+          // data.hideCompositePicture =0 
           this.setData({
             userImg: data.user.avatarUrl,
             compositePicture: data.templateImgUrl,
-            serviceRate: data.serviceCharge
+            serviceRate: data.serviceCharge,
+            hideCompositePicture: data.hideCompositePicture,
           })
+          //如果是审核状态自动生成orderID
+          if (data.hideCompositePicture == 1) {
+            this.autoCreateOrderID(data.user.avatarUrl);
+          }
         }
+        
+      }
+    })
+  },
 
+  //生成orderId
+  autoCreateOrderID(img){
+    img = img || this.data.userImg;
+    request({
+      url: `/img`,
+      data:{
+        "greeting": "新年快乐",
+        "imgUrl": img,
+        "redPackIndex": 0,
+        "type": 2
+      },
+      success: (result) => {
+        console.log('autoOrderid ====  00000000000000', result)
+        this.setData({
+          orderId: result.order.id,
+          compositePicture: result.order.imgUrl
+        })
       }
     })
   },
@@ -206,7 +234,7 @@ Page({
       let money = parseFloat(value) || 0
       this.setData({
         money: value,
-        serviceMoney: Math.ceil((money * parseFloat(this.data.serviceRate)/100) * 100) / 100
+        serviceMoney: (Math.ceil((money * parseFloat(this.data.serviceRate)/100) * 100) / 100).toFixed(2)
       })
     }else{
       this.setData({
@@ -266,6 +294,11 @@ Page({
           orderId:'',
           money:'',
           number:''
+        },()=>{
+          if(this.data.hideCompositePicture == 1){
+            //生成orderId
+            this.autoCreateOrderID();
+          }
         })
 
       }
