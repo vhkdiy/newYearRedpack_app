@@ -38,7 +38,7 @@
   </block>
 
 
-  <image bindtap='choseLocalImg' class='zhuti_item chose_upload_img_btn' src="./images/chose_img.png"></image>
+  <image wx:if="{{showGreetingInputAndImgUpload}}" bindtap='choseLocalImg' class='zhuti_item chose_upload_img_btn' src="./images/chose_img.png"></image>
 
 </view>
 

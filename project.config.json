@@ -31,7 +31,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 9,
 			"list": [
 				{
 					"id": 0,
@@ -82,6 +82,20 @@
 					"name": "红包",
 					"pathName": "pages/redpack/redpack",
 					"query": "openId=okUUg5e3hENvsbJAKdJwydMTOgzk&userId=39&orderId=9"
+				},
+				{
+					"id": 8,
+					"name": "引导分享",
+					"pathName": "pages/guide-share/guide-share",
+					"query": "orderId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "合成图片",
+					"pathName": "pages/make-img/make-img",
+					"query": "orderId=1",
+					"scene": null
 				}
 			]
 		}

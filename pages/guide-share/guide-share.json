@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "扮演财神发红包",
+  "navigationBarBackgroundColor": "#E44533",
   "usingComponents": {
     "GetPlayStateDialog": "./component/get-play-state-dialog/get-play-state-dialog"
   }

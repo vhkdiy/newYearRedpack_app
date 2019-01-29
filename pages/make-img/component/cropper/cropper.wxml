@@ -1,5 +1,5 @@
 <view class="container">
-  <image wx:if="{{!originImg.url}}" class='chose_img_bg' src="./images/canvas_bg.png"></image>
+  <image wx:if="{{!originImg.url && enableCus}}" class='chose_img_bg' src="./images/canvas_bg.png"></image>
 
   <!--  剪裁框与初始图片，剪裁框监听用户手势，获取移动缩放旋转值，images通过css样式显示变化  -->
 
@@ -11,9 +11,10 @@
 
   </view>
 
-  <view bindtap='handleShowInput' class='input_text' style="font-size:{{inputFontObj.fontSize}}rpx;-webkit-text-stroke-width:{{inputFontObj.strokeWidth}}rpx;bottom:{{inputFontObj.bottom}}rpx">{{inputValue}}</view>
-
-  <view wx:if="{{!inputValue || inputValue.length == 0}}" class='guide_input_text' bindtap='handleShowInput'>填写新年祝福</view>
+  <block wx:if="{{enableCus}}">
+    <view bindtap='handleShowInput' class='input_text' style="font-size:{{inputFontObj.fontSize}}rpx;-webkit-text-stroke-width:{{inputFontObj.strokeWidth}}rpx;bottom:{{inputFontObj.bottom}}rpx">{{inputValue}}</view>
+    <view wx:if="{{!inputValue || inputValue.length == 0}}" class='guide_input_text' bindtap='handleShowInput'>填写新年祝福</view>
+  </block>
 
   <painter class="painter" customStyle="display:block; width:{{ width * canvasScale}}px;height:{{ height * canvasScale}}px;" palette="{{template}}" bind:imgOK="onImgOK" bind:imgErr="imgErr" />
 

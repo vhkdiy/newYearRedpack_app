@@ -78,6 +78,7 @@ Component({
       scale: 1, //缩放倍数
       rotate: 0 //旋转角度
     },
+    enableCus:false,//是否允许自定义
   },
 
 
@@ -85,6 +86,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
+
+    setEnableCus(enableCus) {
+      this.setData({
+        enableCus: enableCus,
+      });
+    },
 
     saveStateData() {
       const lastMakeImgCanvasData = {};
@@ -365,6 +372,9 @@ Component({
       // if (this.data.originImg) {
       //   return;
       // }
+      if (!this.data.enableCus) {
+        return;
+      }
       updateChoseImgWayStatus.show(this);
 
     },

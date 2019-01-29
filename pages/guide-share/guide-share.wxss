@@ -1,17 +1,21 @@
+page{
+  background: #FA5C47;
+}
+
 .container {
   width: 690rpx;
   background: rgba(255, 255, 255, 1);
   border-radius: 6rpx;
   border: 6rpx solid rgba(255, 228, 174, 1);
-  margin: 32rpx auto 0;
+  margin: 0 auto;
   box-sizing: border-box;
-  padding: 32rpx 12rpx 22rpx;
+  padding: 46rpx 12rpx 22rpx;
 }
 
 .share_tip_img {
   margin: 0 auto;
-  height: 650rpx;
-  width: 650rpx;
+  height: 600rpx;
+  width: 600rpx;
   display: block;
 }
 
@@ -19,10 +23,10 @@
   display: block;
   width: 585rpx;
   height: 94rpx;
-  background: rgba(7, 193, 96, 1);
+  background: #0FD06C;
   border-radius: 8rpx;
   line-height: 94rpx;
-  margin: 36rpx auto 0;
+  margin: 0 auto 0;
   font-size: 34rpx;
   font-family: PingFangSC-Medium;
   font-weight: 500;
@@ -44,7 +48,7 @@
   font-size: 24rpx;
   font-family: PingFangSC-Regular;
   font-weight: 400;
-  color: rgba(136, 136, 136, 1);
+  color:rgba(255,255,255,0.7);
   line-height: 33rpx;
   margin-top: 14rpx;
   text-align: center;
@@ -54,12 +58,12 @@
   width: 585rpx;
   height: 94rpx;
   line-height: 94rpx;
-  background: rgba(248, 248, 248, 1);
+  background:rgba(240,228,173,1);
   border-radius: 8rpx;
   font-size: 34rpx;
   font-family: PingFangSC-Medium;
   font-weight: 500;
-  color: rgba(7, 193, 96, 1);
+  color: #F35543;
   text-align: center;
   margin: 26rpx auto 0;
 }
@@ -69,11 +73,34 @@
   font-size: 26rpx;
   font-family: PingFangSC-Regular;
   font-weight: 400;
-  color: #333333;
+  color: #FFFFFF;
   margin-top: 35rpx;
 }
 
 .arror{
   width: 24rpx;
   height: 24rpx;
+}
+
+.top_container{
+  width: 100%;
+  background: #E44533;
+  overflow: hide;
+  position: relative;
+  padding-top: 32rpx;
+}
+
+
+.bottom_container{
+  width: 100%;
+  position: relative;
+  padding-top: 52rpx;
+}
+
+.bottom_layout_top_bg{
+  height: 100rpx;
+  width: 100%;
+  position: absolute;
+  top: -90rpx;
+  left: 0;
 }

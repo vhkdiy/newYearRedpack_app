@@ -1,16 +1,20 @@
-<view class="container">
-  <image class='share_tip_img' mode="aspectFill" src="{{order.imgUrl}}"></image>
+<view class='top_container'>
+  <view class="container">
+    <image class='share_tip_img' mode="aspectFill" src="{{order.imgUrl}}"></image>
+  </view>
+</view>
 
-
+<view class='bottom_container'>
+  <image class='bottom_layout_top_bg' src="./images/bottom_layout_top_bg.png"></image>
   <view class='share_btn'>转发到好友或群聊
     <button wx:if="{{isPaySuccess}}" id="share_btn" open-type='share' class='fade_btn'></button>
-    <view wx:else class='fade_btn' bindtap='onShareBtnClick' ></view>
+    <view wx:else class='fade_btn' bindtap='onShareBtnClick'></view>
   </view>
 
-  <view class='share_tip'>*只有你自己转发的卡片好友才能领取红包</view>
+  <!-- <view class='share_tip'>*只有你自己转发的卡片好友才能领取红包</view> -->
 
   <view class='create_share_img_btn' bindtap='createImgClick'>生成分享图</view>
-  <view class='share_tip'>*任何人都可通过扫码领取你的红包</view>
+  <!-- <view class='share_tip'>*任何人都可通过扫码领取你的红包</view> -->
   <view class='get_redpack_btn' bindtap='onGetOneBtnClick'>
     <text>我也领一个</text>
     <image class="arror" src="./images/arror.png"></image>
