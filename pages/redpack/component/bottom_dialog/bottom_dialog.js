@@ -78,10 +78,25 @@ Component({
     selectAction : function(e){
       this.requestData(e.currentTarget.id);
     },
+    //判断数字是否正确
+    judgeNumber(value){
+      if (value.match(/^(([0-9]+)(\.[0-9]{0,2})?)$/) || value == '') {
+        return true;
+      } else {
+        return false;
+      }
+    },
     //请求赞赏
     requestData: function (money){
+      if(!this.judgeNumber(money)){
+        wx.showToast({
+          title: '请输入正确金额',
+          icon : 'none'
+        })
+        return false;
+      }
+
       let that = this;
-      // let actualMoney = parseFloat(money) +  Math.ceil((parseFloat(money) * parseFloat(this.data.isShowData.serviceCharge)) * 100) / 100;
       if(parseFloat(money) >= 0.1 && parseFloat(money) <= 200){
         let url = `/like/payParam/${this.data.orderId}?money=${money}`;
         console.error(url);

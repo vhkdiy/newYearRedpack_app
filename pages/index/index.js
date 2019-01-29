@@ -105,7 +105,7 @@ Page({
     let showOldData = false;
 
     if (options.orderId) {
-      if ((options.openId || options.userId) && (options.type == shareType.RED_PACK || options.type == shareType.RED_PACK_WITH_IMG)){
+      if ((options.openId || options.userId) && (options.type == shareType.RED_PACK || options.type == shareType.RED_PACK_WITH_IMG || options.type == shareType.GET_NEW_CHANCE)){
         //开红包页
         wx.navigateTo({
           url: `/pages/redpack/redpack?orderId=${options.orderId}&openId=${options.openId}&userId=${options.userId}`,

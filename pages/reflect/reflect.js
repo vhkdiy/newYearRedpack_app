@@ -33,19 +33,22 @@ Page({
       });
     
   },
+  //判断数字是否正确
+  judgeNumber(value) {
+    if (value.match(/^(([0-9]+)(\.[0-9]{0,2})?)$/) || value == '') {
+      return true;
+    } else {
+      return false;
+    }
+  },
   //提现
   txFunc: function (){
-    console.log(typeof this.data.inputValue);
-    let index = (this.data.inputValue + "" ).indexOf(".");
-    if (index != -1){
-      let inputString = (this.data.inputValue + "").substring(index);
-      if (inputString.length > 3){
-        wx.showToast({
-          title: '小数点后只能2位',
-          icon : "none"
-        })
-        return;
-      }
+    if (!this.judgeNumber(this.data.inputValue)) {
+      wx.showToast({
+        title: '请输入正确金额',
+        icon: 'none'
+      })
+      return false;
     }
 
     requestData(this, "/balance/withdrawBalance", { withdrawBalance: this.data.inputValue}).then((data) => {

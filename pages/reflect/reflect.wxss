@@ -75,7 +75,7 @@ page{
   text-align: left;
   height : 90rpx;
   font-size:70rpx;
-  font-family:DINPro-Bold;
+  /* font-family:DINPro-Bold; */
   font-weight:bold;
   color:rgba(34,34,34,1);
   line-height:90rpx;

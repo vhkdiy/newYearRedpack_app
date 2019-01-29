@@ -13,7 +13,7 @@
 }
 .layout{
   position : relative;
-  background-color : #D85940;
+  background-color : #f35743;
   text-align: center;
 }
 .titleBar{

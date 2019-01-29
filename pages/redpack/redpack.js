@@ -278,7 +278,7 @@ Page({
     if (this.data.orderId == '1'){ //示例页
         //去分享
       this.setData({
-        isSelf: false
+        isSelf: true
       })
     } else if (this.data.openId == phead.phoneid || this.data.userId == wx.getStorageSync(loginUtils.getUserIdKey())){
         //去分享
