@@ -11,10 +11,10 @@
     <view wx:else class='fade_btn' bindtap='onShareBtnClick'></view>
   </view>
 
-  <view class='share_tip'>*只有你自己转发的卡片好友才能领取红包</view>
+  <!-- <view class='share_tip'>*只有你自己转发的卡片好友才能领取红包</view> -->
 
   <view class='create_share_img_btn' bindtap='createImgClick'>生成分享图</view>
-  <view class='share_tip'>*任何人都可通过扫码领取你的红包</view>
+  <!-- <view class='share_tip'>*任何人都可通过扫码领取你的红包</view> -->
   <view class='get_redpack_btn' bindtap='onGetOneBtnClick'>
     <text>我也领一个</text>
     <image class="arror" src="./images/arror.png"></image>
