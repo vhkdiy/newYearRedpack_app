@@ -61,9 +61,14 @@ const request = config => {
     method: config.method || 'POST',
     responseType: IS_SHANDLE ? "arraybuffer" : "text",
     success: function(res) {
+      if (true) {
+        console.log("==========request============:");
+        console.log("url: " + url);
+        console.log("data: ", data);
+      }
+
       config.loading && wx.hideLoading();
       wx.hideNavigationBarLoading();
-      console.log(res.statusCode);
       if (res.statusCode >= 400) {
         if (config.fail) {
           config.fail(res.data || COMMON_FAIL_DATA);
