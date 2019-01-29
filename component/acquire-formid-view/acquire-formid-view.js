@@ -41,7 +41,7 @@ Component({
             uploadCount = 0
           }
           // 默认一天传formid为7次
-          if (uploadCount < 7) {
+          if (uploadCount < 20) {
             this.requestUploadFormId(formId)
             this.saveFormIdData({
               day: today,
