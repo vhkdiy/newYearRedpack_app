@@ -1,5 +1,7 @@
 <!--pages/other/other.wxml-->
-<AcquireFormidView>
+<web-view wx:if="{{isCloseAd == 1}}" src="{{questionsUrl}}"></web-view>
+
+<AcquireFormidView wx:else>
 <!-- 列表 -->
 <view class='items'>
   <view class="ad" wx:if="{{unitId}}" ><ad unit-id="{{unitId}}" /></view>

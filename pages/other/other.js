@@ -15,7 +15,9 @@ Page({
       url: 'page/other/other'
     },
     adArr:[],
-    unitId:''
+    unitId:'',
+    isCloseAd:1,
+    questionsUrl:'https://ibestfanli.com/frontend_step_service/views/step/normalQuestion1/normalQuestion1.html?t='+Date.now()
   },
 
   /**
@@ -25,9 +27,11 @@ Page({
     request({
       url:'/ad',
       success:(result)=>{
+        console.log('ad----------data',result);
         this.setData({
           adArr: result.adJson && result.adJson.ad_list,
-          unitId: result.gdtId
+          unitId: result.gdtId,
+          isCloseAd: result.openAd
         })
       },
     })
