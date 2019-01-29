@@ -146,7 +146,7 @@ Component({
         });
       }else{
         wx.showToast({
-          title: '请输入1-200金额',
+          title: '请输入0.1-200金额',
           icon : 'none'
         })
       }
