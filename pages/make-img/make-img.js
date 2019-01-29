@@ -90,8 +90,9 @@ Page({
 
 
       this.startChoseMarquee();
-
-      this.checkShowNewUserGuide();
+      if (enableCus) {
+        this.checkShowNewUserGuide();
+      }
 
       const cropper = this.selectComponent("#cropper");
       if (cropper) {
