@@ -91,14 +91,20 @@ Page({
   },
   //提现
   submitData : function(){
-    requestHasSlientOauth(this, "/user/hasSlientOauth").then((data) => {
+    if (!this.judgeNumber(this.data.inputValue)) {
+      wx.showToast({
+        title: '只能输入两位小数哦',
+        icon: 'none'
+      })
+      return false;
+    }
+    requestHasSlientOauth(this, "/user/hasSlientOauth", { withdrawBalance: this.data.inputValue }).then((data) => {
       console.error(data);
       if (data.hasSlientOauth == 0) {
         webview("授权", data.slientOauthUrl);
       }else{
         //提交金额
         this.txFunc();
-        
       }
     }).catch(e => {
       console.error("catch");
