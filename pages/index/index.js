@@ -253,7 +253,7 @@ Page({
   },
 
   //提交表单
-  handleSubmit(e){
+  handleSubmit(){
     if (this.formCheckMoney(true) && this.formCheckNumber(true) && this.formCheckOrderId()){ 
       //支付 1获取支付信息，2调用支付接口
       requestPayment({
@@ -313,7 +313,9 @@ Page({
         success:(userData)=>{
           this.setData({
             userImg:JSON.parse(userData).avatarUrl
-          })
+          });
+          //拉起自动支付
+          this.handleSubmit();
         }
       });
       this.setData({
