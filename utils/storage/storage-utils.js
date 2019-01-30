@@ -26,7 +26,7 @@ const storageUtils = {
 
   setStorageSync(key, data){
     wx.setStorageSync(key, data);
-    getStorageCache()[key] = data;
+    this.getStorageCache()[key] = data;
   },
 
   setStorage(key, data){
