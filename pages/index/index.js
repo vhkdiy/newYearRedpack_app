@@ -18,8 +18,8 @@ Page({
    */
   data: {
     properties: {
-      app_title: '财神赐福',
-      $title: '财神赐福',
+      app_title: '包你当财神',
+      $title: '包你当财神',
       url: 'page/index/index'
     },
 
