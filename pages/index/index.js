@@ -74,14 +74,14 @@ Page({
         console.log('pageIndexdata----',data);
         if(data.order){
           let money = data.order.redPackMoney;
-          let serviceRate = data.order.serviceRate;
+          let serviceRate = data.order.serviceCharge;
           this.setData({
             userImg: data.user.avatarUrl,
             compositePicture: data.order.imgUrl,
             orderId: data.order.id,
             money: data.order.redPackMoney,
             number: data.order.redPackCount,
-            serviceRate: data.serviceCharge,
+            serviceRate: serviceRate,
             serviceMoney: (Math.ceil((money * parseFloat(serviceRate)/100) * 100) / 100).toFixed(2),
             hideCompositePicture: data.hideCompositePicture,
           })
