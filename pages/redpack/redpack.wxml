@@ -7,7 +7,7 @@
         <image class="icon" src="{{avatarUrl}}" />
         <view class="title">{{subTitle}}</view>
       </view>
-      <view class="tip">{{title}}</view>
+      <view class="tip">{{status == 3 ? '你已成功领取红包' : title}}</view>
       <view class="imageView">
         <view class="paddingView">
           <image class="userImage" mode="widthFix" src="{{imgUrl}}"/>
