@@ -91,7 +91,11 @@ Page({
 
       this.startChoseMarquee();
       if (enableCus) {
-        this.checkShowNewUserGuide();
+        try{
+          this.checkShowNewUserGuide();
+        } catch(e){
+
+        }
       }
 
       const cropper = this.selectComponent("#cropper");
