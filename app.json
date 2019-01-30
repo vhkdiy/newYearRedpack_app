@@ -13,7 +13,7 @@
     "pages/make-img/make-img"
   ],
   "tabBar": {
-    "color" : "#979797",
+    "color": "#979797",
     "selectedColor": "#F35443",
     "list": [
       {
@@ -21,6 +21,12 @@
         "iconPath": "/images/indexPage.png",
         "selectedIconPath": "/images/indexPageDown.png",
         "text": "首页"
+      },
+      {
+        "pagePath": "pages/other/other",
+        "iconPath": "/images/find.png",
+        "selectedIconPath": "/images/findDown.png",
+        "text": "更多好玩"
       },
       {
         "pagePath": "pages/my/my",
@@ -41,8 +47,17 @@
     "downloadFile": 30000,
     "uploadFile": 60000
   },
-  "debug": true,
+  "debug": false,
   "navigateToMiniProgramAppIdList": [
-
+    "wxf6d5bbdab650fc60",
+    "wxb869461219ec2d02",
+    "wx5a25b501bae58418",
+    "wx2e0d90b21ea06733",
+    "wx32f25f49358a7456",
+    "wxe46bd15fcbb4f829",
+    "wxbad8d91bc1237b1f",
+    "wxf7228d4c0adda28e",
+    "wxe260d2c53f6e47a7",
+    "wxb13b8f52473658ca"
   ]
 }
