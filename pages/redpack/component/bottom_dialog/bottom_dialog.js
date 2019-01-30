@@ -117,14 +117,13 @@ Component({
                   title: '赞赏成功',
                   icon: 'none'
                 });
-                try {
-                  getApp().sensors.track('admire', {
-                    "admire_money": money,
-                    "admire_order_user_id": wx.getStorageSync(loginUtils.getUserIdKey())
-                  });
-                } catch (e) {
-
-                }
+                // try {
+                //   getApp().sensors.track('admire', {
+                //     "admire_money": money,
+                //     "admire_order_user_id": wx.getStorageSync(loginUtils.getUserIdKey())
+                //   });
+                // } catch (e) {
+                // }
               },
               fail(res) {
                 console.error(res);
