@@ -14,9 +14,12 @@
         </view>
         <view wx:if="{{status == 5 || status == 6 || status == 4}}">
           <block wx:for="{{redPackTemplates}}" wx:key="{{index}}">
-            <button  id="{{index}}" class="getUserInfoBtn" open-type="{{authorized ? '' :'getUserInfo'}}" bindgetuserinfo="{{ authorized ? '' : 'onGotUserInfo'}}" >
-              <image id="{{index}}" class="redpack{{index + 1}}" src="{{item.imgUrl}}" bindtap="{{authorized ? 'clickRedPack' : ''}}" />
-            </button>
+              <block wx:if="{{item.imgUrl !== ''}}">
+                <button  id="{{index}}" class="getUserInfoBtn" open-type="{{authorized ? '' :'getUserInfo'}}" bindgetuserinfo="{{ authorized ? '' : 'onGotUserInfo'}}" >
+                  <image id="{{index}}" class="redpack{{index + 1}}" src="{{item.imgUrl}}" bindtap="{{authorized ? 'clickRedPack' : ''}}" />
+                </button>
+              </block>
+              <block wx:else></block>
           </block>
         </view>
       </view>

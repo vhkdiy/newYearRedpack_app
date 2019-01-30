@@ -87,7 +87,7 @@ Page({
     this.requestData();
   },
   requestData : function(callback){
-    setTimeout(() => {
+    // setTimeout(() => {
       let url = `/redPack/${this.data.orderId}?openId=${this.data.openId}&userId=${this.data.userId}`;
       console.error(url);
       requestData(this, url).then((data) => {
@@ -112,7 +112,7 @@ Page({
       }).catch(e => {
         console.error("catch");
       });
-    }, 300);
+    // }, 300);
   },
   onGotUserInfo : function(e){
     console.log("授权");
